@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_baseline_date_range_24"
         android:id="@+id/eventsAndWorkshop_icon"/>
     <item android:title="Quizzes"
-        android:icon="@drawable/ic_quizzes"
+        android:icon="@drawable/quizzes"
         android:id="@+id/Quizzes_icon"/>
     <item android:title="Home"
         android:icon="@drawable/home_bottom_nav"
