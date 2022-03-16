@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context=".splashscreen.SplashScreenActivity">
+
+
+    <ImageView
+        android:id="@+id/rectangle"
+        android:layout_width="@dimen/RectangleImageWidth"
+        android:layout_height="@dimen/RectangleImageHeight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_rectangle_1"
+        android:layout_marginTop="55dp"/>
+
+    <LinearLayout
+        android:layout_width="@dimen/LinearWidth"
+        android:layout_height="@dimen/LinearHeight"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="55dp">
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/EditTextHeight"
+            android:layout_gravity="center"
+            android:layout_marginTop="62dp"
+            android:layout_marginBottom="@dimen/etMarginBottom"
+            android:background="@drawable/etbackground"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etemailId"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/EditTextHeight"
+            android:layout_gravity="center"
+            android:background="@drawable/etbackground"
+            android:ems="10"
+            android:hint="Email Address"
+            android:layout_marginBottom="@dimen/etMarginBottom"
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etRN"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/EditTextHeight"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/etMarginBottom"
+            android:background="@drawable/etbackground"
+            android:ems="10"
+            android:hint="Roll No."
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/EditTextHeight"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/etMarginBottom"
+            android:background="@drawable/etbackground"
+            android:ems="10"
+            android:hint="Phone No."
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/etInstaId"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/EditTextHeight"
+            android:layout_gravity="center"
+            android:background="@drawable/etbackground"
+            android:ems="10"
+            android:hint="Instagram Id"
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnsave"
+            android:layout_width="@dimen/ButtonWidth"
+            android:layout_height="@dimen/ButtonHeight"
+            android:layout_gravity="center"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/btnbackground"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+   <androidx.cardview.widget.CardView
+       android:layout_width="@dimen/CardviewWidthHeight"
+       android:layout_height="@dimen/CardviewWidthHeight"
+       app:cardCornerRadius="75dp"
+       app:layout_constraintBottom_toTopOf="@+id/rectangle"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="@+id/rectangle">
+
+       <ImageView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:src="@drawable/imagebackground"
+           android:scaleType="centerCrop">
+       </ImageView>
+
+   </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
