@@ -22,7 +22,7 @@
         android:backgroundTint="@color/white"
         android:padding="5dp"
         app:tabGravity="fill"
-        app:tabIndicator="@drawable/card_event_workshops"
+        app:tabIndicator="@drawable/tab_indicator"
         app:tabIndicatorColor="@color/start_color_btn"
         app:tabIndicatorAnimationMode="elastic"
         app:tabIndicatorGravity="stretch"
