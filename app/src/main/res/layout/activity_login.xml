@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context=".splashscreen.SplashScreenActivity">
+
+
+    <ImageView
+        android:id="@+id/rectangle"
+        android:layout_width="@dimen/RectangleImageWidth"
+        android:layout_height="@dimen/RectangleImageHeight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_rectangle_1" />
+
+    <LinearLayout
+        android:layout_width="@dimen/LinearWidth"
+        android:layout_height="@dimen/LinearWidth"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/etHeight"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Enter Your Email"
+            android:textColorHint="@color/white"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:background="@drawable/etbackground"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/etHeight"
+            android:gravity="center"
+            android:hint="Enter Your Password"
+            android:textColorHint="@color/white"
+            android:inputType="textPassword"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:background="@drawable/etbackground"/>
+
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:gravity="end"
+            android:text="Forgot Password ?"
+            android:textColor="@color/ForgetPasswardColor"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/signin"
+            android:layout_width="@dimen/ButtonWidth"
+            android:layout_height="@dimen/ButtonHeight"
+            android:layout_marginBottom="20dp"
+            android:textAllCaps="false"
+            android:text="Sign In"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/btnbackground"/>
+
+        <TextView
+            android:id="@+id/lginAcc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="Don\'t have an accout? Sign up here"
+            android:textColor="@color/ForgetPasswardColor"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

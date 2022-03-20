@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="RectangleImageWidth">350dp</dimen>
+    <dimen name="RectangleImageHeight">500dp</dimen>
+    <dimen name="RectangleIH">400dp</dimen>
+    <dimen name="LinearWidth">300dp</dimen>
+    <dimen name="LinearHeight">450dp</dimen>
+    <dimen name="LinearH">280dp</dimen>
+    <dimen name="LinearHgt">380dp</dimen>
+    <dimen name="EditTextHeight">40dp</dimen>
+    <dimen name="etHeight">53dp</dimen>
+    <dimen name="MarginBottom">22dp</dimen>
+    <dimen name="ButtonWidth">129dp</dimen>
+    <dimen name="ButtonHeight">49dp</dimen>
+    <dimen name="CardviewWidthHeight">150dp</dimen>
+    <dimen name="etMarginBottom">22dp</dimen>
+</resources>
