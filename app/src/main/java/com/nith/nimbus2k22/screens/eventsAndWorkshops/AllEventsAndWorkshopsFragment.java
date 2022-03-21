@@ -30,8 +30,8 @@ public class AllEventsAndWorkshopsFragment extends Fragment {
         eventTabLayout = view.findViewById(R.id.events_tab_layout);
         eventViewPager2 = view.findViewById(R.id.events_TL_viewP2);
 
-        eventTabLayout.addTab(eventTabLayout.newTab().setText("      "));
-        eventTabLayout.addTab(eventTabLayout.newTab().setText("      "));
+        eventTabLayout.addTab(eventTabLayout.newTab().setText("         "));
+        eventTabLayout.addTab(eventTabLayout.newTab().setText("         "));
 
         FragmentManager fragmentManager = getParentFragmentManager();
         adapter = new EventWorkshopAdapter(fragmentManager, getLifecycle());

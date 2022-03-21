@@ -16,17 +16,18 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/events_tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="20dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/card_event_workshops"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/black"
         android:padding="5dp"
         app:tabGravity="fill"
         app:tabIndicator="@drawable/tab_indicator"
         app:tabIndicatorAnimationMode="elastic"
         app:tabIndicatorColor="@color/start_color_btn"
         app:tabIndicatorGravity="stretch"
-        app:tabMode="fixed"
+        app:tabMode="auto"
+
         app:tabSelectedTextColor="@color/white" />
 
 
