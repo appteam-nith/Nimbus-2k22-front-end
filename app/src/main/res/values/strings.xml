@@ -6,4 +6,8 @@
     <string name="name">Name</string>
     <string name="designation">designation</string>
 
+    <string name="Prodygiki_by_ISTE">Prodygiki by ISTE</string>
+    <string name="dummy_text">Loreum Ipsum app</string>
+    <string name="workshops">Workshops</string>
+    <string name="description">Description</string>
 </resources>
