@@ -7,12 +7,16 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.cloudinary.android.MediaManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.AllEventsAndWorkshopsFragment;
 import com.nith.nimbus2k22.screens.home.MemeManiaFragment;
 import com.nith.nimbus2k22.screens.quiz.AllQuizzesFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +50,16 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
+       initConfig();
+    }
 
+    private void initConfig() {
+        Map config = new HashMap();
+        config.put("cloud_name", "dfinmhios");
+        config.put("api_key","981293366339261");
+        config.put("api_secret","tknXky4p8K5bRT6Aws_xnAnlAFg");
+        //  config.put("secure", true);
+        MediaManager.init(this, config);
     }
 
     private void replaceFragment(Fragment fragment){
@@ -56,4 +69,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_frame_layout,fragment);
         fragmentTransaction.commit();
     }
+
+
 }
