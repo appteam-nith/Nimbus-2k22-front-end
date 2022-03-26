@@ -39,7 +39,7 @@ public class EventFragment extends Fragment {
         return view;
     }
 
-    private void buildEventRv() {
+    public void buildEventRv() {
 
         eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity());
 
@@ -52,7 +52,7 @@ public class EventFragment extends Fragment {
 
     }
 
-    private void getEventData() {
+    public void getEventData() {
         for (int i = 0; i < 19; i++) {
             eventsModalArrayList.add(new EventsModal("title","description","startTime","endTime","clubName","platform","imgUrl","regUrl",1));
         }
