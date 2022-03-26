@@ -25,31 +25,19 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private ArrayList<EventsModal> eventsModalArrayList;
     private Context context;
-    private boolean isUsedInHome;
+    private boolean isUsedInHomeEvent;
+    private boolean isUsedInHomeWorkshop;
 
-    public EventsAdapter(ArrayList<EventsModal> eventsModalArrayList, Context context, boolean isUsedInHome) {
+    public EventsAdapter(ArrayList<EventsModal> eventsModalArrayList, Context context, boolean isUsedInHomeEvent, boolean isUsedInHomeWorkshop) {
         this.eventsModalArrayList = eventsModalArrayList;
         this.context = context;
-        this.isUsedInHome = isUsedInHome;
+        this.isUsedInHomeEvent = isUsedInHomeEvent;
+        this.isUsedInHomeWorkshop = isUsedInHomeWorkshop;
     }
 
-    //    @Override
-//    public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
-//        EventsModal event = eventsModalArrayList.get(position);
-//        holder.eventName.setText(event.getTitle());
-//        holder.eventDetail.setText(event.getDescription());
-//        holder.regBtn.setOnClickListener(view -> {
-//            //reg url
-//        });
-//        holder.item_CV.setOnClickListener(view -> {
-//            changeFragment(new EventDetailsFragment(), view, event);
-//
-//        });
-//    }
 
     private void changeFragment(Fragment fragment, View view, EventsModal events) {
         AppCompatActivity activity = (AppCompatActivity) view.getContext();
-        //TODO: change replace id to --"fragment_frame_layout"--
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame_layout, fragment).addToBackStack(null).commit();
 
         Bundle bundle = new Bundle();
@@ -63,10 +51,13 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public int getItemViewType(int position) {
 
-        if (isUsedInHome) {
+        if (isUsedInHomeEvent) {
             return 0;
         }
-        return 1;
+        if(isUsedInHomeWorkshop) {
+            return 1;
+        }
+        return 2;
     }
 
     @NonNull
@@ -78,6 +69,10 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             view = layoutInflater.inflate(R.layout.list_item_event,parent,false);
             return new HomeEventViewHolder(view);
         }
+        if (viewType == 1){
+            view = layoutInflater.inflate(R.layout.list_workshops_home,parent,false);
+            return new HomeWorkshopViewHolder(view);
+        }
         view = layoutInflater.inflate(R.layout.list_event_workshops,parent,false);
         return new EventViewHolder(view);
     }
@@ -85,11 +80,18 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         EventsModal event = eventsModalArrayList.get(position);
-        if (isUsedInHome){
+        if (isUsedInHomeEvent){
             HomeEventViewHolder homeEventViewHolder = (HomeEventViewHolder) holder;
             homeEventViewHolder.homeEventName.setText(event.getTitle());
             //load img
             homeEventViewHolder.homeEventCard.setOnClickListener(view -> {
+                changeFragment(new EventDetailsFragment(), view, event);
+            });
+        }else if (isUsedInHomeWorkshop){
+            HomeWorkshopViewHolder homeWorkshopViewHolder = (HomeWorkshopViewHolder) holder;
+            homeWorkshopViewHolder.homeWorkshopName.setText(event.getTitle());
+            //load img;
+            homeWorkshopViewHolder.homeWorkshopItem.setOnClickListener(view -> {
                 changeFragment(new EventDetailsFragment(), view, event);
             });
         }
@@ -143,6 +145,21 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             homeEventCard = itemView.findViewById(R.id.home_event_item);
             homeEventImg = itemView.findViewById(R.id.home_event_img);
             homeEventName = itemView.findViewById(R.id.home_event_name);
+        }
+    }
+
+    class HomeWorkshopViewHolder extends RecyclerView.ViewHolder{
+
+        private LinearLayout homeWorkshopItem;
+        private ImageView homeWorkshopImg;
+        private TextView homeWorkshopName;
+        public HomeWorkshopViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            homeWorkshopItem =itemView.findViewById(R.id.home_workshop_item);
+            homeWorkshopImg =itemView.findViewById(R.id.home_workshop_img);
+            homeWorkshopName =itemView.findViewById(R.id.home_workshop_name);
+
         }
     }
 }

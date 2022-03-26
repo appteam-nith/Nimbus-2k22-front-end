@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
 
         getWorkshopData();
 
-        buildEventRv();
+        buildWorkShopRv();
 
 
         //sponsors
@@ -80,6 +80,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+
     private void getSponsorsData() {
 
         for (int i = 0; i < 19; i++) {
@@ -90,7 +91,7 @@ public class HomeFragment extends Fragment {
     private void buildSponsorsRV() {
 
 
-        sponsorsAdapter = new SponsorsAdapter(sponsorsModalArrayList, getActivity());
+        sponsorsAdapter = new SponsorsAdapter(sponsorsModalArrayList, getActivity(),true);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         homesponsorRV.setHasFixedSize(true);
@@ -107,9 +108,20 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private void buildWorkShopRv() {
+        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(),false,true);
+
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        homeworkshopRV.setHasFixedSize(true);
+
+        homeworkshopRV.setLayoutManager(manager);
+
+        homeworkshopRV.setAdapter(eventsAdapter);
+    }
+
     private void buildEventRv() {
 
-        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(),true);
+        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(),true,false);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         homeEventRV.setHasFixedSize(true);

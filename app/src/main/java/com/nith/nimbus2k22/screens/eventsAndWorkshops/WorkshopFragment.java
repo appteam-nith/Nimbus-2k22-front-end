@@ -29,8 +29,8 @@ public class WorkshopFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_workshop, container, false);
 
 
-        workshopRV=view.findViewById(R.id.workshopRV);
-        eventsModalArrayList= new ArrayList<>();
+        workshopRV = view.findViewById(R.id.workshopRV);
+        eventsModalArrayList = new ArrayList<>();
 
         getWorkshopData();
 
@@ -42,7 +42,7 @@ public class WorkshopFragment extends Fragment {
 
     private void buildWorkshopRv() {
 
-        workshopAdapter = new EventsAdapter(eventsModalArrayList, getActivity(),true);
+        workshopAdapter = new EventsAdapter(eventsModalArrayList, getActivity(), false, false);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         workshopRV.setHasFixedSize(true);
@@ -55,7 +55,7 @@ public class WorkshopFragment extends Fragment {
 
     private void getWorkshopData() {
         for (int i = 0; i < 19; i++) {
-            eventsModalArrayList.add(new EventsModal("title","description","startTime","endTime","clubName","platform","imgUrl","regUrl",1));
+            eventsModalArrayList.add(new EventsModal("title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
         }
     }
 }

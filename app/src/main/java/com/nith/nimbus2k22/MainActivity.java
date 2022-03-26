@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.AllEventsAndWorkshopsFragment;
+import com.nith.nimbus2k22.screens.home.HomeFragment;
 import com.nith.nimbus2k22.screens.home.MemeManiaFragment;
 import com.nith.nimbus2k22.screens.quiz.AllQuizzesFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.home_icon:
-                    replaceFragment(new MemeManiaFragment());
+                    replaceFragment(new HomeFragment());
                     break;
                 case R.id.Quizzes_icon:
                     replaceFragment(new AllQuizzesFragment());
