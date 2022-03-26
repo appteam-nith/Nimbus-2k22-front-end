@@ -42,7 +42,7 @@ public class WorkshopFragment extends Fragment {
 
     private void buildWorkshopRv() {
 
-        workshopAdapter = new EventsAdapter(eventsModalArrayList, getActivity());
+        workshopAdapter = new EventsAdapter(eventsModalArrayList, getActivity(),true);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         workshopRV.setHasFixedSize(true);

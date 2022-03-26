@@ -41,7 +41,7 @@ public class EventFragment extends Fragment {
 
     public void buildEventRv() {
 
-        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity());
+        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(),false);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         eventRV.setHasFixedSize(true);

@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
 
     private void buildEventRv() {
 
-        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity());
+        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(),true);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         homeEventRV.setHasFixedSize(true);

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.modals.EventsModal;
 import com.nith.nimbus2k22.modals.SponsorsModal;
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -40,7 +40,7 @@ public class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.Sponso
         if (sponsor.getImage().isEmpty()) {
 //            Picasso.get().load(imgUrl.replace("http", "https")).into(holder.sponsorImage);
         } else {
-            Picasso.get().load(sponsor.getImage()).into(holder.sponsorImage);
+//            Picasso.get().load(sponsor.getImage()).into(holder.sponsorImage);
         }
         holder.sponsorDes.setText(sponsor.getName());
     }
