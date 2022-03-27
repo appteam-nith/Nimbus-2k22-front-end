@@ -29,13 +29,13 @@ public class EventsVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
     String BaseUrl = "https://anmol26.pythonanywhere.com/";
-    public static MutableLiveData<List<Events_List>> eventslist;
+    public static MutableLiveData<ArrayList<Events_List>> eventslist;
     public void getEvents(){
         eventslist = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "events/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                List<Events_List> elist = new ArrayList<>();
+                ArrayList<Events_List> elist = new ArrayList<>();
                 for(int i=0;i< response.length();i++){
                     try {
                         Log.e("eventlistresp",String.valueOf(response));
