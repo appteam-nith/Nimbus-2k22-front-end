@@ -42,7 +42,7 @@ public class SponsorsFragment extends Fragment {
     private void buildSponsorsRV() {
 
 
-        sponsorsAdapter = new SponsorsAdapter(sponsorsModalArrayList, getActivity());
+        sponsorsAdapter = new SponsorsAdapter(sponsorsModalArrayList, getActivity(), false);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         sponsorsRV.setHasFixedSize(true);
