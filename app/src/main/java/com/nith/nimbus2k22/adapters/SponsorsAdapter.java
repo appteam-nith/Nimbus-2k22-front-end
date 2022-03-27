@@ -1,5 +1,6 @@
 package com.nith.nimbus2k22.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.modals.EventsModal;
 import com.nith.nimbus2k22.modals.SponsorsModal;
@@ -53,6 +55,7 @@ public class SponsorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
@@ -68,6 +71,7 @@ public class SponsorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             sponsorsViewHolder.sponsorDes.setText(sponsor.getName());
             //??
             //load img
+            Glide.with(context).load("https:media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(sponsorsViewHolder.sponsorImage);
         }
     }
 

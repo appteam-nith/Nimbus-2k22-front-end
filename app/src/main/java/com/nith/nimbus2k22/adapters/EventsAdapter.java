@@ -15,9 +15,11 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.modals.EventsModal;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.EventDetailsFragment;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -84,6 +86,7 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             HomeEventViewHolder homeEventViewHolder = (HomeEventViewHolder) holder;
             homeEventViewHolder.homeEventName.setText(event.getTitle());
             //load img
+            Picasso.get().load("https://media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(homeEventViewHolder.homeEventImg);
             homeEventViewHolder.homeEventCard.setOnClickListener(view -> {
                 changeFragment(new EventDetailsFragment(), view, event);
             });
@@ -101,12 +104,15 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         eventViewHolder.eventDetail.setText(event.getDescription());
         eventViewHolder.regBtn.setOnClickListener(view -> {
             //reg url
+//            Glide.with(context).load("https:media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(eventViewHolder.eventImg);
+
         });
         eventViewHolder.eventCard.setOnClickListener(view -> {
             changeFragment(new EventDetailsFragment(), view, event);
 
         });
         //load Img
+            Picasso.get().load("https://media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(eventViewHolder.eventImg);
         }
     }
 
@@ -124,7 +130,7 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
 
             eventCard = itemView.findViewById(R.id.trans);
-            eventImg = itemView.findViewById(R.id.imageView);
+            eventImg = itemView.findViewById(R.id.event_item_img);
             eventName = itemView.findViewById(R.id.Event_name);
             eventDetail = itemView.findViewById(R.id.event_detail);
             regBtn = itemView.findViewById(R.id.eventRegUrl);
