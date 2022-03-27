@@ -1,5 +1,7 @@
 package com.nith.nimbus2k22.screens.home;
 
+import static com.nith.nimbus2k22.apis.SponsorsVolleyHelper.sponsorslist;
+
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
@@ -8,19 +10,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.nith.nimbus2k22.Models.Events_List;
+import com.nith.nimbus2k22.Models.Sponsors;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.adapters.EventsAdapter;
 import com.nith.nimbus2k22.adapters.HomeImgSliderAdapter;
 import com.nith.nimbus2k22.adapters.SponsorsAdapter;
-import com.nith.nimbus2k22.modals.EventsModal;
+import com.nith.nimbus2k22.apis.SponsorsVolleyHelper;
 import com.nith.nimbus2k22.modals.HomeSilderItem;
-import com.nith.nimbus2k22.modals.SponsorsModal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +36,9 @@ public class HomeFragment extends Fragment {
     private RecyclerView homeworkshopRV;
     private RecyclerView homesponsorRV;
 
-    private ArrayList<EventsModal> eventsModalArrayList;
-    private ArrayList<EventsModal> workshopArrayList;
-    private ArrayList<SponsorsModal> sponsorsModalArrayList;
+    private ArrayList<Events_List> eventsModalArrayList;
+    private ArrayList<Events_List> workshopArrayList;
+    private ArrayList<Sponsors> sponsorsModalArrayList;
 
     private EventsAdapter eventsAdapter;
     private SponsorsAdapter sponsorsAdapter;
@@ -64,40 +68,39 @@ public class HomeFragment extends Fragment {
         dotsCount = viewPagerAdapter.getItemCount();
         dots = new ImageView[dotsCount];
 
-        for(int i=0; i< dotsCount; i++){
+        for (int i = 0; i < dotsCount; i++) {
             dots[i] = new ImageView(getActivity());
             dots[i].setImageResource(R.drawable.dot);
 
 
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-
-            params.setMargins(8,0,8,0);
-            sliderDotsPanel.addView(dots[i],params);
+            params.setMargins(8, 0, 8, 0);
+            sliderDotsPanel.addView(dots[i], params);
         }
 
         dots[0].setImageResource(R.drawable.black_dot);
         homeImgSliderVP2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                for (int i=0;i<dotsCount;i++){
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.dot));
+                for (int i = 0; i < dotsCount; i++) {
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.dot));
                 }
-                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(),R.drawable.black_dot));
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.black_dot));
             }
         });
 
         //Event
-        homeEventRV=view.findViewById(R.id.home_event_RV);
-        eventsModalArrayList= new ArrayList<>();
+        homeEventRV = view.findViewById(R.id.home_event_RV);
+        eventsModalArrayList = new ArrayList<>();
 
         getEventData();
 
         buildEventRv();
 
         //Workshop
-        homeworkshopRV=view.findViewById(R.id.home_workshop_RV);
-        eventsModalArrayList= new ArrayList<>();
+        homeworkshopRV = view.findViewById(R.id.home_workshop_RV);
+        eventsModalArrayList = new ArrayList<>();
 
         getWorkshopData();
 
@@ -105,7 +108,7 @@ public class HomeFragment extends Fragment {
 
 
         //sponsors
-        homesponsorRV=view.findViewById(R.id.home_sponsors_RV);
+        homesponsorRV = view.findViewById(R.id.home_sponsors_RV);
         sponsorsModalArrayList = new ArrayList<>();
 
         getSponsorsData();
@@ -117,35 +120,57 @@ public class HomeFragment extends Fragment {
 
     private void getSponsorsData() {
 
-        for (int i = 0; i < 19; i++) {
-            sponsorsModalArrayList.add(new SponsorsModal("name", "link", "image", "position", 1));
-        }
+//        for (int i = 0; i < 19; i++) {
+//            sponsorsModalArrayList.add(new Sponsors("name", "link", "image", "position", 1));
+//        }
+
+        SponsorsVolleyHelper sponsorsVolleyHelper = new SponsorsVolleyHelper(getContext());
+        sponsorsVolleyHelper.getSponsors();
+        final androidx.lifecycle.Observer<ArrayList<Sponsors>> observer = new androidx.lifecycle.Observer<ArrayList<Sponsors>>() {
+            @Override
+            public void onChanged(ArrayList<Sponsors> sponsors_list) {
+
+
+                Log.d("xxxxx", sponsors_list.get(0).getName());
+
+
+                sponsorsAdapter = new SponsorsAdapter(sponsors_list, getActivity(), true);
+
+                LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                homesponsorRV.setHasFixedSize(true);
+
+                homesponsorRV.setLayoutManager(manager);
+
+                homesponsorRV.setAdapter(sponsorsAdapter);
+            }
+        };
+        sponsorslist.observe(getActivity(), observer);
     }
 
     private void buildSponsorsRV() {
 
 
-        sponsorsAdapter = new SponsorsAdapter(sponsorsModalArrayList, getActivity(),true);
-
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-        homesponsorRV.setHasFixedSize(true);
-
-        homesponsorRV.setLayoutManager(manager);
-
-        homesponsorRV.setAdapter(sponsorsAdapter);
+//        sponsorsAdapter = new SponsorsAdapter(sponsorsModalArrayList, getActivity(),true);
+//
+//        LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+//        homesponsorRV.setHasFixedSize(true);
+//
+//        homesponsorRV.setLayoutManager(manager);
+//
+//        homesponsorRV.setAdapter(sponsorsAdapter);
 
     }
 
     private void getWorkshopData() {
         for (int i = 0; i < 19; i++) {
-            eventsModalArrayList.add(new EventsModal("title","description","startTime","endTime","clubName","platform","imgUrl","regUrl",1));
+            eventsModalArrayList.add(new Events_List("title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
         }
     }
 
     private void buildWorkShopRv() {
-        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(),false,true);
+        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(), false, true);
 
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         homeworkshopRV.setHasFixedSize(true);
 
         homeworkshopRV.setLayoutManager(manager);
@@ -155,9 +180,9 @@ public class HomeFragment extends Fragment {
 
     private void buildEventRv() {
 
-        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(),true,false);
+        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(), true, false);
 
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         homeEventRV.setHasFixedSize(true);
 
         homeEventRV.setLayoutManager(manager);
@@ -167,7 +192,7 @@ public class HomeFragment extends Fragment {
 
     private void getEventData() {
         for (int i = 0; i < 19; i++) {
-            eventsModalArrayList.add(new EventsModal("title","description","startTime","endTime","clubName","platform","imgUrl","regUrl",1));
+            eventsModalArrayList.add(new Events_List("title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
         }
     }
 }
