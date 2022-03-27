@@ -8,9 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    
-    
-    // for screens workshops, events, and sponsors
+<!--    team and team detail colors-->
+    <color name="background">#1D0335</color>
+    <color name="total_background">#E5E5E5</color>
+    <color name="outers">#AB04F3</color>
+    <color name="designation_text_color">#D78FF0</color>
+
+
+        // for screens workshops, events, and sponsors
     
     <color name="card_event_workshop">#296D6D6D</color>
     <color name="second_card_event_workshop">#08979696</color>
