@@ -93,4 +93,48 @@ public class MemesManiaVolleyHelper {
         });
         requestQueue.add(jsonObjectRequest);
     }
+      public void commentCreate(String firebase , String post_id,String text){
+        JSONObject jsonObject = new JSONObject();
+          try {
+              jsonObject.put("text",text);
+          } catch (JSONException e) {
+              e.printStackTrace();
+          }
+          JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, BaseUrl + "imagefeed/comment/" + post_id + "/" + firebase+"/" , jsonObject, new Response.Listener<JSONObject>() {
+              @Override
+              public void onResponse(JSONObject response) {
+              Log.e("CreateComment",String.valueOf(response));
+              }
+          }, new Response.ErrorListener() {
+              @Override
+              public void onErrorResponse(VolleyError error) {
+                  Log.e("ErrorCommentCreate",error.getMessage());
+              }
+          });
+          requestQueue.add(jsonObjectRequest);
+
+    }
+    public void commentUpdate(String comment_id,String text){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("text",text);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, BaseUrl + "imagefeed/comment/"+ comment_id + "/", jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("updateComment",String.valueOf(response));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("ErrorCommentupdate",error.getMessage());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+
 }
