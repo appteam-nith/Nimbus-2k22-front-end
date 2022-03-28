@@ -3,24 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/all_quizzes_bottom_nav.xml" value="0.185" />
-        <entry key="app/src/main/res/drawable/eventsandworkshops_bottom_nav.xml" value="0.22" />
-        <entry key="app/src/main/res/drawable/home_bottom_nav.xml" value="0.329" />
-        <entry key="app/src/main/res/drawable/profile.xml" value="0.125" />
-        <entry key="app/src/main/res/drawable/profile_bottom_nav.xml" value="0.289" />
-        <entry key="app/src/main/res/drawable/sigma_bottom_nav.xml" value="0.289" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_all_events_and_workshops.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/layout/fragment_all_quizzes.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/layout/fragment_meme_mania.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/layout/fragment_sigma.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/layout/fragment_view_profile.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
-        <entry key="app/src/main/res/menu/menu.xml" value="0.11018518518518519" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
