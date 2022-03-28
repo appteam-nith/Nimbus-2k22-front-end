@@ -10,4 +10,7 @@
     <string name="dummy_text">Loreum Ipsum app</string>
     <string name="workshops">Workshops</string>
     <string name="description">Description</string>
+    <string name="sponsors">Sponsors</string>
+    <string name="events">Events</string>
+    <string name="read_all">Read All</string>
 </resources>
