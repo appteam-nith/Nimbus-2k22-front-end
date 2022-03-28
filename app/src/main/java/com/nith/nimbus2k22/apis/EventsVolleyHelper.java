@@ -19,7 +19,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class EventsVolleyHelper {
     Context context;
@@ -31,15 +30,14 @@ public class EventsVolleyHelper {
     }
 
     String BaseUrl = "https://anmol26.pythonanywhere.com/";
-    public static MutableLiveData<ArrayList<Events_List>> evlist;
-
-    public void getEvents() {
-        evlist = new MutableLiveData<>();
+    public static MutableLiveData<ArrayList<Events_List>> eventslist;
+    public void getEvents(){
+        eventslist = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "events/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 ArrayList<Events_List> elist = new ArrayList<>();
-                for (int i = 0; i < response.length(); i++) {
+                for(int i=0;i< response.length();i++){
                     try {
                         Log.e("eventlistresp", String.valueOf(response));
                         JSONObject jsonObject = response.getJSONObject(i);
@@ -58,7 +56,7 @@ public class EventsVolleyHelper {
                         e.printStackTrace();
                     }
                 }
-                evlist.postValue(elist);
+                eventslist.postValue(elist);
 
             }
         }, new Response.ErrorListener() {
