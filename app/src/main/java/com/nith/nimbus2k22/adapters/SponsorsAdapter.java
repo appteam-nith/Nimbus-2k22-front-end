@@ -1,5 +1,6 @@
 package com.nith.nimbus2k22.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,20 +13,19 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nith.nimbus2k22.Models.Sponsors;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.modals.EventsModal;
-import com.nith.nimbus2k22.modals.SponsorsModal;
 //import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class SponsorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<SponsorsModal> sponsorsModalArrayList;
+    private ArrayList<Sponsors> sponsorsModalArrayList;
     private Context context;
     boolean isUsedInHome;
 
-    public SponsorsAdapter(ArrayList<SponsorsModal> sponsorsModalArrayList, Context context, boolean isUsedInHome) {
+    public SponsorsAdapter(ArrayList<Sponsors> sponsorsModalArrayList, Context context, boolean isUsedInHome) {
         this.sponsorsModalArrayList = sponsorsModalArrayList;
         this.context = context;
         this.isUsedInHome = isUsedInHome;
@@ -53,21 +53,22 @@ public class SponsorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        SponsorsModal sponsor = sponsorsModalArrayList.get(position);
+        Sponsors sponsor = sponsorsModalArrayList.get(position);
         if (isUsedInHome) {
             HomeSponsorsViewHolder homeSponsorsViewHolder = (HomeSponsorsViewHolder) holder;
             homeSponsorsViewHolder.homeSponsorName.setText(sponsor.getName());
             //load img
             //on clicklistener??
-        }
-        if (!isUsedInHome) {
+        } else {
             SponsorsViewHolder sponsorsViewHolder = (SponsorsViewHolder) holder;
             sponsorsViewHolder.sponsorDes.setText(sponsor.getName());
             //??
             //load img
+//            Glide.with(context).load("https:media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(sponsorsViewHolder.sponsorImage);
         }
     }
 

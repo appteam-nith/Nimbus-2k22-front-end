@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nith.nimbus2k22.R;
-import com.squareup.picasso.Picasso;
 
 
 public class EventDetailsFragment extends Fragment {
@@ -48,7 +47,7 @@ public class EventDetailsFragment extends Fragment {
         if (imageUrl.isEmpty()){
 //            Picasso.get().load(imgUrl.replace("http", "https")).into(holder.sponsorImage);
         }else {
-            Picasso.get().load(imageUrl).into(eventDeatilImg);
+//            Picasso.get().load(imageUrl).into(eventDeatilImg);
         }
 
         eventDetailRegBtn.setOnClickListener(view1 -> {

@@ -1,18 +1,20 @@
-package com.nith.nimbus2k22.modals;
+package com.nith.nimbus2k22.Models;
 
-public class EventsModal {
+public class Events_List {
+String title;
+String description;
+String startTime;
+String endTime;
+String clubName;
+String platform;
+String image;
+String regUrl;
+int type;
 
-    private String title;
-    private String description;
-    private String startTime;
-    private String endTime;
-    private String clubName;
-    private String platform;
-    private String image;
-    private String regURL;
-    private int type;
+    public Events_List() {
+    }
 
-    public EventsModal(String title, String description, String startTime, String endTime, String clubName, String platform, String image, String regURL, int type) {
+    public Events_List(String title, String description, String startTime, String endTime, String clubName, String platform, String image, String regUrl, int type) {
         this.title = title;
         this.description = description;
         this.startTime = startTime;
@@ -20,7 +22,7 @@ public class EventsModal {
         this.clubName = clubName;
         this.platform = platform;
         this.image = image;
-        this.regURL = regURL;
+        this.regUrl = regUrl;
         this.type = type;
     }
 
@@ -80,12 +82,12 @@ public class EventsModal {
         this.image = image;
     }
 
-    public String getRegURL() {
-        return regURL;
+    public String getRegUrl() {
+        return regUrl;
     }
 
-    public void setRegURL(String regURL) {
-        this.regURL = regURL;
+    public void setRegUrl(String regUrl) {
+        this.regUrl = regUrl;
     }
 
     public int getType() {

@@ -1,5 +1,7 @@
 package com.nith.nimbus2k22.screens.eventsAndWorkshops;
 
+import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,9 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nith.nimbus2k22.Models.Events_List;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.adapters.EventsAdapter;
-import com.nith.nimbus2k22.modals.EventsModal;
+import com.nith.nimbus2k22.apis.EventsVolleyHelper;
 
 import java.util.ArrayList;
 
@@ -20,7 +23,7 @@ public class WorkshopFragment extends Fragment {
 
     private RecyclerView workshopRV;
     private EventsAdapter workshopAdapter;
-    private ArrayList<EventsModal> eventsModalArrayList;
+    private ArrayList<Events_List> eventsModalArrayList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,28 +37,51 @@ public class WorkshopFragment extends Fragment {
 
         getWorkshopData();
 
-        buildWorkshopRv();
+//        buildWorkshopRv();
 
 
         return view;
     }
 
-    private void buildWorkshopRv() {
-
-        workshopAdapter = new EventsAdapter(eventsModalArrayList, getActivity(), false, false);
-
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-        workshopRV.setHasFixedSize(true);
-
-        workshopRV.setLayoutManager(manager);
-
-        workshopRV.setAdapter(workshopAdapter);
-
-    }
+//    private void buildWorkshopRv() {
+//
+//        workshopAdapter = new EventsAdapter(eventsModalArrayList, getActivity(), false, false);
+//
+//        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+//        workshopRV.setHasFixedSize(true);
+//
+//        workshopRV.setLayoutManager(manager);
+//
+//        workshopRV.setAdapter(workshopAdapter);
+//
+//    }
 
     private void getWorkshopData() {
-        for (int i = 0; i < 19; i++) {
-            eventsModalArrayList.add(new EventsModal("title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
-        }
+        EventsVolleyHelper eventsVolleyHelper = new EventsVolleyHelper(getContext());
+        eventsVolleyHelper.getEvents();
+        final androidx.lifecycle.Observer<ArrayList<Events_List>> observer = new androidx.lifecycle.Observer<ArrayList<Events_List>>() {
+            @Override
+            public void onChanged(ArrayList<Events_List> events_lists) {
+
+                ArrayList<Events_List> onlyWorkshop;
+                onlyWorkshop = new ArrayList<>();
+                for (int i = 0; i < events_lists.size(); i++) {
+                    if (events_lists.get(i).getType() == 1) {
+                        onlyWorkshop.add(events_lists.get(i));
+                    }
+                }
+
+
+                workshopAdapter = new EventsAdapter(onlyWorkshop, getActivity(), false, false);
+
+                LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+                workshopRV.setHasFixedSize(true);
+
+                workshopRV.setLayoutManager(manager);
+
+                workshopRV.setAdapter(workshopAdapter);
+            }
+        };
+        eventslist.observe(getActivity(), observer);
     }
 }

@@ -1,14 +1,16 @@
-package com.nith.nimbus2k22.modals;
+package com.nith.nimbus2k22.Models;
 
-public class SponsorsModal {
+public class Sponsors {
+    String name;
+    String link;
+    String image;
+    String position;
+    int  priority;
 
-    private String name;
-    private String link;
-    private String image;
-    private String position;
-    private int priority;
+    public Sponsors() {
+    }
 
-    public SponsorsModal(String name, String link, String image, String position, int priority) {
+    public Sponsors(String name, String link, String image, String position, int priority) {
         this.name = name;
         this.link = link;
         this.image = image;
@@ -56,3 +58,6 @@ public class SponsorsModal {
         this.priority = priority;
     }
 }
+
+
+
