@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!--    team and team detail colors-->
+    <color name="background">#1D0335</color>
+    <color name="total_background">#E5E5E5</color>
+    <color name="outers">#AB04F3</color>
+    <color name="designation_text_color">#D78FF0</color>
+
+<!--   for screens workshops, events, and sponsors-->
+    
+    <color name="card_event_workshop">#296D6D6D</color>
+    <color name="second_card_event_workshop">#08979696</color>
+    <color name="backgroundColor">#0E0013</color>
+    <color name="start_color_btn">#B500F4</color>
+    <color name="end_color_btn">#1226DF</color>
+
+    <color name="ForgotPasswordColor">#CC5CF3</color>
 </resources>

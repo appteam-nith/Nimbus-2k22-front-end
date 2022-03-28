@@ -3,20 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/all_quizzes_bottom_nav.xml" value="0.185" />
-        <entry key="app/src/main/res/drawable/eventsandworkshops_bottom_nav.xml" value="0.22" />
-        <entry key="app/src/main/res/drawable/home_bottom_nav.xml" value="0.329" />
-        <entry key="app/src/main/res/drawable/profile.xml" value="0.125" />
-        <entry key="app/src/main/res/drawable/profile_bottom_nav.xml" value="0.289" />
-        <entry key="app/src/main/res/drawable/sigma_bottom_nav.xml" value="0.289" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_all_events_and_workshops.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/layout/fragment_all_quizzes.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/layout/fragment_meme_mania.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/layout/fragment_sigma.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/layout/fragment_view_profile.xml" value="0.11018518518518519" />
-        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
-        <entry key="app/src/main/res/menu/menu.xml" value="0.11018518518518519" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/btn_register.xml" value="0.1945" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/card_event_workshops.xml" value="0.1945" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/event_detail.xml" value="0.1945" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/event_workshop_details.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_all_events_and_workshops.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event_workshops.xml" value="0.22" />
       </map>
     </option>
   </component>
