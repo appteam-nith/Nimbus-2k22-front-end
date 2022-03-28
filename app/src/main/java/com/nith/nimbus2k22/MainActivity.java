@@ -93,12 +93,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     private void on_Click() {
 
         switch (flag) {
             case 1:
                 replaceFragment(new MemeManiaFragment());
                 one.setVisibility(View.INVISIBLE);
+                two.setVisibility(View.VISIBLE);
+                three.setVisibility(View.VISIBLE);
+                four.setVisibility(View.VISIBLE);
+                five.setVisibility(View.VISIBLE);
                 six.setVisibility(View.VISIBLE);
                 elven.setVisibility(View.VISIBLE);
                 seven.setVisibility(View.INVISIBLE);
@@ -116,6 +121,10 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new AllQuizzesFragment());
 
                 two.setVisibility(View.INVISIBLE);
+                one.setVisibility(View.VISIBLE);
+                three.setVisibility(View.VISIBLE);
+                four.setVisibility(View.VISIBLE);
+                five.setVisibility(View.VISIBLE);
                 seven.setVisibility(View.VISIBLE);
                 twelve.setVisibility(View.VISIBLE);
                 six.setVisibility(View.INVISIBLE);
@@ -131,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
             case 3:
                 replaceFragment(new AllEventsAndWorkshopsFragment());
                 three.setVisibility(View.INVISIBLE);
+                two.setVisibility(View.VISIBLE);
+                one.setVisibility(View.VISIBLE);
+                four.setVisibility(View.VISIBLE);
+                five.setVisibility(View.VISIBLE);
                 eight.setVisibility(View.VISIBLE);
                 thirteen.setVisibility(View.VISIBLE);
                 seven.setVisibility(View.INVISIBLE);
@@ -146,6 +159,10 @@ public class MainActivity extends AppCompatActivity {
             case 4:
                 replaceFragment(new SigmaFragment());
                 four.setVisibility(View.INVISIBLE);
+                two.setVisibility(View.VISIBLE);
+                three.setVisibility(View.VISIBLE);
+                one.setVisibility(View.VISIBLE);
+                five.setVisibility(View.VISIBLE);
                 nine.setVisibility(View.VISIBLE);
                 fourteen.setVisibility(View.VISIBLE);
                 seven.setVisibility(View.INVISIBLE);
@@ -161,6 +178,10 @@ public class MainActivity extends AppCompatActivity {
             case 5:
                 replaceFragment(new ViewProfileFragment());
                 five.setVisibility(View.INVISIBLE);
+                two.setVisibility(View.VISIBLE);
+                three.setVisibility(View.VISIBLE);
+                four.setVisibility(View.VISIBLE);
+                one.setVisibility(View.VISIBLE);
                 ten.setVisibility(View.VISIBLE);
                 fifteen.setVisibility(View.VISIBLE);
                 seven.setVisibility(View.INVISIBLE);

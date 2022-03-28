@@ -85,6 +85,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/home_icon3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+
+            android:scaleType="centerCrop"
+            android:src="@drawable/rectangle_85"/>
+
         <ImageView
             android:id="@+id/home_icon2"
             android:layout_width="38dp"
@@ -95,15 +106,7 @@
             android:visibility="invisible"
             android:scaleType="centerCrop"
             android:background="@drawable/home_bottom_nav"/>
-        <ImageView
-            android:id="@+id/home_icon3"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:visibility="invisible"
-            android:layout_centerInParent="true"
 
-            android:scaleType="centerCrop"
-            android:src="@drawable/rectangle_85"/>
         <ImageView
             android:id="@+id/Quizzes_icon3"
             android:layout_width="60dp"
