@@ -16,28 +16,28 @@ import java.util.List;
 
 public class HomeImgSliderAdapter extends RecyclerView.Adapter<HomeImgSliderAdapter.SliderViewHolder> {
 
-    private List<HomeSilderItem> silderItems;
+    private List<HomeSilderItem> sliderItems;
     private ViewPager2 imgSliderVP2;
 
-    public HomeImgSliderAdapter(List<HomeSilderItem> silderItems, ViewPager2 imgSliderVP2) {
-        this.silderItems = silderItems;
+    public HomeImgSliderAdapter(List<HomeSilderItem> sliderItems, ViewPager2 imgSliderVP2) {
+        this.sliderItems = sliderItems;
         this.imgSliderVP2 = imgSliderVP2;
     }
 
     @NonNull
     @Override
     public SliderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new SliderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.home_img_slider_item,parent,false));
+        return new SliderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.home_img_slider_item, parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder holder, int position) {
-        holder.setSliderImg(silderItems.get(position));
+        holder.setSliderImg(sliderItems.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return silderItems.size();
+        return sliderItems.size();
     }
 
     class SliderViewHolder extends RecyclerView.ViewHolder{

@@ -39,9 +39,13 @@ dependencies {
     // picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    //volley
+    // volley
     implementation 'com.android.volley:volley:1.2.1'
-    //glide
+
+    // glide
     implementation 'com.github.bumptech.glide:glide:4.13.0'
+
+    // circular image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 }
