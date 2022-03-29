@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/ic_bg_screen"
     tools:context=".screens.eventsAndWorkshops.EventDetailsFragment">
 
 
@@ -21,6 +21,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/background"
         android:layout_height="500dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="90dp"
@@ -32,8 +33,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/card_event_workshops">
-
+            android:background="@drawable/ic_event_detail">
 
             <ImageView
                 android:id="@+id/event_detail_IV"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Prodygiki"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,8 +64,11 @@
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="70dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/purple_200"
+                app:layout_constraintBottom_toTopOf="@+id/event_detail_IV"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Event_name" />
 
@@ -75,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="132dp"
                 android:text="@string/description"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,6 +92,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
+                android:textColor="@color/white"
                 android:text="Lorem ipsum dolor sit amet"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.046"

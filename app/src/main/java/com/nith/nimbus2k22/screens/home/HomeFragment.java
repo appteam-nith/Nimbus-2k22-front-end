@@ -56,21 +56,21 @@ public class HomeFragment extends Fragment {
         homeImgSliderVP2 = view.findViewById(R.id.home_img_slider_VP2);
         sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
 
-        List<HomeSilderItem> silderItemList = new ArrayList<>();
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        List<HomeSilderItem> sliderListItem = new ArrayList<>();
+        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
 
-        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(silderItemList, homeImgSliderVP2);
+        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderListItem, homeImgSliderVP2);
         homeImgSliderVP2.setAdapter(viewPagerAdapter);
         dotsCount = viewPagerAdapter.getItemCount();
         dots = new ImageView[dotsCount];
 
         for (int i = 0; i < dotsCount; i++) {
             dots[i] = new ImageView(getActivity());
-            dots[i].setImageResource(R.drawable.dot);
+            dots[i].setImageResource(R.drawable.inactive_dot);
 
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -79,14 +79,14 @@ public class HomeFragment extends Fragment {
             sliderDotsPanel.addView(dots[i], params);
         }
 
-        dots[0].setImageResource(R.drawable.black_dot);
+        dots[0].setImageResource(R.drawable.active_dot);
         homeImgSliderVP2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 for (int i = 0; i < dotsCount; i++) {
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.dot));
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.inactive_dot));
                 }
-                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.black_dot));
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.active_dot));
             }
         });
 
