@@ -56,13 +56,13 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@+id/home_event_btn"
                 app:layout_constraintHorizontal_bias="0.092"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView" />
+                app:layout_constraintTop_toTopOf="@+id/home_event_btn" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/home_event_btn"
                 android:layout_width="80sp"
                 android:layout_height="20sp"
                 android:background="@drawable/btnbackground"
@@ -85,7 +85,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/home_event_btn" />
 
             <TextView
                 android:id="@+id/textView_workshop"
@@ -97,13 +97,13 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@+id/home_event_btn"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_event_RV" />
 
             <TextView
-                android:id="@+id/workshop_btn"
+                android:id="@+id/home_workshop_btn"
                 android:layout_width="80sp"
                 android:layout_height="20sp"
                 android:layout_marginTop="5sp"
@@ -128,7 +128,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/workshop_btn" />
+                app:layout_constraintTop_toBottomOf="@+id/home_workshop_btn" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/home_sponsors_RV"
@@ -139,7 +139,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.053"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sponsors_btn" />
+                app:layout_constraintTop_toBottomOf="@+id/home_sponsors_btn" />
 
             <TextView
                 android:id="@+id/textView_sponsors"
@@ -151,13 +151,13 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintEnd_toStartOf="@+id/home_event_btn"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/home_workshop_RV" />
 
             <TextView
-                android:id="@+id/sponsors_btn"
+                android:id="@+id/home_sponsors_btn"
                 android:layout_width="80sp"
                 android:layout_height="20sp"
                 android:background="@drawable/btnbackground"

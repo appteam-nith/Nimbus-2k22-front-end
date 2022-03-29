@@ -134,7 +134,7 @@ public class HomeFragment extends Fragment {
                 Log.d("xxxxx", sponsors_list.get(0).getName());
 
 
-                sponsorsAdapter = new SponsorsAdapter(sponsors_list, getActivity(), true);
+                sponsorsAdapter = new SponsorsAdapter(sponsors_list, getActivity(), true,false);
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 homesponsorRV.setHasFixedSize(true);
