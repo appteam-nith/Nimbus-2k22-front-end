@@ -1,10 +1,14 @@
 package com.nith.nimbus2k22.apis;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,7 +24,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MemesManiaVolleyHelper {
     Context context;
@@ -70,7 +76,7 @@ public class MemesManiaVolleyHelper {
         });
         requestQueue.add(jsonArrayRequest);
     }
-    public void createMeme(String firebase,String photo,String text,String location){
+    public void createMeme(String firebase,String photo,String text,String location,String Uid){
         JSONObject jsonbody = new JSONObject();
 
         try {
@@ -90,10 +96,18 @@ public class MemesManiaVolleyHelper {
             public void onErrorResponse(VolleyError error) {
                 Log.e("memecreaeerro",error.getMessage());
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", Uid);
+                return headers;
+            }
+        };
         requestQueue.add(jsonObjectRequest);
     }
-      public void commentCreate(String firebase , String post_id,String text){
+      public void commentCreate(String firebase , String post_id,String text,String Uid){
         JSONObject jsonObject = new JSONObject();
           try {
               jsonObject.put("text",text);
@@ -110,11 +124,19 @@ public class MemesManiaVolleyHelper {
               public void onErrorResponse(VolleyError error) {
                   Log.e("ErrorCommentCreate",error.getMessage());
               }
-          });
+          }){
+              @Override
+              public Map<String, String> getHeaders() throws AuthFailureError {
+                  SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
+                  HashMap<String, String> headers = new HashMap<String, String>();
+                  headers.put("Authorization", Uid);
+                  return headers;
+              }
+          };
           requestQueue.add(jsonObjectRequest);
 
     }
-    public void commentUpdate(String comment_id,String text){
+    public void commentUpdate(String comment_id,String text,String Uid){
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("text",text);
@@ -131,7 +153,16 @@ public class MemesManiaVolleyHelper {
             public void onErrorResponse(VolleyError error) {
                 Log.e("ErrorCommentupdate",error.getMessage());
             }
-        });
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", Uid);
+                return headers;
+            }
+        };
         requestQueue.add(jsonObjectRequest);
 
     }
