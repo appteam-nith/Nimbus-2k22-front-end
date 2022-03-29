@@ -40,16 +40,16 @@ public class SponsorsVolleyHelper {
                 ArrayList<Sponsors> slist = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
                     try {
-                        Log.e("sponsors",String.valueOf(response));
+                        Log.e("sponsors", String.valueOf(response));
                         JSONObject jsonObject = response.getJSONObject(i);
                         String name = jsonObject.getString("name");
                         String link = jsonObject.getString("link");
                         String image = jsonObject.getString("image");
                         String position = jsonObject.getString("position");
                         int priority = jsonObject.getInt("priority");
-                        slist.add(new Sponsors(name,link,image,position,priority));
+                        slist.add(new Sponsors(name, link, image, position, priority));
                     } catch (JSONException e) {
-                        Log.e("sponsorsexepction",String.valueOf(e));
+                        Log.e("sponsorsexepction", String.valueOf(e));
                         e.printStackTrace();
                     }
 
@@ -59,7 +59,7 @@ public class SponsorsVolleyHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-Log.e("errorsponsors",error.getMessage());
+                Log.e("errorsponsors", error.getMessage());
             }
         });
         requestQueue.add(jsonArrayRequest);
