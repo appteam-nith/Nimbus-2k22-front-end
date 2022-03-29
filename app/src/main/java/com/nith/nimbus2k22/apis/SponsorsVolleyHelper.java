@@ -30,14 +30,14 @@ public class SponsorsVolleyHelper {
     }
 
     String BaseUrl = "https://anmol26.pythonanywhere.com/";
-    public static MutableLiveData<List<Sponsors>> sponsorslist;
+    public static MutableLiveData<ArrayList<Sponsors>> sponsorslist;
 
     public void getSponsors() {
         sponsorslist = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "sponsors/sponsors/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                List<Sponsors> slist = new ArrayList<>();
+                ArrayList<Sponsors> slist = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         Log.e("sponsors",String.valueOf(response));
