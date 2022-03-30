@@ -24,10 +24,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nimbus2k22">
         <activity
+
             android:name=".screens.sigma.VideoCall"
             android:exported="false" />
         <activity
             android:name=".screens.sigma.VideoCallJoining"
+
+            android:name=".memeComment"
+            android:exported="false" />
+        <activity
+            android:name=".memePost"
+
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"

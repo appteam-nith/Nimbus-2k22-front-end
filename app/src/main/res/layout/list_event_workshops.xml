@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
-                android:layout_marginEnd="28dp"
+                android:layout_marginEnd="18dp"
                 android:text="@string/Prodygiki_by_ISTE"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -48,14 +48,14 @@
                 android:id="@+id/event_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginBottom="88dp"
                 android:text="@string/dummy_text"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/Event_name"
-                app:layout_constraintHorizontal_bias="0.533"
-                app:layout_constraintStart_toStartOf="@+id/Event_name"
-                app:layout_constraintTop_toBottomOf="@+id/Event_name" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.809"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/eventRegUrl"
@@ -71,9 +71,9 @@
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/Event_name"
-                app:layout_constraintHorizontal_bias="0.469"
-                app:layout_constraintStart_toStartOf="@+id/Event_name" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.763"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
