@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.nith.nimbus2k22.Models.CommentList;
 import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.Models.UserSerializerForMemes;
 
@@ -166,6 +167,38 @@ public class MemesManiaVolleyHelper {
         requestQueue.add(jsonObjectRequest);
 
     }
+    public static MutableLiveData<List<CommentList>> commentlist;
+    public void getCommentList(String post_id){
+        commentlist = new MutableLiveData<>();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, BaseUrl + "imagefeed/getcomment/" + post_id + "/", null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Commentlist",String.valueOf(response));
+                try {
+                    JSONArray jsonArray = response.getJSONArray(post_id +"\'scommenters");
+                    List<CommentList> clist = new ArrayList<>();
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        int id = jsonObject.getInt("id");
+                        String author = jsonObject.getString("author");
+                        String text = jsonObject.getString("text");
+                        String posted_on = jsonObject.getString("posted_on");
+                        clist.add(new CommentList(id,author,text,posted_on));
+                    }
+                      commentlist.postValue(clist);
+                } catch (JSONException e) {
+                    Log.e("exceptioncommentList",e.getMessage());
+                    e.printStackTrace();
+                }
 
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+          Log.e("errorcommentlist",String.valueOf(error));
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
 
 }
