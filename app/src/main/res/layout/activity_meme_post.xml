@@ -11,16 +11,16 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_memepost" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/memeDisplay"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="@id/imageView1"
         app:layout_constraintEnd_toEndOf="@id/imageView1"
         app:layout_constraintHorizontal_bias="0.454"
@@ -30,14 +30,15 @@
         app:srcCompat="@drawable/ic_memepostbg" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="@id/imageView1"
-        app:layout_constraintBottom_toTopOf="@id/imageView2"
-        app:layout_constraintStart_toStartOf="@id/imageView1"
+        app:layout_constraintBottom_toTopOf="@id/memeDisplay"
         app:layout_constraintEnd_toEndOf="@id/imageView1"
-        >
+        app:layout_constraintStart_toStartOf="@id/imageView1"
+        app:layout_constraintTop_toTopOf="@id/imageView1">
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardImage"
             android:layout_width="36dp"
@@ -48,6 +49,7 @@
             app:cardCornerRadius="18dp">
 
             <ImageView
+                android:id="@+id/profilePic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -58,38 +60,57 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_rctangle" />
     </LinearLayout>
 
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.788"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/imageView1"-->
+    <!--        app:layout_constraintVertical_bias="0.463"-->
+    <!--        app:cardCornerRadius="20dp"-->
+    <!--        android:padding="50dp"-->
+    <!--        >-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView2"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+
+    <!--        android:src="@drawable/ic_postsymbol"-->
+    <!--         />-->
+    <!--    </androidx.cardview.widget.CardView>-->
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/btn_user_post_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/ic_frame_13"
-        android:src="@drawable/ic_postsymbol"
-        app:background="@android:color/transparent"
-        app:backgroundTint="@drawable/ic_frame_13"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.866"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929"
-
-        />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:contentDescription="post user feed button"
+        android:elevation="20dp"
+        android:focusable="true"
+        app:backgroundTint="#DBB05E"
+        app:srcCompat="@drawable/ic_postsymbol"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="595dp" />
 
     <ImageView
+        android:id="@+id/memeChooseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="@id/imageView2"
-        app:layout_constraintRight_toRightOf="@id/imageView2"
-        app:layout_constraintTop_toTopOf="@id/imageView2"
-        app:layout_constraintBottom_toBottomOf="@id/imageView2"
-        android:src="@drawable/ic_group_153">
+        android:src="@drawable/ic_group_153"
+        app:layout_constraintBottom_toBottomOf="@id/memeDisplay"
+        app:layout_constraintLeft_toLeftOf="@id/memeDisplay"
+        app:layout_constraintRight_toRightOf="@id/memeDisplay"
+        app:layout_constraintTop_toTopOf="@id/memeDisplay">
 
     </ImageView>
 </androidx.constraintlayout.widget.ConstraintLayout>
