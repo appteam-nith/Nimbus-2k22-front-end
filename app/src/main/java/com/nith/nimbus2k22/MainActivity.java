@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.AllEventsAndWorkshopsFragment;
+import com.nith.nimbus2k22.screens.home.HomeFragment;
 import com.nith.nimbus2k22.screens.home.MemeManiaFragment;
 import com.nith.nimbus2k22.screens.quiz.AllQuizzesFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         fourteen = findViewById(R.id.sigma_icon3);
         fifteen = findViewById(R.id.profile_icon3);
 
+
         on_Click();
         one.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 // Your code.
                 flag =5;
                 on_Click();
+
             }
         });
     }
