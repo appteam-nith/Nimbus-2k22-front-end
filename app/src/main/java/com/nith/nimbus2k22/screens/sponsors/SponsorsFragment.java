@@ -76,7 +76,7 @@ public class SponsorsFragment extends Fragment {
                 Log.d("xxxxx", sponsors_list.get(0).getName());
 
 
-                sponsorsAdapter = new SponsorsAdapter(sponsors_list, getActivity(), false);
+                sponsorsAdapter = new SponsorsAdapter(sponsors_list, getActivity(), false,false);
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity());
                 sponsorsRV.setHasFixedSize(true);

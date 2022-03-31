@@ -23,12 +23,13 @@ public class SponsorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private ArrayList<Sponsors> sponsorsModalArrayList;
     private Context context;
-    boolean isUsedInHome;
+    boolean isUsedInHome, isUsedInSponsor;
 
-    public SponsorsAdapter(ArrayList<Sponsors> sponsorsModalArrayList, Context context, boolean isUsedInHome) {
+    public SponsorsAdapter(ArrayList<Sponsors> sponsorsModalArrayList, Context context, boolean isUsedInHome, boolean isUsedInSponsor) {
         this.sponsorsModalArrayList = sponsorsModalArrayList;
         this.context = context;
         this.isUsedInHome = isUsedInHome;
+        this.isUsedInSponsor= isUsedInSponsor;
     }
 
     @Override
@@ -63,7 +64,7 @@ public class SponsorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             homeSponsorsViewHolder.homeSponsorName.setText(sponsor.getName());
             //load img
             //on clicklistener??
-        } else {
+        } if (isUsedInSponsor){
             SponsorsViewHolder sponsorsViewHolder = (SponsorsViewHolder) holder;
             sponsorsViewHolder.sponsorDes.setText(sponsor.getName());
             //??
