@@ -29,12 +29,12 @@
             android:exported="false" />
         <activity
             android:name=".screens.sigma.VideoCallJoining"
-
+            android:exported="false" />
+        <activity
             android:name=".memeComment"
             android:exported="false" />
         <activity
             android:name=".memePost"
-
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
@@ -53,7 +53,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

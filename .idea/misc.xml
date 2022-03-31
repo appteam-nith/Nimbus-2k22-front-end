@@ -19,6 +19,16 @@
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_workshop.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event_workshops.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_meme_comment.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/activity_meme_post.xml" value="0.25846405029296876" />
+        <entry key="app/src/main/res/layout/fragment_all_quizzes.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/fragment_meme_mania.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/fragment_sigma.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/fragment_teams.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/fragment_view_profile.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/item_team.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/item_teamdetail.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/list_event_workshops.xml" value="0.14336372847011145" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_event.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_quiz.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_sponsors.xml" value="0.20416666666666666" />
