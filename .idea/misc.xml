@@ -6,8 +6,17 @@
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/btn_register.xml" value="0.1945" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/card_event_workshops.xml" value="0.1945" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/event_detail.xml" value="0.1945" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/ic_tab_event_sponsors.xml" value="0.1945" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/tab_indicator.xml" value="0.1945" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/event_workshop_details.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/events_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_all_events_and_workshops.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_all_quizzes.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_event.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_event_details.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_sponsors.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_workshop.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event_workshops.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_meme_comment.xml" value="0.14336372847011145" />
@@ -20,10 +29,26 @@
         <entry key="app/src/main/res/layout/item_team.xml" value="0.14336372847011145" />
         <entry key="app/src/main/res/layout/item_teamdetail.xml" value="0.14336372847011145" />
         <entry key="app/src/main/res/layout/list_event_workshops.xml" value="0.14336372847011145" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_event.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_quiz.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_sponsors.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_sponsors_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_workshops_home.xml" value="0.2" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/sponsors.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/toolbar.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/drawable-v24/btn_camera_off.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/btn_mute.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/gradient_round_corner.xml" value="0.119" />
+        <entry key="app/src/main/res/drawable/omegle_own_camera_background_shape.xml" value="0.296" />
+        <entry key="app/src/main/res/drawable/path2860.xml" value="0.307" />
+        <entry key="app/src/main/res/layout/activity_video_call.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_video_call_joining.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/custom_dialog_report.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_sigma.xml" value="0.18611111111111112" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

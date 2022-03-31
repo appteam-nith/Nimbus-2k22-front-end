@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context=".screens.sigma.VideoCallJoining">
+
+    <TextView
+        android:id="@+id/name_omegle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/rectangle_82_1_"
+        android:gravity="center"
+        android:text="Omegle"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="314dp"
+        android:layout_height="180dp"
+        android:background="@drawable/rectangle_1"
+        android:id="@+id/img_omegle"
+        android:text="Guidlines :"
+        android:layout_marginTop="120dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/name_omegle"
+        android:layout_centerInParent="true" />
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:visibility="invisible"
+        android:layout_above="@+id/video_join"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/video_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/remaining_time"
+        android:background="@drawable/rectangle_6"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:text="video"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:id="@+id/remaining_time"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:padding="12dp"
+        android:gravity="center"
+        android:text=""
+        android:textStyle="bold" />
+
+</RelativeLayout>
