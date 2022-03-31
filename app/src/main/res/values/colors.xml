@@ -9,9 +9,11 @@
     <color name="white">#FFFFFFFF</color>
 
 <!--    team and team detail colors-->
-    <color name="background">#1D0335</color>
+    <color name="cardviewbg">#B500F4</color>
+    <color name="backgroundt">#1D0335</color>
     <color name="total_background">#E5E5E5</color>
     <color name="outers">#AB04F3</color>
+    <color name="lines">#7A7FF1</color>
     <color name="designation_text_color">#D78FF0</color>
 
 

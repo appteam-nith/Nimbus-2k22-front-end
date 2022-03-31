@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,19 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.nith.nimbus2k22.Models.TeamList;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.screens.models.TeamModel;
 
 import java.util.List;
 
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> {
     private OnItemClickListener mListener;
     private  Context context;
-    private List<TeamModel> teamModelList;
+    private List<TeamList> teamModelList;
     RequestOptions requestOptions;
 
 
-    public TeamAdapter(List<TeamModel> teamModelList,Context context){
+    public TeamAdapter(List<TeamList> teamModelList, Context context){
         this.teamModelList=teamModelList;
         this.context=context;
         requestOptions=new RequestOptions().centerCrop().placeholder(R.drawable.refresh).error(R.drawable.refresh);
@@ -41,10 +40,10 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        TeamModel teamModel=teamModelList.get(position);
-        holder.teamName.setText(teamModel.getTeam_name());
-        holder.teamImage.setImageURI(Uri.parse(teamModel.getTeam_image()));
-        Glide.with(context).load(teamModel.getTeam_image().replace("http","https")).apply(requestOptions).into(holder.teamImage);
+        TeamList teamModel=teamModelList.get(position);
+        holder.teamName.setText(teamModel.getClub_name());
+        holder.teamImage.setImageURI(Uri.parse(teamModel.getImage()));
+        Glide.with(context).load(teamModel.getImage().replace("http","https")).apply(requestOptions).into(holder.teamImage);
     }
 
     @Override

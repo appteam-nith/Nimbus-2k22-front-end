@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg2"
-    tools:context=".memePost">
+    tools:context="memePost">
 
     <ImageView
         android:id="@+id/imageView1"
@@ -83,6 +83,7 @@
         />
 
     <ImageView
+        android:id="@+id/newpost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="@id/imageView2"
