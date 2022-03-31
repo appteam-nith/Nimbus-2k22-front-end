@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/btn_register.xml" value="0.1945" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/card_event_workshops.xml" value="0.1945" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/drawable/event_detail.xml" value="0.1945" />
@@ -24,10 +25,11 @@
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_workshops_home.xml" value="0.2" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/sponsors.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/toolbar.xml" value="0.20416666666666666" />
+
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
