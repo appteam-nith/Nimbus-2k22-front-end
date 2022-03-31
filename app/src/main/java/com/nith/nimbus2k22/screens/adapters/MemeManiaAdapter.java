@@ -67,7 +67,6 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent(view.getContext(), memeComment.class);
-                    intent.putExtra("post",(Serializable) memeList.get(getAdapterPosition()));
                     view.getContext().startActivity(intent);
                 }
 

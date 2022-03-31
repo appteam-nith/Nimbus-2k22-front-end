@@ -61,10 +61,9 @@ public class memeComment extends AppCompatActivity {
                 String  userimage=itemObj.getString("userimage");
                 String userimage_comment=itemObj.getString("memeimage");
                 String comment=itemObj.getString("caption");
-                String  new_comment=itemObj.getString("caption");
+                String  new_comment=itemObj.getString("comment");
                 CommentModel commentModel1= new CommentModel(username,usernameComment,userimage,userimage_comment,comment,new_comment);
                 commentModel.add(commentModel1) ;
-
             }
         } catch (JSONException | IOException e) {
             Log.d(TAG,"addTeamDataFromJSON:", e);
@@ -77,7 +76,7 @@ public class memeComment extends AppCompatActivity {
         StringBuilder builder = new StringBuilder();
         try {
             String jsonString = null;
-            inputStream = getResources().openRawResource(R.raw.memedata);
+            inputStream = getResources().openRawResource(R.raw.memedata1);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             while ((jsonString = bufferedReader.readLine()) != null) {
                 builder.append(jsonString);

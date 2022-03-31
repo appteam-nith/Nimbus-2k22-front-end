@@ -31,9 +31,9 @@ public class CoreTeamVolleyHelper {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
     }
-    public static MutableLiveData<List<TeamList>> Teams;
+    public static MutableLiveData<List<TeamList>> teamslist;
     public void getTeams(){
-        Teams = new MutableLiveData<>();
+        teamslist = new MutableLiveData<>();
         List<TeamList> Tlist = new ArrayList<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseURL + "team/team/", null, new Response.Listener<JSONArray>() {
             @Override
@@ -52,7 +52,7 @@ public class CoreTeamVolleyHelper {
                      e.printStackTrace();
                  }
              }
-             Teams.postValue(Tlist);
+             teamslist.postValue(Tlist);
             }
         }, new Response.ErrorListener() {
             @Override

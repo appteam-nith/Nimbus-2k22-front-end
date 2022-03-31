@@ -95,7 +95,7 @@ public class MemeManiaFragment extends Fragment  {
         StringBuilder builder = new StringBuilder();
         try {
             String jsonString = null;
-            inputStream = getResources().openRawResource(R.raw.memedata);
+            inputStream = getResources().openRawResource(R.raw.memedata1);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             while ((jsonString = bufferedReader.readLine()) != null) {
                 builder.append(jsonString);

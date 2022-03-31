@@ -147,13 +147,16 @@
                 app:srcCompat="@drawable/ic_underline"
                 tools:ignore="MissingConstraints" />
 
-            <ImageView
+            <ToggleButton
                 android:id="@+id/like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginStart="221dp"
                 android:layout_marginTop="370dp"
-                app:srcCompat="@drawable/like" />
+                android:textOff=""
+                android:textOn=""
+                android:background="@drawable/toggle_selector"
+              />
 
             <ImageView
                 android:id="@+id/comment1"

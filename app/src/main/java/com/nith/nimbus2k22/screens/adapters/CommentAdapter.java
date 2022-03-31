@@ -53,8 +53,6 @@ public class CommentAdapter extends RecyclerView.Adapter <CommentAdapter.MyViewH
         Glide.with(context).load(commentModel.getUserimage().replace("http","https")).apply(requestOptions3).into(holder.userimage);
     }
 
-
-
     @Override
     public int getItemCount() {
         return commentList.size();
