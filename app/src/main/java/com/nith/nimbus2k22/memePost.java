@@ -26,8 +26,8 @@ Uri imageUri;
         memedisplay=findViewById(R.id.memeDisplay);
         displaypic=findViewById(R.id.profilePic);
         caption=findViewById(R.id.caption);
-        choosebutton=findViewById(R.id.memeChooseButton);
-        choosebutton.setOnClickListener(new View.OnClickListener() {
+//        choosebutton=findViewById(R.id.memeChooseButton);
+        memedisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openGallery();

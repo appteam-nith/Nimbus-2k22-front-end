@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="@id/imageView1"
         app:layout_constraintTop_toTopOf="@id/imageView1"
         app:layout_constraintVertical_bias="0.789"
-        app:srcCompat="@drawable/ic_memepostbg" />
+        app:srcCompat="@drawable/ic_post_meme" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -97,20 +97,14 @@
         android:contentDescription="post user feed button"
         android:elevation="20dp"
         android:focusable="true"
-        app:backgroundTint="#DBB05E"
-        app:srcCompat="@drawable/ic_postsymbol"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="595dp" />
+        app:backgroundTint="#BE5AE9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+        app:layout_constraintVertical_bias="0.474"
+        app:srcCompat="@drawable/ic_postsymbol" />
 
-    <ImageView
-        android:id="@+id/memeChooseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_group_153"
-        app:layout_constraintBottom_toBottomOf="@id/memeDisplay"
-        app:layout_constraintLeft_toLeftOf="@id/memeDisplay"
-        app:layout_constraintRight_toRightOf="@id/memeDisplay"
-        app:layout_constraintTop_toTopOf="@id/memeDisplay">
 
-    </ImageView>
 </androidx.constraintlayout.widget.ConstraintLayout>
