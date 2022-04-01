@@ -13,6 +13,7 @@ import com.nith.nimbus2k22.screens.eventsAndWorkshops.AllEventsAndWorkshopsFragm
 import com.nith.nimbus2k22.screens.home.MemeManiaFragment;
 import com.nith.nimbus2k22.screens.quiz.AllQuizzesFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
+import com.nith.nimbus2k22.screens.teams.Teams;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new AllEventsAndWorkshopsFragment());
                     break;
                 case R.id.sigma_icon:
-                    replaceFragment(new SigmaFragment());
+                    replaceFragment(new Teams());
                     break;
                 case R.id.profile_icon:
                     replaceFragment(new ViewProfileFragment());

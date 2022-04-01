@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.nith.nimbus2k22.screens.adapters.CommentAdapter;
 import com.nith.nimbus2k22.screens.models.CommentModel;
@@ -29,44 +30,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class memeComment extends AppCompatActivity {
-    private static final String EXTRA_USERNAME ="username" ;
-    private static final String TAG ="MemeComment" ;
-    private final List<CommentModel>commentModel=new ArrayList<>();
+    private static final String TAG = "hello";
+    private List<CommentModel> commentModels = new ArrayList<>();
+    private static final String EXTRA_USERNAME = "MemeComment";
+    ImageView img;
+    ImageView img2;
+    ToggleButton togglebtn;
 
+
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meme_comment);
-        RecyclerView recyclerView=findViewById(R.id.recyView);
-        Intent intent=getIntent();
+        RecyclerView recyclerView = findViewById(R.id.recyView);
+        Intent intent = getIntent();
         String username = intent.getStringExtra(EXTRA_USERNAME);
         TextView textusername = findViewById(R.id.usrname);
         textusername.setText(username);
-        CommentAdapter commentAdapter=new CommentAdapter(commentModel,this);
+        CommentAdapter commentAdapter = new CommentAdapter(commentModels, this);
         recyclerView.setAdapter(commentAdapter);
         addTeamDataFromJSON1();
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        return;
 
     }
+
     private void addTeamDataFromJSON1() {
         try {
-            String jsonDataString= readJSONDataFromFile1();
-            JSONArray jsonArray= new JSONArray(jsonDataString);
-            for(int i=0 ; i< jsonArray.length();++i){
+            String jsonDataString = readJSONDataFromFile1();
+            JSONArray jsonArray = new JSONArray(jsonDataString);
+            for (int i = 0; i < jsonArray.length(); ++i) {
                 System.out.println(jsonArray.get(i).toString());
                 JSONObject itemObj = jsonArray.getJSONObject(i);
                 String username = itemObj.getString("username");
                 String usernameComment = itemObj.getString("username");
-                String  userimage=itemObj.getString("userimage");
-                String userimage_comment=itemObj.getString("memeimage");
-                String comment=itemObj.getString("caption");
-                String  new_comment=itemObj.getString("comment");
-                CommentModel commentModel1= new CommentModel(username,usernameComment,userimage,userimage_comment,comment,new_comment);
-                commentModel.add(commentModel1) ;
+                String userimage = itemObj.getString("userimage");
+                String userimage_comment = itemObj.getString("memeimage");
+                String comment = itemObj.getString("caption");
+                String new_comment = itemObj.getString("comment");
+                CommentModel commentModel1 = new CommentModel(username, usernameComment, userimage, userimage_comment, comment, new_comment);
+                commentModels.add(commentModel1);
             }
         } catch (JSONException | IOException e) {
-            Log.d(TAG,"addTeamDataFromJSON:", e);
+            Log.d(TAG, "addTeamDataFromJSON:", e);
         }
 
     }

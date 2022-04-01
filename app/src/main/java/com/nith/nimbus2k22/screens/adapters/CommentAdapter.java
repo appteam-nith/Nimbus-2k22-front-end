@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.memeComment;
 import com.nith.nimbus2k22.screens.models.CommentModel;
-import com.nith.nimbus2k22.screens.models.MemeManiaModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +42,12 @@ public class CommentAdapter extends RecyclerView.Adapter <CommentAdapter.MyViewH
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         CommentModel commentModel=commentList.get(position);
         holder.username.setText(commentModel.getUsername());
-        holder.new_comment.setText(commentModel.getNew_comment());
-        holder.userimage_comment.setImageURI(Uri.parse(commentModel.getUserimage_comment()));
+//        holder.new_comment.setText(commentModel.getNew_comment());
+//        holder.userimage_comment.setImageURI(Uri.parse(commentModel.getUserimage_comment()));
         holder.comment.setText(commentModel.getComment());
-        holder.userimage.setImageURI(Uri.parse(commentModel.getUserimage()));
-        holder.usernameComment.setText(commentModel.getUsernameComment());
-        Glide.with(context).load(commentModel.getUserimage_comment().replace("http","https")).apply(requestOptions3).into(holder.userimage_comment);
+//        holder.userimage.setImageURI(Uri.parse(commentModel.getUserimage()));
+//        holder.usernameComment.setText(commentModel.getUsernameComment());
+//        Glide.with(context).load(commentModel.getUserimage_comment().replace("http","https")).apply(requestOptions3).into(holder.userimage_comment);
         Glide.with(context).load(commentModel.getUserimage().replace("http","https")).apply(requestOptions3).into(holder.userimage);
     }
 
@@ -60,18 +58,18 @@ public class CommentAdapter extends RecyclerView.Adapter <CommentAdapter.MyViewH
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView username;
-        TextView usernameComment;
-        EditText comment;
-        TextView new_comment;
+//        TextView usernameComment;
+        TextView comment;
+//        TextView new_comment;
         ImageView userimage;
-        ImageView userimage_comment;
+//        ImageView userimage_comment;
         public MyViewHolder( View itemView) {
             super(itemView);
-            userimage= this.itemView.findViewById(R.id.userimage1);
-            username= this.itemView.findViewById(R.id.usrname);
+            userimage= this.itemView.findViewById(R.id.userimagecomment);
+            username= this.itemView.findViewById(R.id.username1);
             comment= this.itemView.findViewById(R.id.comment);
-            userimage_comment= this.itemView.findViewById(R.id.userimagecomment);
-            usernameComment= this.itemView.findViewById(R.id.username1);
+//            userimage_comment= this.itemView.findViewById(R.id.userimagecomment);
+//            usernameComment= this.itemView.findViewById(R.id.username1);
         }
     }
 }
