@@ -11,14 +11,17 @@
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/event_workshop_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/events_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_all_events_and_workshops.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_all_quizzes.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_event.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_event_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_quiz_detail.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_sponsors.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_workshop.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event_workshops.xml" value="0.22" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_event.xml" value="0.20416666666666666" />
+        <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_quiz.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_sponsors.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_item_sponsors_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_workshops_home.xml" value="0.2" />
