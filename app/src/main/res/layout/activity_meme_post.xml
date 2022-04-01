@@ -61,9 +61,9 @@
 
         <EditText
             android:id="@+id/caption"
-            android:layout_width="200dp"
-            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:background="@drawable/ic_rctangle" />
     </LinearLayout>
 

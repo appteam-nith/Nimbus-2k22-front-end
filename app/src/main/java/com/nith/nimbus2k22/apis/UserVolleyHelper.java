@@ -1,6 +1,9 @@
 package com.nith.nimbus2k22.apis;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -27,7 +30,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserVolleyHelper {
     Context context;
@@ -38,7 +43,7 @@ public class UserVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://appteam.monuk7735.cf/";
 
 
     public static MutableLiveData<List<User_List>> user_list;
@@ -62,9 +67,8 @@ public class UserVolleyHelper {
                         int omegleReports = jsonObject.getInt("omegleReports");
                         boolean omegleAllowed = jsonObject.getBoolean("omegleAllowed");
                         String profileImage = jsonObject.getString("profileImage");
-                        boolean campusAmbassador = jsonObject.getBoolean("campusAmbassador");
-                        String collegeName = jsonObject.getString("collegeName");
-                        alist.add(new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage, campusAmbassador, collegeName));
+
+                        alist.add(new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage ));
 
 
                     } catch (JSONException e) {
@@ -103,9 +107,8 @@ public class UserVolleyHelper {
                     int omegleReports = response.getInt("omegleReports");
                     boolean omegleAllowed = response.getBoolean("omegleAllowed");
                     String profileImage = response.getString("profileImage");
-                    boolean campusAmbassador = response.getBoolean("campusAmbassador");
-                    String collegeName = response.getString("collegeName");
-                    User_List ulist = new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage, campusAmbassador, collegeName);
+
+                    User_List ulist = new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage);
                     user_read.postValue(ulist);
                 } catch (JSONException e) {
                     Log.e("userReadexception", e.getMessage());
@@ -158,8 +161,7 @@ public class UserVolleyHelper {
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
             jsonbody.put("profileImage",ulist.getProfileImage());
-            jsonbody.put("campusAmbassador",ulist.isCampusAmabassador());
-            jsonbody.put("collegeName",ulist.getCollegeName());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -250,8 +252,7 @@ public class UserVolleyHelper {
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
             jsonbody.put("profileImage",ulist.getProfileImage());
-            jsonbody.put("campusAmbassador",ulist.isCampusAmabassador());
-            jsonbody.put("collegeName",ulist.getCollegeName());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

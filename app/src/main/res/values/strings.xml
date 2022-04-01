@@ -104,4 +104,9 @@
     </string>
     <string name="username1">Username</string>
     <string name="comment">comment:</string>
+=======
+    <string name="sponsors">Sponsors</string>
+    <string name="events">Events</string>
+    <string name="read_all">View All</string>
+>>>>>>> b15cacdfc79487a8b493809dde8be8b460f1fb38
 </resources>

@@ -70,7 +70,7 @@
             android:layout_marginBottom="20dp"
             android:gravity="end"
             android:text="Forgot Password ?"
-            android:textColor="@color/ForgetPasswardColor"
+            android:textColor="@color/ForgotPasswordColor"
             android:textStyle="bold" />
 
         <Button
@@ -93,7 +93,7 @@
             android:layout_marginBottom="30dp"
             android:gravity="center"
             android:text="Don\'t have an accout? Sign up here"
-            android:textColor="@color/ForgetPasswardColor"
+            android:textColor="@color/ForgotPasswordColor"
             android:textStyle="bold" />
     </LinearLayout>
 

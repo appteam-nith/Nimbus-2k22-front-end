@@ -19,16 +19,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class EventsVolleyHelper {
     Context context;
     RequestQueue requestQueue;
-    public EventsVolleyHelper(Context context){
+
+    public EventsVolleyHelper(Context context) {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
     }
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+
+    String BaseUrl = "https://appteam.monuk7735.cf/";
     public static MutableLiveData<ArrayList<Events_List>> eventslist;
     public void getEvents(){
         eventslist = new MutableLiveData<>();
@@ -38,7 +39,7 @@ public class EventsVolleyHelper {
                 ArrayList<Events_List> elist = new ArrayList<>();
                 for(int i=0;i< response.length();i++){
                     try {
-                        Log.e("eventlistresp",String.valueOf(response));
+                        Log.e("eventlistresp", String.valueOf(response));
                         JSONObject jsonObject = response.getJSONObject(i);
                         String title = jsonObject.getString("title");
                         String description = jsonObject.getString("description");
@@ -49,9 +50,9 @@ public class EventsVolleyHelper {
                         String image = jsonObject.getString("image");
                         String regUrl = jsonObject.getString("regURL");
                         int type = jsonObject.getInt("type");
-                        elist.add(new Events_List(title,description,startTime,endTime,clubName,platform,image,regUrl,type));
+                        elist.add(new Events_List(title, description, startTime, endTime, clubName, platform, image, regUrl, type));
                     } catch (JSONException e) {
-                        Log.e("exceptioneventslist",e.getMessage());
+                        Log.e("exceptioneventslist", e.getMessage());
                         e.printStackTrace();
                     }
                 }
@@ -61,19 +62,21 @@ public class EventsVolleyHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-         Log.e("eventslisterror",error.getMessage());
+                Log.e("eventslisterror", error.getMessage());
             }
         });
         requestQueue.add(jsonArrayRequest);
     }
+
     public static MutableLiveData<Events_List> eventread;
-    public void readEvents(String title){
+
+    public void readEvents(String title) {
         eventread = new MutableLiveData<>();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, BaseUrl + "events/" + title, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    Log.e("readevents",String.valueOf(response));
+                    Log.e("readevents", String.valueOf(response));
                     String title = response.getString("title");
                     String description = response.getString("description");
                     String startTime = response.getString("startTime");
@@ -83,17 +86,17 @@ public class EventsVolleyHelper {
                     String image = response.getString("image");
                     String regUrl = response.getString("regURL");
                     int type = response.getInt("type");
-                    Events_List elist = new Events_List(title,description,startTime,endTime,clubName,platform,image,regUrl,type);
+                    Events_List elist = new Events_List(title, description, startTime, endTime, clubName, platform, image, regUrl, type);
                     eventread.postValue(elist);
                 } catch (JSONException e) {
-                    Log.e("eventreadexception",String.valueOf(e));
+                    Log.e("eventreadexception", String.valueOf(e));
                     e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-             Log.e("errorreadevents",error.getMessage());
+                Log.e("errorreadevents", error.getMessage());
             }
         });
         requestQueue.add(jsonObjectRequest);

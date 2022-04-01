@@ -55,7 +55,13 @@
         android:layout_marginBottom="100dp"
         android:background="@drawable/ic_frame_13"
         android:contentDescription="@string/app_name"
-        android:backgroundTint="@android:color/background_dark"
+        android:backgroundTint="@android:color/background_dark"/>
+<!-- todo: change to card with transparent background and the upload icon -->
+    <ImageView
+        android:id="@+id/memePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:src="@drawable/ic_baseline_library_add_24"
         app:background="@color/background"
         app:layout_constraintBottom_toBottomOf="@id/recyclerView"
@@ -63,5 +69,9 @@
         app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
         app:layout_constraintVertical_bias="0.87" />
 </RelativeLayout>
+
+
+

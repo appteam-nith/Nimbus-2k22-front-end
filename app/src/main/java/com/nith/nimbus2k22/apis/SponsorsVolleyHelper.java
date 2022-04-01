@@ -29,27 +29,27 @@ public class SponsorsVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
-    public static MutableLiveData<List<Sponsors>> sponsorslist;
+    String BaseUrl = "https://appteam.monuk7735.cf/";
+    public static MutableLiveData<ArrayList<Sponsors>> sponsorslist;
 
     public void getSponsors() {
         sponsorslist = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "sponsors/sponsors/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                List<Sponsors> slist = new ArrayList<>();
+                ArrayList<Sponsors> slist = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
                     try {
-                        Log.e("sponsors",String.valueOf(response));
+                        Log.e("sponsors", String.valueOf(response));
                         JSONObject jsonObject = response.getJSONObject(i);
                         String name = jsonObject.getString("name");
                         String link = jsonObject.getString("link");
                         String image = jsonObject.getString("image");
                         String position = jsonObject.getString("position");
                         int priority = jsonObject.getInt("priority");
-                        slist.add(new Sponsors(name,link,image,position,priority));
+                        slist.add(new Sponsors(name, link, image, position, priority));
                     } catch (JSONException e) {
-                        Log.e("sponsorsexepction",String.valueOf(e));
+                        Log.e("sponsorsexepction", String.valueOf(e));
                         e.printStackTrace();
                     }
 
@@ -59,7 +59,7 @@ public class SponsorsVolleyHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-Log.e("errorsponsors",error.getMessage());
+                Log.e("errorsponsors", error.getMessage());
             }
         });
         requestQueue.add(jsonArrayRequest);
