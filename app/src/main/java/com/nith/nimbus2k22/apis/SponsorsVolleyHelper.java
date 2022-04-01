@@ -29,12 +29,12 @@ public class SponsorsVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://appteam.monuk7735.cf/";
     public static MutableLiveData<ArrayList<Sponsors>> sponsorslist;
 
     public void getSponsors() {
         sponsorslist = new MutableLiveData<>();
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "sponsors/sponsors/", null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "sponsors/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 ArrayList<Sponsors> slist = new ArrayList<>();

@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (flag) {
             case 1:
-                replaceFragment(new MemeManiaFragment());
+                replaceFragment(new HomeFragment());
                 one.setVisibility(View.INVISIBLE);
                 two.setVisibility(View.VISIBLE);
                 three.setVisibility(View.VISIBLE);
