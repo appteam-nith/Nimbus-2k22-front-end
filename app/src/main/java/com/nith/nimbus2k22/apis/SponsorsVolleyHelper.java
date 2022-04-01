@@ -29,7 +29,7 @@ public class SponsorsVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://appteam.monuk7735.cf/";
     public static MutableLiveData<ArrayList<Sponsors>> sponsorslist;
 
     public void getSponsors() {

@@ -37,7 +37,7 @@ public class MemesManiaVolleyHelper {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
     }
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://appteam.monuk7735.cf/";
     public static MutableLiveData<List<Memes>> Memeslist;
     public void getMemes(){
         Memeslist = new MutableLiveData<>();
