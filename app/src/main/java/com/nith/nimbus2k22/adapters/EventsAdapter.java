@@ -42,10 +42,10 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame_layout, fragment).addToBackStack(null).commit();
 
         Bundle bundle = new Bundle();
-        bundle.putString("Title", events.getTitle());
+        bundle.putString("Title", events.getName());
         bundle.putString("ImageUrl", events.getImage());
-        bundle.putString("description", events.getDescription());
-        bundle.putString("regUrl", events.getRegUrl());
+        bundle.putString("description", events.getInfo());
+        bundle.putString("regUrl", events.getRegURL());
         fragment.setArguments(bundle);
     }
 
@@ -83,7 +83,7 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         Events_List event = eventsModalArrayList.get(position);
         if (isUsedInHomeEvent) {
             HomeEventViewHolder homeEventViewHolder = (HomeEventViewHolder) holder;
-            homeEventViewHolder.homeEventName.setText(event.getTitle());
+            homeEventViewHolder.homeEventName.setText(event.getName());
             //load img
             Picasso.get().load("https://media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(homeEventViewHolder.homeEventImg);
             homeEventViewHolder.homeEventCard.setOnClickListener(view -> {
@@ -91,15 +91,15 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             });
         } else if (isUsedInHomeWorkshop) {
             HomeWorkshopViewHolder homeWorkshopViewHolder = (HomeWorkshopViewHolder) holder;
-            homeWorkshopViewHolder.homeWorkshopName.setText(event.getTitle());
+            homeWorkshopViewHolder.homeWorkshopName.setText(event.getName());
             //load img;
             homeWorkshopViewHolder.homeWorkshopItem.setOnClickListener(view -> {
                 changeFragment(new EventDetailsFragment(), view, event);
             });
         } else {
             EventViewHolder eventViewHolder = (EventViewHolder) holder;
-            eventViewHolder.eventName.setText(event.getTitle());
-            eventViewHolder.eventDetail.setText(event.getDescription());
+            eventViewHolder.eventName.setText(event.getName());
+            eventViewHolder.eventDetail.setText(event.getInfo());
             eventViewHolder.regBtn.setOnClickListener(view -> {
                 //reg url
 //            Glide.with(context).load("https:media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(eventViewHolder.eventImg);
