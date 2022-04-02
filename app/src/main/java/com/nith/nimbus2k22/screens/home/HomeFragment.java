@@ -163,7 +163,7 @@ public class HomeFragment extends Fragment {
 
     private void getWorkshopData() {
         for (int i = 0; i < 19; i++) {
-            eventsModalArrayList.add(new Events_List("title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
+            eventsModalArrayList.add(new Events_List(1, "title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
         }
     }
 
@@ -192,7 +192,7 @@ public class HomeFragment extends Fragment {
 
     private void getEventData() {
         for (int i = 0; i < 19; i++) {
-            eventsModalArrayList.add(new Events_List("title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
+            eventsModalArrayList.add(new Events_List(1, "title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
         }
     }
 }
