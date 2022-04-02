@@ -1,6 +1,9 @@
 package com.nith.nimbus2k22.apis;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -27,7 +30,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserVolleyHelper {
     Context context;
@@ -38,7 +43,7 @@ public class UserVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://appteam.monuk7735.cf/";
 
 
     public static MutableLiveData<List<User_List>> user_list;
@@ -146,7 +151,7 @@ public class UserVolleyHelper {
         requestQueue.add(jsonObjectRequest);
 
     }
-    public void updateUser(User_List ulist,String firebase){
+    public void updateUser(User_List ulist,String firebase,String Uid){
         JSONObject jsonbody = new JSONObject();
         try {
             jsonbody.put("firebase",ulist.getFirebase());
@@ -233,12 +238,20 @@ public class UserVolleyHelper {
 
 
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", Uid);
+                return headers;
+            }
+        };
         requestQueue.add(jsonObjectRequest);
 
 
     }
-    public void createUser(User_List ulist){
+    public void createUser(User_List ulist,String Uid){
         JSONObject jsonbody = new JSONObject();
         try {
             jsonbody.put("firebase",ulist.getFirebase());
@@ -325,7 +338,15 @@ public class UserVolleyHelper {
 
 
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+               SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", Uid);
+                return headers;
+            }
+        };
         requestQueue.add(jsonObjectRequest);
 
 

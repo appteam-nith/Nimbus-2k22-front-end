@@ -98,7 +98,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Already have an account? Sign In here"
-            android:textColor="@color/ForgetPasswardColor"
+            android:textColor="@color/ForgotPasswordColor"
             android:textStyle="bold" />
     </LinearLayout>
 

@@ -98,7 +98,7 @@ public class EditProfileActivity extends AppCompatActivity {
 //                User_List user=new User_List("6",)
                 User_List user=new User_List("5",name,phoneNumber,emailAdd,name,"",0,true,"",false,"NITH");
                 UserVolleyHelper User=new UserVolleyHelper(EditProfileActivity.this);
-                User.createUser(user);
+                User.createUser(user, "5");
 
                 startActivity(new Intent(EditProfileActivity.this,MainActivity.class));
             }
