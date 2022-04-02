@@ -13,10 +13,10 @@ String regURL;
 int type;
 String department;
 
-    public Events_List() {
+    public Events_List(int id, String name, String abtract, String info, String venue, String start, String end, String image, String regUrl, int type, String department) {
     }
 
-    public Events_List(int id, String name, String abtract, String info, String venue, String start, String end, String image, String regURL, int type, String department) {
+    public Events_List(int i, String name, String abtract, String info, String venue, String start, String end, String image, String regURL, int type) {
         this.id = id;
         this.name = name;
         this.abtract = abtract;

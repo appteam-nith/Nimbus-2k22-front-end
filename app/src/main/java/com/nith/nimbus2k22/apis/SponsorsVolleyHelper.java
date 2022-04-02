@@ -34,7 +34,7 @@ public class SponsorsVolleyHelper {
 
     public void getSponsors() {
         sponsorslist = new MutableLiveData<>();
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "sponsors/sponsors/", null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "sponsors/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 ArrayList<Sponsors> slist = new ArrayList<>();
