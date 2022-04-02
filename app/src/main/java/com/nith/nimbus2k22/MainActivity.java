@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.nith.nimbus2k22.flappybird.FlappyBird;
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.AllEventsAndWorkshopsFragment;
 import com.nith.nimbus2k22.screens.home.HomeFragment;
@@ -29,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.home_icon:
-                    replaceFragment(new HomeFragment());
+//                    replaceFragment(new HomeFragment());
+                    Intent i=new Intent(this, FlappyBird.class);
+                    startActivity(i);
                     break;
                 case R.id.Quizzes_icon:
                     replaceFragment(new AllQuizzesFragment());
