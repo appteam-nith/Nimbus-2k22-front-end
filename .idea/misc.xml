@@ -19,6 +19,20 @@
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/fragment_workshop.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event.xml" value="0.20416666666666666" />
         <entry key="..\:/Nimbus-2k22-front-end/app/src/main/res/layout/list_event_workshops.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_baseline_date_range_24.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_baseline_library_add_24.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_baseline_video_call_24.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_commentsend.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_ellipse_14.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_frame_13.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_group_153.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_group_99.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_memepostbg.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_post_meme.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_rctangle.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/postmeme.xml" value="0.2135" />
         <entry key="app/src/main/res/layout/activity_meme_comment.xml" value="0.14336372847011145" />
         <entry key="app/src/main/res/layout/activity_meme_post.xml" value="0.25846405029296876" />
         <entry key="app/src/main/res/layout/fragment_all_quizzes.xml" value="0.14336372847011145" />
