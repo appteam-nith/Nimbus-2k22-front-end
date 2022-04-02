@@ -10,13 +10,12 @@ public class User_List {
     int omegleReports;
     boolean omegleAllowed;
     String profileImage;
-    boolean campusAmabassador;
-    String collegeName;
+
 
     public User_List() {
     }
 
-    public User_List(String firebase, String username, String phone, String email, String firstname, String lastname, int omegleReports, boolean omegleAllowed, String profileImage, boolean campusAmabassador, String collegeName) {
+    public User_List(String firebase, String username, String phone, String email, String firstname, String lastname, int omegleReports, boolean omegleAllowed, String profileImage) {
         this.firebase = firebase;
         Username = username;
         this.phone = phone;
@@ -26,8 +25,7 @@ public class User_List {
         this.omegleReports = omegleReports;
         this.omegleAllowed = omegleAllowed;
         this.profileImage = profileImage;
-        this.campusAmabassador = campusAmabassador;
-        this.collegeName = collegeName;
+
     }
 
     public String getFirebase() {
@@ -102,19 +100,5 @@ public class User_List {
         this.profileImage = profileImage;
     }
 
-    public boolean isCampusAmabassador() {
-        return campusAmabassador;
-    }
 
-    public void setCampusAmabassador(boolean campusAmabassador) {
-        this.campusAmabassador = campusAmabassador;
-    }
-
-    public String getCollegeName() {
-        return collegeName;
-    }
-
-    public void setCollegeName(String collegeName) {
-        this.collegeName = collegeName;
-    }
 }
