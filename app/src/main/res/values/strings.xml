@@ -13,4 +13,13 @@
     <string name="sponsors">Sponsors</string>
     <string name="events">Events</string>
     <string name="read_all">View All</string>
+    <string name="quiz">Quiz</string>
+    <string name="Question">Questions:</string>
+    <string name="Next">Next</string>
+    <string name="A">A</string>
+    <string name="B">B</string>
+    <string name="C">C</string>
+    <string name="D">D</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="score">Score</string>
 </resources>
