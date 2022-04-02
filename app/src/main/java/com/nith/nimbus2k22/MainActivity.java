@@ -9,12 +9,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Bundle;
+
+import com.cloudinary.android.MediaManager;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.AllEventsAndWorkshopsFragment;
 import com.nith.nimbus2k22.screens.home.HomeFragment;
 import com.nith.nimbus2k22.screens.home.MemeManiaFragment;
 import com.nith.nimbus2k22.screens.quiz.AllQuizzesFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private  int flag = 1;
@@ -64,6 +72,16 @@ public class MainActivity extends AppCompatActivity {
                 on_Click();
             }
         });
+       initConfig();
+    }
+
+    private void initConfig() {
+        Map config = new HashMap();
+        config.put("cloud_name", "dfinmhios");
+        config.put("api_key","981293366339261");
+        config.put("api_secret","tknXky4p8K5bRT6Aws_xnAnlAFg");
+        //  config.put("secure", true);
+        MediaManager.init(this, config);
         two.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Your code.
@@ -101,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (flag) {
             case 1:
-                replaceFragment(new MemeManiaFragment());
+                replaceFragment(new HomeFragment());
                 one.setVisibility(View.INVISIBLE);
                 two.setVisibility(View.VISIBLE);
                 three.setVisibility(View.VISIBLE);
@@ -207,4 +225,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_frame_layout,fragment);
         fragmentTransaction.commit();
     }
+
+
 }

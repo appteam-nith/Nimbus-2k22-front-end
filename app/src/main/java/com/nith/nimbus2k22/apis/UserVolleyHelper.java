@@ -43,7 +43,7 @@ public class UserVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://appteam.monuk7735.cf/";
 
 
     public static MutableLiveData<List<User_List>> user_list;
@@ -67,9 +67,8 @@ public class UserVolleyHelper {
                         int omegleReports = jsonObject.getInt("omegleReports");
                         boolean omegleAllowed = jsonObject.getBoolean("omegleAllowed");
                         String profileImage = jsonObject.getString("profileImage");
-                        boolean campusAmbassador = jsonObject.getBoolean("campusAmbassador");
-                        String collegeName = jsonObject.getString("collegeName");
-                        alist.add(new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage, campusAmbassador, collegeName));
+
+                        alist.add(new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage ));
 
 
                     } catch (JSONException e) {
@@ -108,9 +107,8 @@ public class UserVolleyHelper {
                     int omegleReports = response.getInt("omegleReports");
                     boolean omegleAllowed = response.getBoolean("omegleAllowed");
                     String profileImage = response.getString("profileImage");
-                    boolean campusAmbassador = response.getBoolean("campusAmbassador");
-                    String collegeName = response.getString("collegeName");
-                    User_List ulist = new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage, campusAmbassador, collegeName);
+
+                    User_List ulist = new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage);
                     user_read.postValue(ulist);
                 } catch (JSONException e) {
                     Log.e("userReadexception", e.getMessage());
@@ -151,7 +149,7 @@ public class UserVolleyHelper {
         requestQueue.add(jsonObjectRequest);
 
     }
-    public void updateUser(User_List ulist,String firebase,String Uid){
+    public void updateUser(User_List ulist,String firebase){
         JSONObject jsonbody = new JSONObject();
         try {
             jsonbody.put("firebase",ulist.getFirebase());
@@ -163,8 +161,7 @@ public class UserVolleyHelper {
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
             jsonbody.put("profileImage",ulist.getProfileImage());
-            jsonbody.put("campusAmbassador",ulist.isCampusAmabassador());
-            jsonbody.put("collegeName",ulist.getCollegeName());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -238,20 +235,12 @@ public class UserVolleyHelper {
 
 
             }
-        }){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", Uid);
-                return headers;
-            }
-        };
+        });
         requestQueue.add(jsonObjectRequest);
 
 
     }
-    public void createUser(User_List ulist,String Uid){
+    public void createUser(User_List ulist){
         JSONObject jsonbody = new JSONObject();
         try {
             jsonbody.put("firebase",ulist.getFirebase());
@@ -263,8 +252,7 @@ public class UserVolleyHelper {
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
             jsonbody.put("profileImage",ulist.getProfileImage());
-            jsonbody.put("campusAmbassador",ulist.isCampusAmabassador());
-            jsonbody.put("collegeName",ulist.getCollegeName());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -338,15 +326,7 @@ public class UserVolleyHelper {
 
 
             }
-        }){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-               SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", Uid);
-                return headers;
-            }
-        };
+        });
         requestQueue.add(jsonObjectRequest);
 
 

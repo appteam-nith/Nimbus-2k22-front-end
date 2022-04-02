@@ -111,41 +111,41 @@ public class HomeFragment extends Fragment {
         homesponsorRV = view.findViewById(R.id.home_sponsors_RV);
         sponsorsModalArrayList = new ArrayList<>();
 
-        getSponsorsData();
+//        getSponsorsData();
         buildSponsorsRV();
 
         return view;
     }
 
 
-    private void getSponsorsData() {
-
-//        for (int i = 0; i < 19; i++) {
-//            sponsorsModalArrayList.add(new Sponsors("name", "link", "image", "position", 1));
-//        }
-
-        SponsorsVolleyHelper sponsorsVolleyHelper = new SponsorsVolleyHelper(getContext());
-        sponsorsVolleyHelper.getSponsors();
-        final androidx.lifecycle.Observer<ArrayList<Sponsors>> observer = new androidx.lifecycle.Observer<ArrayList<Sponsors>>() {
-            @Override
-            public void onChanged(ArrayList<Sponsors> sponsors_list) {
-
-
-                Log.d("xxxxx", sponsors_list.get(0).getName());
-
-
-                sponsorsAdapter = new SponsorsAdapter(sponsors_list, getActivity(), true,false);
-
-                LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-                homesponsorRV.setHasFixedSize(true);
-
-                homesponsorRV.setLayoutManager(manager);
-
-                homesponsorRV.setAdapter(sponsorsAdapter);
-            }
-        };
-        sponsorslist.observe(getActivity(), observer);
-    }
+//    private void getSponsorsData() {
+//
+////        for (int i = 0; i < 19; i++) {
+////            sponsorsModalArrayList.add(new Sponsors("name", "link", "image", "position", 1));
+////        }
+//
+//        SponsorsVolleyHelper sponsorsVolleyHelper = new SponsorsVolleyHelper(getContext());
+//        sponsorsVolleyHelper.getSponsors();
+//        final androidx.lifecycle.Observer<ArrayList<Sponsors>> observer = new androidx.lifecycle.Observer<ArrayList<Sponsors>>() {
+//            @Override
+//            public void onChanged(ArrayList<Sponsors> sponsors_list) {
+//
+//
+//                Log.d("xxxxx", sponsors_list.get(0).getName());
+//
+//
+//                sponsorsAdapter = new SponsorsAdapter(sponsors_list, getActivity(), true,false);
+//
+//                LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//                homesponsorRV.setHasFixedSize(true);
+//
+//                homesponsorRV.setLayoutManager(manager);
+//
+//                homesponsorRV.setAdapter(sponsorsAdapter);
+//            }
+//        };
+//        sponsorslist.observe(getActivity(), observer);
+//    }
 
     private void buildSponsorsRV() {
 

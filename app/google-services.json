@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "673299180628",
+    "project_id": "nimbus2k22",
+    "storage_bucket": "nimbus2k22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673299180628:android:b8f0eb98a699ff92b8d1c1",
+        "android_client_info": {
+          "package_name": "com.nith.nimbus2k22"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673299180628-jnhhv2olduaiqv78tsm40deq6vh98ev5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqPtyXr0Xj5hEWx9wN6RsyN-D1XWZ9WJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673299180628-jnhhv2olduaiqv78tsm40deq6vh98ev5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
