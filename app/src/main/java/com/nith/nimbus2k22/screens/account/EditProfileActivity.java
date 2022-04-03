@@ -113,7 +113,7 @@ public class EditProfileActivity extends AppCompatActivity {
                  @Override
                  public void onChanged(Check_User check_user) {
                      if(check_user.getUser_present()=="true")
-                         User.updateUser(user, auth.getUid(), auth.getUid());
+                         User.updateUser(user, auth.getUid());
                      else
                          User.createUser(user, auth.getUid());
                  }
