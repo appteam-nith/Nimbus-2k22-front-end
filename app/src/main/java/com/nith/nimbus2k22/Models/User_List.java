@@ -13,7 +13,7 @@ public class User_List {
     boolean campusAmabassador;
     String collegeName;
 
-    public User_List() {
+    public User_List(String uid, String name, String phoneNumber, String emailAdd, String hello, String world, int i, boolean b, String picUrl) {
     }
 
     public User_List(String firebase, String username, String phone, String email, String firstname, String lastname, int omegleReports, boolean omegleAllowed, String profileImage, boolean campusAmabassador, String collegeName) {

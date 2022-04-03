@@ -1,4 +1,4 @@
-package com.nith.nimbus2k22;
+package com.nith.nimbus2k22.screens.account;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +16,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.nith.nimbus2k22.R;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail,inputPassword;
@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = auth.getCurrentUser();
 
                             if (user.isEmailVerified()) {
-                               startActivity(new Intent(LoginActivity.this,EditProfileActivity.class));
+                               startActivity(new Intent(LoginActivity.this, EditProfileActivity.class));
                                finish();
                             } else {
                                 inputEmail.setError("Email not Verified");
