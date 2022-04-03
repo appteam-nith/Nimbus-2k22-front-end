@@ -1,6 +1,6 @@
 package com.nith.nimbus2k22.screens.sponsors;
 
-//import static com.nith.nimbus2k22.apis.EventsVolleyHelper.evlist;
+import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
 import static com.nith.nimbus2k22.apis.SponsorsVolleyHelper.sponsorslist;
 
 import android.os.Bundle;

@@ -1,7 +1,5 @@
 package com.nith.nimbus2k22.screens.eventsAndWorkshops;
 
-//import static com.nith.nimbus2k22.apis.EventsVolleyHelper.evlist;
-
 import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
 
 import android.os.Bundle;

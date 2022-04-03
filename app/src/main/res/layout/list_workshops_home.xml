@@ -3,45 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/background"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/home_workshop_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginVertical="10sp"
+        android:layout_marginHorizontal="8sp"
+        android:paddingBottom="16sp"
+        android:paddingTop="1sp"
+        android:paddingHorizontal="1sp"
         android:background="@drawable/ic_card_workshops"
-        android:orientation="horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/home_workshop_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:padding="0dp"
+            android:scaleType="center"
+            android:src="@drawable/workshop"/>
 
-            <ImageView
-                android:id="@+id/home_workshop_img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="0dp"
-                android:scaleType="center"
-                android:src="@drawable/workshop"></ImageView>
+        <TextView
+            android:id="@+id/home_workshop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="0dp"
+            android:text="@string/Prodygiki_by_ISTE"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white">
 
-            <TextView
-                android:id="@+id/home_workshop_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:padding="0dp"
-                android:text="@string/Prodygiki_by_ISTE"
-                android:textColor="@color/white"
-                android:textSize="20sp">
+        </TextView>
 
-            </TextView>
-
-        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
