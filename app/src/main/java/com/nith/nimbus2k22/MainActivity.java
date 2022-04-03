@@ -63,48 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 on_Click();
             }
         });
-       initConfig();
     }
-
-    private void initConfig() {
-        Map config = new HashMap();
-        config.put("cloud_name", "dfinmhios");
-        config.put("api_key","981293366339261");
-        config.put("api_secret","tknXky4p8K5bRT6Aws_xnAnlAFg");
-        //  config.put("secure", true);
-        MediaManager.init(this, config);
-        two.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Your code.
-                flag = 2;
-                on_Click();
-            }
-        });
-        three.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Your code.
-                flag =3;
-                on_Click();
-            }
-        });
-        four.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Your code.
-                flag =4;
-                on_Click();
-            }
-        });
-        five.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Your code.
-                flag =5;
-                on_Click();
-
-            }
-        });
-    }
-
-
 
     private void on_Click() {
 
