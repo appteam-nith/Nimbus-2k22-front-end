@@ -10,6 +10,11 @@
     <string name="dummy_text">Loreum Ipsum app</string>
     <string name="workshops">Workshops</string>
     <string name="description">Description</string>
+    <string name="meme_mania">Meme-Mania</string>
+    <string name="username">username</string>
+    <string name="caption">caption:</string>
+    <string name="large_text">ijfi</string>
+
     <string name="sponsors">Sponsors</string>
     <string name="events">Events</string>
     <string name="read_all">View All</string>
@@ -25,4 +30,6 @@
     <string name="register">Register</string>
     <string name="dummy_text_detail">Lorem ipsum dolor sit amet</string>
     <string name="prodygiki">Prodygiki</string>
+    <string name="username1">Username</string>
+    <string name="comment">comment:</string>
 </resources>

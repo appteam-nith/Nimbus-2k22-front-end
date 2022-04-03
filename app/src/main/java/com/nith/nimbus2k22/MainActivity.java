@@ -52,16 +52,7 @@ public class MainActivity extends AppCompatActivity {
         three = findViewById(R.id.eventsAndWorkshop_icon);
         four = findViewById(R.id.sigma_icon);
         five = findViewById(R.id.profile_icon);
-        six = findViewById(R.id.home_icon2);
-        seven = findViewById(R.id.Quizzes_icon2);
-        eight = findViewById(R.id.eventsAndWorkshop_icon2);
-        nine = findViewById(R.id.sigma_icon2);
-        ten = findViewById(R.id.profile_icon2);
-        elven = findViewById(R.id.home_icon3);
-        twelve = findViewById(R.id.Quizzes_icon3);
-        thirteen = findViewById(R.id.eventsAndWorkshop_icon3);
-        fourteen = findViewById(R.id.sigma_icon3);
-        fifteen = findViewById(R.id.profile_icon3);
+
 
 
         on_Click();

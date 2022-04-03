@@ -1,5 +1,9 @@
 package com.nith.nimbus2k22.screens.teams;
 
+
+
+import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.teamslist;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,24 +17,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nith.nimbus2k22.Models.TeamList;
 import com.nith.nimbus2k22.R;
+import com.nith.nimbus2k22.apis.CoreTeamVolleyHelper;
 import com.nith.nimbus2k22.screens.adapters.TeamAdapter;
-import com.nith.nimbus2k22.screens.models.TeamModel;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
     public static final String EXTRA_TEAM_NAME = "Team_Name";
-    private final List<TeamModel> teamList = new ArrayList<>();
+    private final List<TeamList> teamList = new ArrayList<>();
     private RecyclerView recyclerView;
     private TeamAdapter teamAdapter;
     private static final String TAG="Team Fragment";
@@ -45,69 +41,38 @@ public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-try {
-    View view = inflater.inflate(R.layout.fragment_teams, container, false);
-    RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-    TeamAdapter teamAdapter = new TeamAdapter(teamList, getContext());
-    recyclerView.setAdapter(teamAdapter);
-    teamAdapter.setItemOnClickListener(Teams.this);
-    StaggeredGridLayoutManager gridLayoutManager =
-            new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-    recyclerView.setLayoutManager(gridLayoutManager);
-    addTeamDataFromJSON();
-    return view;
-}catch (Exception e){
-    Log.e(TAG,"Oncreateview",e);
-    throw e;
-}
-    }
 
-    private void addTeamDataFromJSON() {
-        try {
-            String jsonDataString= readJSONDataFromFile();
-            JSONArray jsonArray= new JSONArray(jsonDataString);
-            for(int i=0 ; i< jsonArray.length();++i){
-                System.out.println(jsonArray.get(i).toString());
-                JSONObject itemObj = jsonArray.getJSONObject(i);
-                int id=itemObj.getInt("id");
-                String team_name = itemObj.getString("Team_Name");
-                String  team_image=itemObj.getString("team image");
-                TeamModel teamDetailData = new TeamModel(id,team_name, team_image);
-                teamList.add(teamDetailData) ;
-
-            }
-        } catch (JSONException | IOException e) {
-            Log.d(TAG,"addTeamDataFromJSON:", e);
+            View view = inflater.inflate(R.layout.fragment_teams, container, false);
+            RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+//            TeamAdapter teamAdapter = new TeamAdapter(teamList, getContext());
+//            recyclerView.setAdapter(teamAdapter);
+//            teamAdapter.setItemOnClickListener(Teams.this);
+//            StaggeredGridLayoutManager gridLayoutManager =
+//                    new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+//            recyclerView.setLayoutManager(gridLayoutManager);
+       CoreTeamVolleyHelper Ct1 = new CoreTeamVolleyHelper(getActivity());
+       Ct1.getTeams();
+       final androidx.lifecycle.Observer<List<TeamList>> listObserver = new androidx.lifecycle.Observer<List<TeamList>>() {
+           @Override
+           public void onChanged(List<TeamList> teamLists) {
+               TeamAdapter teamAdapter = new TeamAdapter(teamLists, getContext());
+            recyclerView.setAdapter(teamAdapter);
+            Log.e("abcd",String.valueOf(teamLists.get(0).getClub_name()));
+            teamAdapter.setItemOnClickListener(Teams.this);
+            StaggeredGridLayoutManager gridLayoutManager =
+                    new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(gridLayoutManager);
+           }
+       };
+        teamslist.observe(getActivity(),listObserver);
+        return view;
         }
-
-    }
-
-    private String readJSONDataFromFile() throws IOException {
-        InputStream inputStream = null;
-        StringBuilder builder = new StringBuilder();
-        try {
-            String jsonString = null;
-            inputStream = getResources().openRawResource(R.raw.teamdata);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"));
-            while ((jsonString = bufferedReader.readLine()) != null){
-                builder.append(jsonString);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (inputStream != null) {
-                inputStream.close();
-            }
-        } return new String(builder);
-    }
-
-
     @Override
     public void onItemClick(int position) {
         teamList.get(position);
         Intent intent = new Intent(getActivity(), TeamDetail.class);
         // put team name in the intent as extra
-        intent.putExtra(EXTRA_TEAM_NAME, teamList.get(position).getTeam_name());
+        intent.putExtra(EXTRA_TEAM_NAME, teamList.get(position).getClub_name());
         startActivity(intent);
     }
 }
