@@ -92,7 +92,11 @@ public class ViewProfileFragment extends Fragment {
         btnEdit=view.findViewById(R.id.btnedit);
 
         UserVolleyHelper user=new UserVolleyHelper(getActivity());
-        user.getUserRead(FirebaseAuth.getInstance().getUid());
+        Log.d("testtest", "onCreateView: " + auth.getCurrentUser());
+        Log.d("testtest", "onCreateView: " + FirebaseAuth.getInstance().getCurrentUser());
+        user.getUserRead(auth.getUid());
+
+//        Log.d("firebase",FirebaseAuth.getInstance().getUid());
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
