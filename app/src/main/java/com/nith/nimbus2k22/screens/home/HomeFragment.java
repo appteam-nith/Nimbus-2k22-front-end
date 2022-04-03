@@ -27,7 +27,8 @@ import com.nith.nimbus2k22.Models.Sponsors;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.adapters.EventsAdapter;
 import com.nith.nimbus2k22.adapters.HomeImgSliderAdapter;
-import com.nith.nimbus2k22.adapters.SponsorsAdapter;
+//import com.nith.nimbus2k22.adapters.SponsorsAdapter;
+import com.nith.nimbus2k22.adapters.SponsorsHomeAdapter;
 import com.nith.nimbus2k22.apis.EventsVolleyHelper;
 import com.nith.nimbus2k22.apis.SponsorsVolleyHelper;
 import com.nith.nimbus2k22.modals.HomeSilderItem;
@@ -49,7 +50,7 @@ public class HomeFragment extends Fragment {
 
 
     private EventsAdapter eventsAdapter;
-    private SponsorsAdapter sponsorsAdapter;
+    private SponsorsHomeAdapter sponsorsAdapter;
 
     private LinearLayout sliderDotsPanel;
     private int dotsCount;
@@ -157,7 +158,7 @@ public class HomeFragment extends Fragment {
                 Log.d("xxxxx", sponsors_list.get(0).getName());
 
 
-                sponsorsAdapter = new SponsorsAdapter(sponsors_list, getActivity(), true,false);
+                sponsorsAdapter = new SponsorsHomeAdapter(sponsors_list, getActivity());
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 homesponsorRV.setHasFixedSize(true);
