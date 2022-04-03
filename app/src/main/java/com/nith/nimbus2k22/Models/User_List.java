@@ -12,7 +12,7 @@ public class User_List {
     String profileImage;
 
 
-    public User_List() {
+    public User_List(String s, String name, String phoneNumber, String emailAdd, String name1, String s1, int i, boolean b, String s2, boolean b1, String nith) {
     }
 
     public User_List(String firebase, String username, String phone, String email, String firstname, String lastname, int omegleReports, boolean omegleAllowed, String profileImage) {
