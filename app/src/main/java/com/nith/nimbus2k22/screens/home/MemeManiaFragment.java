@@ -2,6 +2,8 @@ package com.nith.nimbus2k22.screens.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import static com.nith.nimbus2k22.apis.DepartmentsVolleyHelper.DepartmentList;
+import static com.nith.nimbus2k22.apis.MemesManiaVolleyHelper.Memeslist;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -20,7 +22,10 @@ import android.widget.ImageView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.nith.nimbus2k22.R;
+import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
 import com.nith.nimbus2k22.memeComment;
+import com.nith.nimbus2k22.Models.Departments;
+import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.memePost;
 import com.nith.nimbus2k22.screens.adapters.MemeManiaAdapter;
 import com.nith.nimbus2k22.screens.models.MemeManiaModel;
@@ -37,7 +42,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemeManiaFragment extends Fragment  {
+public class MemeManiaFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "Meme Mania Fragment";
     private List<MemeManiaModel> memeList = new ArrayList<>();
     FloatingActionButton fab;
@@ -53,61 +58,31 @@ public class MemeManiaFragment extends Fragment  {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_meme_mania, container, false);
         RecyclerView recyclerView1 = view.findViewById(R.id.recyclerView);
-        MemeManiaAdapter memeManiaAdapter = new MemeManiaAdapter(memeList, getContext());
-        recyclerView1.setAdapter(memeManiaAdapter);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
-        FloatingActionButton fab=(FloatingActionButton) view.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),memePost.class));
+                startActivity(new Intent(v.getContext(), memePost.class));
             }
         });
+        MemesManiaVolleyHelper c3 = new MemesManiaVolleyHelper(getActivity());
+        c3.getMemes();
+        final androidx.lifecycle.Observer<List<Memes>> memesObserver = new androidx.lifecycle.Observer<List<Memes>>() {
+            @Override
+            public void onChanged(List<Memes> memes) {
+                MemeManiaAdapter memeManiaAdapter = new MemeManiaAdapter(memes, getContext());
+                recyclerView1.setAdapter(memeManiaAdapter);
+                recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
+            }
 
-        addTeamDataFromJSON1();
+        };
+//        addTeamDataFromJSON1();
+        Memeslist.observe(getActivity(), memesObserver);
         return view;
-
     }
 
-    private void addTeamDataFromJSON1() {
-        try {
-            String jsonDataString = readJSONDataFromFile1();
-            JSONArray jsonArray = new JSONArray(jsonDataString);
-            for (int i = 0; i < jsonArray.length(); ++i) {
-                System.out.println(jsonArray.get(i).toString());
-                JSONObject itemObj = jsonArray.getJSONObject(i);
-                String username = itemObj.getString("username");
-                String userimage = itemObj.getString("userimage");
-                String memeImage = itemObj.getString("memeimage");
-                String caption = itemObj.getString("caption");
-                MemeManiaModel memeDetailData = new MemeManiaModel(username, caption, userimage, memeImage);
-                memeList.add(memeDetailData);
-
-            }
-        } catch (JSONException | IOException e) {
-            Log.d(TAG, "addTeamDataFromJSON:", e);
-        }
-
-    }
-
-    private String readJSONDataFromFile1() throws IOException {
-        InputStream inputStream = null;
-        StringBuilder builder = new StringBuilder();
-        try {
-            String jsonString = null;
-            inputStream = getResources().openRawResource(R.raw.memedata1);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-            while ((jsonString = bufferedReader.readLine()) != null) {
-                builder.append(jsonString);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (inputStream != null) {
-                inputStream.close();
-            }
-        }
-        return new String(builder);
-
+    @Override
+    public void onClick(View v) {
+        Intent intent=new Intent(getActivity(),memeComment.class);
     }
 }

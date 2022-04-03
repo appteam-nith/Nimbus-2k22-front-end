@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.memeComment;
 import com.nith.nimbus2k22.screens.models.MemeManiaModel;
@@ -24,9 +25,9 @@ import java.util.List;
 
 public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyViewHolder> {
     private Context context;
-    private List<MemeManiaModel> memeList=new ArrayList<>();
+    private List<Memes> memeList=new ArrayList<>();
     RequestOptions requestOptions1;
-    public MemeManiaAdapter(List<MemeManiaModel> memeList,Context context){
+    public MemeManiaAdapter(List<Memes> memeList, Context context){
         this.memeList=memeList;
         this.context=context;
         requestOptions1=new RequestOptions().centerCrop().placeholder(R.drawable.refresh).error(R.drawable.refresh);
@@ -40,13 +41,13 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-      MemeManiaModel memeManiaModel=memeList.get(position);
-      holder.userimage.setImageURI(Uri.parse(memeManiaModel.getUserimage()));
-      holder.caption.setText(memeManiaModel.getCaption());
-      holder.memeImage.setImageURI(Uri.parse(memeManiaModel.getMemeImage()));
-      holder.username.setText(memeManiaModel.getUsername()); 
-        Glide.with(context).load(memeManiaModel.getMemeImage().replace("http","https")).apply(requestOptions1).into(holder.memeImage);
-        Glide.with(context).load(memeManiaModel.getUserimage().replace("http","https")).apply(requestOptions1).into(holder.userimage);
+      Memes memeManiaModel=memeList.get(position);
+      //holder.userimage.setImageURI(Uri.parse(memeManiaModel.()));
+      holder.caption.setText(memeManiaModel.getText());
+      holder.memeImage.setImageURI(Uri.parse(memeManiaModel.getPhoto()));
+      //holder.username.setText(memeManiaModel.get());
+       // Glide.with(context).load(memeManiaModel.getMemeImage().replace("http","https")).apply(requestOptions1).into(holder.memeImage);
+       // Glide.with(context).load(memeManiaModel.getUserimage().replace("http","https")).apply(requestOptions1).into(holder.userimage);
     }
 
     @Override
