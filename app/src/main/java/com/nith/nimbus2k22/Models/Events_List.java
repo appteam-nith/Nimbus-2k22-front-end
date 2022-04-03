@@ -1,77 +1,89 @@
 package com.nith.nimbus2k22.Models;
 
 public class Events_List {
-String title;
-String description;
-String startTime;
-String endTime;
-String clubName;
-String platform;
-String image;
-String regUrl;
-int type;
+    int id;
+    String name;
+    String abtract;
+    String info;
+    String venue;
+    String start;
+    String end;
+    String image;
+    String regURL;
+    int type;
+    String department;
 
     public Events_List() {
     }
 
-    public Events_List(String title, String description, String startTime, String endTime, String clubName, String platform, String image, String regUrl, int type) {
-        this.title = title;
-        this.description = description;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.clubName = clubName;
-        this.platform = platform;
+    public Events_List(int id, String name, String abtract, String info, String venue, String start, String end, String image, String regURL, int type, String department) {
+        this.id = id;
+        this.name = name;
+        this.abtract = abtract;
+        this.info = info;
+        this.venue = venue;
+        this.start = start;
+        this.end = end;
         this.image = image;
-        this.regUrl = regUrl;
+        this.regURL = regURL;
         this.type = type;
+        this.department = department;
     }
 
-    public String getTitle() {
-        return title;
+    public int getId() {
+        return id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getAbtract() {
+        return abtract;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setAbtract(String abtract) {
+        this.abtract = abtract;
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getInfo() {
+        return info;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setInfo(String info) {
+        this.info = info;
     }
 
-    public String getClubName() {
-        return clubName;
+    public String getVenue() {
+        return venue;
     }
 
-    public void setClubName(String clubName) {
-        this.clubName = clubName;
+    public void setVenue(String venue) {
+        this.venue = venue;
     }
 
-    public String getPlatform() {
-        return platform;
+    public String getStart() {
+        return start;
     }
 
-    public void setPlatform(String platform) {
-        this.platform = platform;
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
     }
 
     public String getImage() {
@@ -82,12 +94,12 @@ int type;
         this.image = image;
     }
 
-    public String getRegUrl() {
-        return regUrl;
+    public String getRegURL() {
+        return regURL;
     }
 
-    public void setRegUrl(String regUrl) {
-        this.regUrl = regUrl;
+    public void setRegURL(String regURL) {
+        this.regURL = regURL;
     }
 
     public int getType() {
@@ -96,5 +108,13 @@ int type;
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

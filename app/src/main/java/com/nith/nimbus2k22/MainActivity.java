@@ -16,6 +16,7 @@ import com.nith.nimbus2k22.screens.home.HomeFragment;
 import com.nith.nimbus2k22.screens.home.MemeManiaFragment;
 import com.nith.nimbus2k22.screens.quiz.AllQuizzesFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
+import com.nith.nimbus2k22.screens.sponsors.SponsorsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.home_icon:
-//                    replaceFragment(new HomeFragment());
-                    Intent i=new Intent(this, FlappyBird.class);
-                    startActivity(i);
+                    replaceFragment(new HomeFragment());
+//                    Intent i=new Intent(this, FlappyBird.class);
+//                    startActivity(i);
                     break;
                 case R.id.Quizzes_icon:
                     replaceFragment(new AllQuizzesFragment());
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new AllEventsAndWorkshopsFragment());
                     break;
                 case R.id.sigma_icon:
-                    replaceFragment(new SigmaFragment());
+                    replaceFragment(new SponsorsFragment());
                     break;
                 case R.id.profile_icon:
                     replaceFragment(new ViewProfileFragment());

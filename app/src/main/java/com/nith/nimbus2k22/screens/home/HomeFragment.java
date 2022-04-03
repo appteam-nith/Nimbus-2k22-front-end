@@ -1,6 +1,7 @@
 package com.nith.nimbus2k22.screens.home;
 
-import static com.nith.nimbus2k22.apis.EventsVolleyHelper.evlist;
+//import static com.nith.nimbus2k22.apis.EventsVolleyHelper.evlist;
+import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
 import static com.nith.nimbus2k22.apis.SponsorsVolleyHelper.sponsorslist;
 
 import android.os.Bundle;
@@ -115,7 +116,7 @@ public class HomeFragment extends Fragment {
         //sponsors
         homesponsorRV = view.findViewById(R.id.home_sponsors_RV);
 
-        getSponsorsData();
+//        getSponsorsData();
 
         //btn
         homeEventBtn=view.findViewById(R.id.home_event_btn);
@@ -183,6 +184,7 @@ public class HomeFragment extends Fragment {
                 for (int i = 0; i < events_lists.size(); i++) {
                     if (events_lists.get(i).getType() == 1) {
                         onlyWorkshop.add(events_lists.get(i));
+
                     }
                 }
 
@@ -197,7 +199,7 @@ public class HomeFragment extends Fragment {
                 homeworkshopRV.setAdapter(eventsAdapter);
             }
         };
-        evlist.observe(getActivity(), observer);
+        eventslist.observe(getActivity(), observer);
     }
 
 
@@ -226,6 +228,6 @@ public class HomeFragment extends Fragment {
                 homeEventRV.setAdapter(eventsAdapter);
             }
         };
-        evlist.observe(getActivity(), observer);
+        eventslist.observe(getActivity(), observer);
     }
 }

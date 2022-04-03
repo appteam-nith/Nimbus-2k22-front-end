@@ -1,7 +1,9 @@
 package com.nith.nimbus2k22.screens.eventsAndWorkshops;
 
 
-import static com.nith.nimbus2k22.apis.EventsVolleyHelper.evlist;
+import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventread;
+import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
+//import static com.nith.nimbus2k22.apis.EventsVolleyHelper.evlist;
 
 import android.os.Bundle;
 
@@ -83,6 +85,6 @@ public class EventFragment extends Fragment {
                 eventRV.setAdapter(eventsAdapter);
             }
         };
-        evlist.observe(getActivity(), observer);
+        eventslist.observe(getActivity(), observer);
     }
 }
