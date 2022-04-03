@@ -12,12 +12,12 @@ public class EventList {
     String image;
     String pdf;
     String username;
-    String user;
+
 
     public EventList() {
     }
 
-    public EventList(int id, String name, String type, String shortDescription, String description, String from, String to, String registrationUrl, String image, String pdf, String username, String user) {
+    public EventList(int id, String name, String type, String shortDescription, String description, String from, String to, String registrationUrl, String image, String pdf, String username) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -29,7 +29,7 @@ public class EventList {
         this.image = image;
         this.pdf = pdf;
         this.username = username;
-        this.user = user;
+
     }
 
     public int getId() {
@@ -120,11 +120,5 @@ public class EventList {
         this.username = username;
     }
 
-    public String getUser() {
-        return user;
-    }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
 }

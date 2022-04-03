@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/android_small___68"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,13 +20,16 @@
 
 
     <RelativeLayout
+
+        android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
         android:layout_height="62dp"
+        android:background="@drawable/rectangle_82"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/rectangle_82"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent">
+
         <ImageView
             android:id="@+id/home_icon"
             android:layout_width="38dp"
@@ -34,7 +37,8 @@
             android:layout_centerInParent="true"
 
             android:scaleType="centerCrop"
-            android:src="@drawable/home_bottom_nav"/>
+            android:src="@drawable/home_bottom_nav" />
+
         <ImageView
             android:id="@+id/Quizzes_icon"
             android:layout_width="38dp"
@@ -42,9 +46,10 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/margin"
             android:layout_toStartOf="@id/home_icon"
+            android:background="@drawable/ic_baseline_question_answer_24"
             android:backgroundTint="@color/white"
-            android:scaleType="centerCrop"
-            android:background="@drawable/ic_baseline_question_answer_24" />
+            android:scaleType="centerCrop" />
+
         <ImageView
             android:id="@+id/eventsAndWorkshop_icon"
             android:layout_width="38dp"
@@ -52,9 +57,10 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/margin"
             android:layout_toStartOf="@id/Quizzes_icon"
+            android:background="@drawable/ic_baseline_date_range_24"
             android:backgroundTint="@color/white"
-            android:scaleType="centerCrop"
-            android:background="@drawable/ic_baseline_date_range_24"/>
+            android:scaleType="centerCrop" />
+
         <ImageView
             android:id="@+id/sigma_icon"
             android:layout_width="38dp"
@@ -62,50 +68,52 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin"
             android:layout_toEndOf="@id/home_icon"
+            android:background="@drawable/ic_baseline_video_call_24"
             android:backgroundTint="@color/white"
-            android:scaleType="centerCrop"
-            android:background="@drawable/ic_baseline_video_call_24"/>
+            android:scaleType="centerCrop" />
+
         <ImageView
+            android:id="@+id/profile_icon"
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin"
             android:layout_toEndOf="@id/sigma_icon"
-            android:backgroundTint="@color/white"
-            android:scaleType="centerCrop"
             android:background="@drawable/profile"
-            android:id="@+id/profile_icon"/>
+            android:backgroundTint="@color/white"
+            android:scaleType="centerCrop" />
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
         android:layout_height="62dp"
         android:layout_marginBottom="14dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/home_icon3"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:visibility="invisible"
             android:layout_centerInParent="true"
-
             android:scaleType="centerCrop"
-            android:src="@drawable/rectangle_85"/>
+
+            android:src="@drawable/rectangle_85"
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/home_icon2"
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:layout_centerInParent="true"
-            android:padding="3dp"
+            android:background="@drawable/home_bottom_nav"
             android:backgroundTint="@color/white"
-            android:visibility="invisible"
+            android:padding="3dp"
             android:scaleType="centerCrop"
-            android:background="@drawable/home_bottom_nav"/>
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/Quizzes_icon3"
@@ -115,8 +123,9 @@
             android:layout_marginEnd="14dp"
             android:layout_toStartOf="@id/home_icon3"
             android:scaleType="centerCrop"
-            android:visibility="invisible"
-            android:src="@drawable/rectangle_85" />
+            android:src="@drawable/rectangle_85"
+            android:visibility="invisible" />
+
         <ImageView
             android:id="@+id/eventsAndWorkshop_icon3"
             android:layout_width="60dp"
@@ -125,8 +134,9 @@
             android:layout_marginEnd="14dp"
             android:layout_toStartOf="@id/Quizzes_icon3"
             android:scaleType="centerCrop"
-            android:visibility="invisible"
-            android:src="@drawable/rectangle_85"/>
+            android:src="@drawable/rectangle_85"
+            android:visibility="invisible" />
+
         <ImageView
             android:id="@+id/sigma_icon3"
             android:layout_width="60dp"
@@ -135,9 +145,11 @@
             android:layout_marginStart="14dp"
             android:layout_toEndOf="@id/home_icon3"
             android:scaleType="centerCrop"
-            android:visibility="invisible"
-            android:src="@drawable/rectangle_85"/>
+            android:src="@drawable/rectangle_85"
+            android:visibility="invisible" />
+
         <ImageView
+            android:id="@+id/profile_icon3"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerVertical="true"
@@ -145,8 +157,7 @@
             android:layout_toEndOf="@id/sigma_icon3"
             android:scaleType="centerCrop"
             android:src="@drawable/rectangle_85"
-            android:visibility="invisible"
-            android:id="@+id/profile_icon3"/>
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/Quizzes_icon2"
@@ -155,10 +166,11 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="40dp"
             android:layout_toStartOf="@id/home_icon2"
-            android:visibility="invisible"
-            android:scaleType="centerCrop"
+            android:background="@drawable/ic_baseline_question_answer_24"
             android:backgroundTint="@color/white"
-            android:background="@drawable/ic_baseline_question_answer_24" />
+            android:scaleType="centerCrop"
+            android:visibility="invisible" />
+
         <ImageView
             android:id="@+id/eventsAndWorkshop_icon2"
             android:layout_width="38dp"
@@ -166,10 +178,11 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/margin"
             android:layout_toStartOf="@id/Quizzes_icon2"
-            android:scaleType="centerCrop"
-            android:visibility="invisible"
+            android:background="@drawable/ic_baseline_date_range_24"
             android:backgroundTint="@color/white"
-            android:background="@drawable/ic_baseline_date_range_24"/>
+            android:scaleType="centerCrop"
+            android:visibility="invisible" />
+
         <ImageView
             android:id="@+id/sigma_icon2"
             android:layout_width="38dp"
@@ -177,22 +190,23 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin"
             android:layout_toEndOf="@id/home_icon2"
-            android:visibility="invisible"
-            android:scaleType="centerCrop"
+            android:background="@drawable/ic_baseline_video_call_24"
             android:backgroundTint="@color/white"
-            android:background="@drawable/ic_baseline_video_call_24"/>
+            android:scaleType="centerCrop"
+            android:visibility="invisible" />
+
         <ImageView
+            android:id="@+id/profile_icon2"
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/margin"
             android:layout_toEndOf="@id/sigma_icon2"
-            android:visibility="invisible"
+            android:background="@drawable/profile"
+            android:backgroundTint="@color/white"
             android:padding="5dp"
             android:scaleType="centerCrop"
-            android:backgroundTint="@color/white"
-            android:background="@drawable/profile"
-            android:id="@+id/profile_icon2"/>
+            android:visibility="invisible" />
     </RelativeLayout>
 
 

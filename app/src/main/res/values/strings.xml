@@ -22,4 +22,7 @@
     <string name="D">D</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="score">Score</string>
+    <string name="register">Register</string>
+    <string name="prodygiki">Prodygiki</string>
+    <string name="dummy_text_detail">Lorem ipsum dolor sit amet</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.nith.nimbus2k22.screens.sponsors;
 
-import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
 import static com.nith.nimbus2k22.apis.SponsorsVolleyHelper.sponsorslist;
 
 import android.os.Bundle;
@@ -14,12 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nith.nimbus2k22.Models.Events_List;
 import com.nith.nimbus2k22.Models.Sponsors;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.adapters.EventsAdapter;
 import com.nith.nimbus2k22.adapters.SponsorsAdapter;
-import com.nith.nimbus2k22.apis.EventsVolleyHelper;
 import com.nith.nimbus2k22.apis.SponsorsVolleyHelper;
 
 import java.util.ArrayList;

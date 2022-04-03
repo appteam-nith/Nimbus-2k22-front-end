@@ -59,7 +59,7 @@ public class SponsorsVolleyHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("errorsponsors", error.getMessage());
+//                Log.e("errorsponsors", error.getMessage());
             }
         });
         requestQueue.add(jsonArrayRequest);
