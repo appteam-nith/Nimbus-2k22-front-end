@@ -29,12 +29,12 @@ public class SponsorsVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://api.festnimbus.com/api/";
     public static MutableLiveData<ArrayList<Sponsors>> sponsorslist;
 
     public void getSponsors() {
         sponsorslist = new MutableLiveData<>();
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "sponsors/sponsors/", null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "sponsors/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 ArrayList<Sponsors> slist = new ArrayList<>();
@@ -42,12 +42,13 @@ public class SponsorsVolleyHelper {
                     try {
                         Log.e("sponsors", String.valueOf(response));
                         JSONObject jsonObject = response.getJSONObject(i);
-                        String name = jsonObject.getString("name");
-                        String link = jsonObject.getString("link");
-                        String image = jsonObject.getString("image");
-                        String position = jsonObject.getString("position");
-                        int priority = jsonObject.getInt("priority");
-                        slist.add(new Sponsors(name, link, image, position, priority));
+                      int id = jsonObject.getInt("id");
+                      String name = jsonObject.getString("name");
+                      String description = jsonObject.getString("description");
+                      String image = jsonObject.getString("image");
+                      String website = jsonObject.getString("website");
+                      int level = jsonObject.getInt("level");
+                      slist.add(new Sponsors(id,name,description,image,website,level));
                     } catch (JSONException e) {
                         Log.e("sponsorsexepction", String.valueOf(e));
                         e.printStackTrace();

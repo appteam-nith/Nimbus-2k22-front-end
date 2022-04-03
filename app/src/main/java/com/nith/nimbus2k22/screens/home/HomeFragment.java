@@ -115,7 +115,7 @@ public class HomeFragment extends Fragment {
         //sponsors
         homesponsorRV = view.findViewById(R.id.home_sponsors_RV);
 
-//        getSponsorsData();
+        getSponsorsData();
 
         //btn
         homeEventBtn=view.findViewById(R.id.home_event_btn);

@@ -110,8 +110,12 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 changeFragment(new EventDetailsFragment(), view, event);
 
             });
-            //load Img
-            Picasso.get().load("https://media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(eventViewHolder.eventImg);
+            if (event.getImage().isEmpty()){
+//            Picasso.get().load(imgUrl.replace("http", "https")).into(holder.sponsorImage);
+            }else {
+                Picasso.get().load("https://api.festnimbus.com/"+event.getImage().replace("http", "https")).into(eventViewHolder.eventImg);
+            }
+
         }
     }
 

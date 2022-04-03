@@ -2,6 +2,7 @@ package com.nith.nimbus2k22.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.nith.nimbus2k22.Models.Sponsors;
 import com.nith.nimbus2k22.R;
+import com.squareup.picasso.Picasso;
 //import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -63,13 +66,15 @@ public class SponsorsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             HomeSponsorsViewHolder homeSponsorsViewHolder = (HomeSponsorsViewHolder) holder;
             homeSponsorsViewHolder.homeSponsorName.setText(sponsor.getName());
             //load img
+            Glide.with(context).load("https://api.festnimbus.com/"+sponsor.getImage()).into(homeSponsorsViewHolder.homeSponsorImg);
+
             //on clicklistener??
-        } if (isUsedInSponsor){
+        } else {
             SponsorsViewHolder sponsorsViewHolder = (SponsorsViewHolder) holder;
             sponsorsViewHolder.sponsorDes.setText(sponsor.getName());
             //??
             //load img
-//            Glide.with(context).load("https:media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(sponsorsViewHolder.sponsorImage);
+        Glide.with(context).load("https://api.festnimbus.com/"+sponsor.getImage()).into(sponsorsViewHolder.sponsorImage);
         }
     }
 
