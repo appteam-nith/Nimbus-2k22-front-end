@@ -2,9 +2,6 @@
     <string name="app_name">Nimbus2k22</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="app_team">App Team</string>
-    <string name="name">Name</string>
-    <string name="designation">designation</string>
 
     <string name="Prodygiki_by_ISTE">Prodygiki by ISTE</string>
     <string name="dummy_text">Loreum Ipsum app</string>
@@ -12,5 +9,17 @@
     <string name="description">Description</string>
     <string name="sponsors">Sponsors</string>
     <string name="events">Events</string>
-    <string name="read_all">View All</string>
+    <string name="quiz">Quiz</string>
+    <string name="Question">Questions:</string>
+    <string name="Next">Next</string>
+    <string name="A">A</string>
+    <string name="B">B</string>
+    <string name="C">C</string>
+    <string name="D">D</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="score">Score</string>
+    <string name="read_all">Read All</string>
+    <string name="register">Register</string>
+    <string name="dummy_text_detail">Lorem ipsum dolor sit amet</string>
+    <string name="prodygiki">Prodygiki</string>
 </resources>

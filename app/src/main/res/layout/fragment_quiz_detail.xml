@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".BlankFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_tab_event_sponsors"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="0dp"
+        android:text="@string/quiz"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_quiz_score_card"
+        android:layout_marginTop="130dp"
+        android:layout_marginStart="270dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:layout_marginStart="50dp"
+            android:background="@drawable/ic_quiz_questions_card"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="@string/Question"
+            android:padding="10dp">
+        </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_quiz_option_card"
+        android:layout_marginTop="350dp"
+        android:layout_marginStart="40dp"
+        android:text="@string/A"
+        android:textSize="25sp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:gravity="start"
+        android:textColor="@color/white">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_quiz_option_card"
+        android:layout_marginTop="350dp"
+        android:layout_marginStart="230dp"
+        android:text="@string/B"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:gravity="start"
+        >
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_quiz_option_card"
+        android:layout_marginTop="450dp"
+        android:text="@string/C"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:gravity="start"
+        android:layout_marginStart="40dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_quiz_option_card"
+        android:layout_marginTop="450dp"
+        android:text="@string/D"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:gravity="start"
+        android:layout_marginStart="230dp"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_register"
+        android:layout_marginTop="580dp"
+        android:text="@string/Next"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_marginStart="150dp"/>
+
+
 
 </FrameLayout>
