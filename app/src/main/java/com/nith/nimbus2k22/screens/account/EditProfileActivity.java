@@ -109,8 +109,9 @@ public class EditProfileActivity extends AppCompatActivity {
              final androidx.lifecycle.Observer<Check_User>ch1 = new androidx.lifecycle.Observer<Check_User>() {
                  @Override
                  public void onChanged(Check_User check_user) {
-                     if(check_user.getUser_present()=="true")
-                         User.updateUser(user,auth.getUid());
+                     if(check_user.getUser_present()=="true") {
+                         User.updateUser(user, auth.getUid());
+                     }
                      else
                          User.createUser(user);
                  }
