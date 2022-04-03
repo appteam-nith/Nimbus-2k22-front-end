@@ -34,6 +34,7 @@
                     android:layout_height="wrap_content" />
 
                 <LinearLayout
+                    android:gravity="center"
                     android:layout_centerHorizontal="true"
                     android:id="@+id/slider_dots_panel"
                     android:layout_width="match_parent"
@@ -95,7 +96,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView" />
 
             <TextView
-                android:id="@+id/textView_"
+                android:id="@+id/home_event_btn"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="248dp"
@@ -136,7 +137,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView" />
 
             <TextView
-                android:id="@+id/workshop_btn"
+                android:id="@+id/home_workshop_btn"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="490dp"
@@ -162,7 +163,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/home_workshop_RV" />
 
             <TextView
-                android:id="@+id/textView_sponsors"
+                android:id="@+id/home_works"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="500dp"
@@ -176,7 +177,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView" />
 
             <TextView
-                android:id="@+id/sponsors_btn"
+                android:id="@+id/home_sponsors_btn"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="750dp"

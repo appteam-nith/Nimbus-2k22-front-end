@@ -12,7 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nith.nimbus2k22.Models.Events_List;
+import com.nith.nimbus2k22.Models.EventList;
+import com.nith.nimbus2k22.Models.EventList;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.adapters.EventsAdapter;
 import com.nith.nimbus2k22.apis.EventsVolleyHelper;
@@ -23,7 +24,7 @@ public class WorkshopFragment extends Fragment {
 
     private RecyclerView workshopRV;
     private EventsAdapter workshopAdapter;
-    private ArrayList<Events_List> eventsModalArrayList;
+    private ArrayList<EventList> eventsModalArrayList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,20 +60,20 @@ public class WorkshopFragment extends Fragment {
     private void getWorkshopData() {
         EventsVolleyHelper eventsVolleyHelper = new EventsVolleyHelper(getContext());
         eventsVolleyHelper.getEvents();
-        final androidx.lifecycle.Observer<ArrayList<Events_List>> observer = new androidx.lifecycle.Observer<ArrayList<Events_List>>() {
+        final androidx.lifecycle.Observer<ArrayList<EventList>> observer = new androidx.lifecycle.Observer<ArrayList<EventList>>() {
             @Override
-            public void onChanged(ArrayList<Events_List> events_lists) {
+            public void onChanged(ArrayList<EventList> events_lists) {
 
-                ArrayList<Events_List> onlyWorkshop;
-                onlyWorkshop = new ArrayList<>();
-                for (int i = 0; i < events_lists.size(); i++) {
-                    if (events_lists.get(i).getType() == 1) {
-                        onlyWorkshop.add(events_lists.get(i));
-                    }
-                }
+//                ArrayList<EventList> onlyWorkshop;
+//                onlyWorkshop = new ArrayList<>();
+//                for (int i = 0; i < events_lists.size(); i++) {
+//                    if (events_lists.get(i).getId() == 1) {
+//                        onlyWorkshop.add(events_lists.get(i));
+//                    }
+//                }
 
 
-                workshopAdapter = new EventsAdapter(onlyWorkshop, getActivity(), false, false);
+                workshopAdapter = new EventsAdapter(events_lists, getActivity(), false, false);
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity());
                 workshopRV.setHasFixedSize(true);

@@ -1,9 +1,12 @@
 package com.nith.nimbus2k22.screens.home;
 
+import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
+//import static com.nith.nimbus2k22.apis.EventsVolleyHelper.evlist;
 import static com.nith.nimbus2k22.apis.SponsorsVolleyHelper.sponsorslist;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,15 +19,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.nith.nimbus2k22.Models.Events_List;
+import com.nith.nimbus2k22.Models.EventList;
+import com.nith.nimbus2k22.Models.EventList;
 import com.nith.nimbus2k22.Models.Sponsors;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.adapters.EventsAdapter;
 import com.nith.nimbus2k22.adapters.HomeImgSliderAdapter;
 import com.nith.nimbus2k22.adapters.SponsorsAdapter;
+import com.nith.nimbus2k22.apis.EventsVolleyHelper;
 import com.nith.nimbus2k22.apis.SponsorsVolleyHelper;
 import com.nith.nimbus2k22.modals.HomeSilderItem;
+import com.nith.nimbus2k22.screens.eventsAndWorkshops.EventFragment;
+import com.nith.nimbus2k22.screens.eventsAndWorkshops.WorkshopFragment;
+import com.nith.nimbus2k22.screens.sponsors.SponsorsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +45,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView homeworkshopRV;
     private RecyclerView homesponsorRV;
 
-    private ArrayList<Events_List> eventsModalArrayList;
-    private ArrayList<Events_List> workshopArrayList;
-    private ArrayList<Sponsors> sponsorsModalArrayList;
+    private TextView homeEventBtn, homeWorkshopBtn, homesponsorsBtn;
+
 
     private EventsAdapter eventsAdapter;
     private SponsorsAdapter sponsorsAdapter;
@@ -56,21 +64,21 @@ public class HomeFragment extends Fragment {
         homeImgSliderVP2 = view.findViewById(R.id.home_img_slider_VP2);
         sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
 
-        List<HomeSilderItem> sliderListItem = new ArrayList<>();
-        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        sliderListItem.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        List<HomeSilderItem> silderItemList = new ArrayList<>();
+        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
 
-        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderListItem, homeImgSliderVP2);
+        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(silderItemList, homeImgSliderVP2);
         homeImgSliderVP2.setAdapter(viewPagerAdapter);
         dotsCount = viewPagerAdapter.getItemCount();
         dots = new ImageView[dotsCount];
 
         for (int i = 0; i < dotsCount; i++) {
             dots[i] = new ImageView(getActivity());
-            dots[i].setImageResource(R.drawable.inactive_dot);
+            dots[i].setImageResource(R.drawable.dot);
 
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -79,50 +87,65 @@ public class HomeFragment extends Fragment {
             sliderDotsPanel.addView(dots[i], params);
         }
 
-        dots[0].setImageResource(R.drawable.active_dot);
+        dots[0].setImageResource(R.drawable.black_dot);
         homeImgSliderVP2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 for (int i = 0; i < dotsCount; i++) {
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.inactive_dot));
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.dot));
                 }
-                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.active_dot));
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.black_dot));
             }
         });
 
         //Event
         homeEventRV = view.findViewById(R.id.home_event_RV);
-        eventsModalArrayList = new ArrayList<>();
+
 
         getEventData();
 
-        buildEventRv();
 
         //Workshop
         homeworkshopRV = view.findViewById(R.id.home_workshop_RV);
-        eventsModalArrayList = new ArrayList<>();
+
 
         getWorkshopData();
-
-        buildWorkShopRv();
 
 
         //sponsors
         homesponsorRV = view.findViewById(R.id.home_sponsors_RV);
-        sponsorsModalArrayList = new ArrayList<>();
 
-        getSponsorsData();
-        buildSponsorsRV();
+//        getSponsorsData();
+
+        //btn
+        homeEventBtn=view.findViewById(R.id.home_event_btn);
+        homeWorkshopBtn=view.findViewById(R.id.home_workshop_btn);
+        homesponsorsBtn=view.findViewById(R.id.home_sponsors_btn);
+
+        homeEventBtn.setOnClickListener(view1 -> {
+            replaceFragment(new EventFragment(),view);
+        });
+        homeWorkshopBtn.setOnClickListener(view1 -> {
+            replaceFragment(new WorkshopFragment(),view);
+        });
+        homesponsorsBtn.setOnClickListener(view1 -> {
+            replaceFragment(new SponsorsFragment(),view);
+        });
+
+
 
         return view;
     }
 
+    private void replaceFragment(Fragment fragment, View view){
+
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame_layout, fragment).addToBackStack(null).commit();
+
+    }
 
     private void getSponsorsData() {
 
-//        for (int i = 0; i < 19; i++) {
-//            sponsorsModalArrayList.add(new Sponsors("name", "link", "image", "position", 1));
-//        }
 
         SponsorsVolleyHelper sponsorsVolleyHelper = new SponsorsVolleyHelper(getContext());
         sponsorsVolleyHelper.getSponsors();
@@ -147,52 +170,62 @@ public class HomeFragment extends Fragment {
         sponsorslist.observe(getActivity(), observer);
     }
 
-    private void buildSponsorsRV() {
-
-
-//        sponsorsAdapter = new SponsorsAdapter(sponsorsModalArrayList, getActivity(),true);
-//
-//        LinearLayoutManager manager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-//        homesponsorRV.setHasFixedSize(true);
-//
-//        homesponsorRV.setLayoutManager(manager);
-//
-//        homesponsorRV.setAdapter(sponsorsAdapter);
-
-    }
 
     private void getWorkshopData() {
-        for (int i = 0; i < 19; i++) {
-            eventsModalArrayList.add(new Events_List("title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
-        }
+        EventsVolleyHelper eventsVolleyHelper = new EventsVolleyHelper(getContext());
+        eventsVolleyHelper.getEvents();
+        final androidx.lifecycle.Observer<ArrayList<EventList>> observer = new androidx.lifecycle.Observer<ArrayList<EventList>>() {
+            @Override
+            public void onChanged(ArrayList<EventList> events_lists) {
+
+//                ArrayList<EventList> onlyWorkshop;
+//                onlyWorkshop = new ArrayList<>();
+//                for (int i = 0; i < events_lists.size(); i++) {
+//                    if (events_lists.get(i).getId() == 1) {
+//                        onlyWorkshop.add(events_lists.get(i));
+//                    }
+//                }
+
+
+                eventsAdapter = new EventsAdapter(events_lists, getActivity(), false, true);
+
+                LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                homeworkshopRV.setHasFixedSize(true);
+
+                homeworkshopRV.setLayoutManager(manager);
+
+                homeworkshopRV.setAdapter(eventsAdapter);
+            }
+        };
+        eventslist.observe(getActivity(), observer);
     }
 
-    private void buildWorkShopRv() {
-        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(), false, true);
-
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        homeworkshopRV.setHasFixedSize(true);
-
-        homeworkshopRV.setLayoutManager(manager);
-
-        homeworkshopRV.setAdapter(eventsAdapter);
-    }
-
-    private void buildEventRv() {
-
-        eventsAdapter = new EventsAdapter(eventsModalArrayList, getActivity(), true, false);
-
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        homeEventRV.setHasFixedSize(true);
-
-        homeEventRV.setLayoutManager(manager);
-
-        homeEventRV.setAdapter(eventsAdapter);
-    }
 
     private void getEventData() {
-        for (int i = 0; i < 19; i++) {
-            eventsModalArrayList.add(new Events_List("title", "description", "startTime", "endTime", "clubName", "platform", "imgUrl", "regUrl", 1));
-        }
+        EventsVolleyHelper eventsVolleyHelper = new EventsVolleyHelper(getContext());
+        eventsVolleyHelper.getEvents();
+        final androidx.lifecycle.Observer<ArrayList<EventList>> observer = new androidx.lifecycle.Observer<ArrayList<EventList>>() {
+            @Override
+            public void onChanged(ArrayList<EventList> events_lists) {
+
+//                ArrayList<EventList> onlyEvents;
+//                onlyEvents = new ArrayList<>();
+//                for (int i = 0; i < events_lists.size(); i++) {
+//                    if (events_lists.get(i).getId() == 0) {
+//                        onlyEvents.add(events_lists.get(i));
+//                    }
+//                }
+
+                eventsAdapter = new EventsAdapter(events_lists, getActivity(), true, false);
+//
+                LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                homeEventRV.setHasFixedSize(true);
+
+                homeEventRV.setLayoutManager(manager);
+
+                homeEventRV.setAdapter(eventsAdapter);
+            }
+        };
+        eventslist.observe(getActivity(), observer);
     }
 }
