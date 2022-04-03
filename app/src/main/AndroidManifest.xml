@@ -13,16 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nimbus2k22">
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name=".screens.account.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".screens.account.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".screens.account.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".screens.account.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".splashscreen.SplashScreenActivity"
