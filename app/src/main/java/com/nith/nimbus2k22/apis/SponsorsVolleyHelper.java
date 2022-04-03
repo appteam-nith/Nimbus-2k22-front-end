@@ -29,7 +29,7 @@ public class SponsorsVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://appteam.monuk7735.cf/";
+    String BaseUrl = "https://api.festnimbus.com/api/";
     public static MutableLiveData<ArrayList<Sponsors>> sponsorslist;
 
     public void getSponsors() {
@@ -42,12 +42,12 @@ public class SponsorsVolleyHelper {
                     try {
                         Log.e("sponsors", String.valueOf(response));
                         JSONObject jsonObject = response.getJSONObject(i);
+                        int id = jsonObject.getInt("id");
                         String name = jsonObject.getString("name");
-                        String link = jsonObject.getString("link");
+                        String description = jsonObject.getString("description");
                         String image = jsonObject.getString("image");
-                        String position = jsonObject.getString("position");
-                        int priority = jsonObject.getInt("priority");
-                        slist.add(new Sponsors(name, link, image, position, priority));
+                        String website = jsonObject.getString("website");
+                        int level = jsonObject.getInt("level");
                     } catch (JSONException e) {
                         Log.e("sponsorsexepction", String.valueOf(e));
                         e.printStackTrace();

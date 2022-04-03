@@ -1,21 +1,31 @@
 package com.nith.nimbus2k22.Models;
 
 public class Sponsors {
-    String name;
-    String link;
-    String image;
-    String position;
-    int  priority;
+   int id;
+   String name;
+   String descripton;
+   String image;
+   String website;
+   int level;
 
     public Sponsors() {
     }
 
-    public Sponsors(String name, String link, String image, String position, int priority) {
+    public Sponsors(int id, String name, String descripton, String image, String website, int level) {
+        this.id = id;
         this.name = name;
-        this.link = link;
+        this.descripton = descripton;
         this.image = image;
-        this.position = position;
-        this.priority = priority;
+        this.website = website;
+        this.level = level;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -26,12 +36,12 @@ public class Sponsors {
         this.name = name;
     }
 
-    public String getLink() {
-        return link;
+    public String getDescripton() {
+        return descripton;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setDescripton(String descripton) {
+        this.descripton = descripton;
     }
 
     public String getImage() {
@@ -42,20 +52,20 @@ public class Sponsors {
         this.image = image;
     }
 
-    public String getPosition() {
-        return position;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
-    public int getPriority() {
-        return priority;
+    public int getLevel() {
+        return level;
     }
 
-    public void setPriority(int priority) {
-        this.priority = priority;
+    public void setLevel(int level) {
+        this.level = level;
     }
 }
 

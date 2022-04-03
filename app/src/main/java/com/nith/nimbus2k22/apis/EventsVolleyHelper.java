@@ -30,7 +30,7 @@ public class EventsVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://api.festnimbus.com/api";
+    String BaseUrl = "https://api.festnimbus.com/api/";
     public static MutableLiveData<ArrayList<EventList>> eventslist;
     public void getEvents(){
         eventslist = new MutableLiveData<>();
