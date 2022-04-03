@@ -12,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.nith.nimbus2k22.Models.EventList;
 import com.nith.nimbus2k22.Models.Events_List;
 
 import org.json.JSONArray;
@@ -29,30 +30,31 @@ public class EventsVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://appteam.monuk7735.cf/";
-    public static MutableLiveData<ArrayList<Events_List>> eventslist;
+    String BaseUrl = "https://api.festnimbus.com/api";
+    public static MutableLiveData<ArrayList<EventList>> eventslist;
     public void getEvents(){
         eventslist = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "events/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                ArrayList<Events_List> elist = new ArrayList<>();
+                ArrayList<EventList> elist = new ArrayList<>();
                 for(int i=0;i< response.length();i++){
                     try {
                         Log.e("eventlistresp", String.valueOf(response));
                         JSONObject jsonObject = response.getJSONObject(i);
-                     int id = jsonObject.getInt("id");
-                     String name = jsonObject.getString("name");
-                     String abtract = jsonObject.getString("abstract");
-                     String info = jsonObject.getString("info");
-                     String venue = jsonObject.getString("venue");
-                     String start = jsonObject.getString("start");
-                     String end = jsonObject.getString("end");
-                     String image = jsonObject.getString("image");
-                     String regUrl = jsonObject.getString("regURL");
-                     int type = jsonObject.getInt("type");
-                     String department = jsonObject.getString("department");
-                     elist.add(new Events_List(id,name,abtract,info,venue,start,end,image,regUrl,type,department));
+                    int id = jsonObject.getInt("id");
+                    String name = jsonObject.getString("name");
+                    String type = jsonObject.getString("type");
+                    String shortDescription = jsonObject.getString("shortDescription");
+                    String description = jsonObject.getString("description");
+                    String from = jsonObject.getString("from");
+                    String to = jsonObject.getString("to");
+                    String registrationUrl = jsonObject.getString("registrationUrl");
+                    String image = jsonObject.getString("image");
+                    String pdf = jsonObject.getString("pdf");
+                    String username = jsonObject.getString("username");
+                    String user = jsonObject.getString("user");
+                    elist.add(new EventList(id,name,type,shortDescription,description,from,to,registrationUrl,image,pdf,username,user));
 
 
 
