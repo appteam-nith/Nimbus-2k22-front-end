@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.nith.nimbus2k22.Models.CommentList;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.screens.models.CommentModel;
 
@@ -22,10 +23,10 @@ import java.util.List;
 
 public class CommentAdapter extends RecyclerView.Adapter <CommentAdapter.MyViewHolder>{
     private Context context;
-    private List<CommentModel> commentList = new ArrayList<>();
+    private List<CommentList> commentList = new ArrayList<>();
     RequestOptions requestOptions3;
 
-    public  CommentAdapter(List<CommentModel> commentList, Context context) {
+    public  CommentAdapter(List<CommentList> commentList, Context context) {
         this.context = context;
         this.commentList = commentList;
         requestOptions3 = new RequestOptions().centerCrop().placeholder(R.drawable.refresh).error(R.drawable.refresh);
@@ -40,15 +41,15 @@ public class CommentAdapter extends RecyclerView.Adapter <CommentAdapter.MyViewH
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        CommentModel commentModel=commentList.get(position);
-        holder.username.setText(commentModel.getUsername());
+        CommentList commentModel=commentList.get(position);
+        holder.username.setText(commentModel.getAuthor());
 //        holder.new_comment.setText(commentModel.getNew_comment());
 //        holder.userimage_comment.setImageURI(Uri.parse(commentModel.getUserimage_comment()));
-        holder.comment.setText(commentModel.getComment());
+        holder.comment.setText(commentModel.getText());
 //        holder.userimage.setImageURI(Uri.parse(commentModel.getUserimage()));
 //        holder.usernameComment.setText(commentModel.getUsernameComment());
 //        Glide.with(context).load(commentModel.getUserimage_comment().replace("http","https")).apply(requestOptions3).into(holder.userimage_comment);
-        Glide.with(context).load(commentModel.getUserimage().replace("http","https")).apply(requestOptions3).into(holder.userimage);
+       // Glide.with(context).load(commentModel.getUserimage().replace("http","https")).apply(requestOptions3).into(holder.userimage);
     }
 
     @Override
