@@ -52,6 +52,7 @@ public class VideoCall extends AppCompatActivity {
     private Handler handler;
     private Runnable runnable;
     private TextView rName,rTime;
+    private int kip =0;
     String Url = "http://appteam.monuk7735.cf";
 
 
