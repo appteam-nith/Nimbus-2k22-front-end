@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nith.nimbus2k22.Models.Events_List;
+import com.nith.nimbus2k22.Models.EventList;
+import com.nith.nimbus2k22.Models.EventList;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.adapters.EventsAdapter;
 import com.nith.nimbus2k22.apis.EventsVolleyHelper;
@@ -61,19 +61,19 @@ public class EventFragment extends Fragment {
 
         EventsVolleyHelper eventsVolleyHelper = new EventsVolleyHelper(getContext());
         eventsVolleyHelper.getEvents();
-        final androidx.lifecycle.Observer<ArrayList<Events_List>> observer = new androidx.lifecycle.Observer<ArrayList<Events_List>>() {
+        final androidx.lifecycle.Observer<ArrayList<EventList>> observer = new androidx.lifecycle.Observer<ArrayList<EventList>>() {
             @Override
-            public void onChanged(ArrayList<Events_List> events_lists) {
+            public void onChanged(ArrayList<EventList> events_lists) {
 
-                ArrayList<Events_List> onlyEvents;
-                onlyEvents = new ArrayList<>();
-                for (int i = 0; i < events_lists.size(); i++) {
-                    if (events_lists.get(i).getType() == 0) {
-                        onlyEvents.add(events_lists.get(i));
-                    }
-                }
+                ArrayList<EventList> onlyEvents;
+//                onlyEvents = new ArrayList<>();
+//                for (int i = 0; i < events_lists.size(); i++) {
+//                    if (events_lists.get(i).getId()==0) {
+//                        onlyEvents.add(events_lists.get(i));
+//                    }
+//                }
 
-                eventsAdapter = new EventsAdapter(onlyEvents, getActivity(), false, false);
+                eventsAdapter = new EventsAdapter(events_lists, getActivity(), false, false);
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity());
                 eventRV.setHasFixedSize(true);
