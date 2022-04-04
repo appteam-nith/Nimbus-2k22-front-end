@@ -42,12 +42,10 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private ViewPager2 homeImgSliderVP2;
-    private RecyclerView homeEventRV;
     private RecyclerView homeworkshopRV;
     private RecyclerView homesponsorRV;
 
-    private TextView homeEventBtn, homeWorkshopBtn, homesponsorsBtn;
-
+    private TextView homeWorkshopBtn, homesponsorsBtn;
 
     private EventsAdapter eventsAdapter;
     private SponsorsHomeAdapter sponsorsAdapter;
@@ -79,7 +77,7 @@ public class HomeFragment extends Fragment {
 
         for (int i = 0; i < dotsCount; i++) {
             dots[i] = new ImageView(getActivity());
-            dots[i].setImageResource(R.drawable.dot);
+            dots[i].setImageResource(R.drawable.inactive_dot);
 
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -88,44 +86,29 @@ public class HomeFragment extends Fragment {
             sliderDotsPanel.addView(dots[i], params);
         }
 
-        dots[0].setImageResource(R.drawable.black_dot);
+        dots[0].setImageResource(R.drawable.active_dot);
         homeImgSliderVP2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 for (int i = 0; i < dotsCount; i++) {
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.dot));
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.inactive_dot));
                 }
-                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.black_dot));
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.active_dot));
             }
         });
 
-        //Event
-        homeEventRV = view.findViewById(R.id.home_event_RV);
 
-
-        getEventData();
-
-
-        //Workshop
+        // Events and Workshops
         homeworkshopRV = view.findViewById(R.id.home_workshop_RV);
-
-
         getWorkshopData();
-
 
         //sponsors
         homesponsorRV = view.findViewById(R.id.home_sponsors_RV);
-
         getSponsorsData();
 
-        //btn
-        homeEventBtn=view.findViewById(R.id.home_event_btn);
         homeWorkshopBtn=view.findViewById(R.id.home_workshop_btn);
         homesponsorsBtn=view.findViewById(R.id.home_sponsors_btn);
 
-        homeEventBtn.setOnClickListener(view1 -> {
-            replaceFragment(new EventFragment(),view);
-        });
         homeWorkshopBtn.setOnClickListener(view1 -> {
             replaceFragment(new WorkshopFragment(),view);
         });
@@ -179,15 +162,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<EventList> events_lists) {
 
-//                ArrayList<EventList> onlyWorkshop;
-//                onlyWorkshop = new ArrayList<>();
-//                for (int i = 0; i < events_lists.size(); i++) {
-//                    if (events_lists.get(i).getId() == 1) {
-//                        onlyWorkshop.add(events_lists.get(i));
-//                    }
-//                }
-
-
                 eventsAdapter = new EventsAdapter(events_lists, getActivity(), false, true);
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -196,35 +170,6 @@ public class HomeFragment extends Fragment {
                 homeworkshopRV.setLayoutManager(manager);
 
                 homeworkshopRV.setAdapter(eventsAdapter);
-            }
-        };
-        eventslist.observe(getActivity(), observer);
-    }
-
-
-    private void getEventData() {
-        EventsVolleyHelper eventsVolleyHelper = new EventsVolleyHelper(getContext());
-        eventsVolleyHelper.getEvents();
-        final androidx.lifecycle.Observer<ArrayList<EventList>> observer = new androidx.lifecycle.Observer<ArrayList<EventList>>() {
-            @Override
-            public void onChanged(ArrayList<EventList> events_lists) {
-
-//                ArrayList<EventList> onlyEvents;
-//                onlyEvents = new ArrayList<>();
-//                for (int i = 0; i < events_lists.size(); i++) {
-//                    if (events_lists.get(i).getId() == 0) {
-//                        onlyEvents.add(events_lists.get(i));
-//                    }
-//                }
-
-                eventsAdapter = new EventsAdapter(events_lists, getActivity(), true, false);
-//
-                LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-                homeEventRV.setHasFixedSize(true);
-
-                homeEventRV.setLayoutManager(manager);
-
-                homeEventRV.setAdapter(eventsAdapter);
             }
         };
         eventslist.observe(getActivity(), observer);
