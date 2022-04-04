@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Intent i = new Intent(getApplicationContext(), VideoCallJoining.class);
+        startActivity(i);
 
         replaceFragment(new MemeManiaFragment());
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -46,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.sigma_icon:
 
-                    Intent i = new Intent(getApplicationContext(), VideoCallJoining.class);
-                    startActivity(i);
+
                     break;
                 case R.id.profile_icon:
                     replaceFragment(new ViewProfileFragment());
