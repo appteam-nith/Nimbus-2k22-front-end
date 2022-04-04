@@ -52,7 +52,7 @@ public class VideoCall extends AppCompatActivity {
     private Handler handler;
     private Runnable runnable;
     private TextView rName,rTime;
-    String Url;
+    String Url = "http://appteam.monuk7735.cf";
 
 
     // Permission WRITE_EXTERNAL_STORAGE is not mandatory
@@ -282,10 +282,6 @@ public class VideoCall extends AppCompatActivity {
 
 
     }
-
-
-
-
 
 
 

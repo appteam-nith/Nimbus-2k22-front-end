@@ -47,9 +47,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VideoCallJoining extends AppCompatActivity {
-    // Here the main url of the app to added
-
-    private String Url ="";
+    // Here the main url of the app to addedre
+    private String Url ="http://appteam.monuk7735.cf";
     TextView videoJoin,remainingT;
     CountDownTimer timer;
     RequestQueue requestQueue;
@@ -147,7 +146,7 @@ public class VideoCallJoining extends AppCompatActivity {
     private void getChannelNameAndTokenId() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                Url + "omegle_clone/joinvc/" + uid, new Response.Listener<String>() {
+                Url + "/omegle_clone/joinvc/" + uid, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
