@@ -97,6 +97,7 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             homeWorkshopViewHolder.homeWorkshopItem.setOnClickListener(view -> {
                 changeFragment(new EventDetailsFragment(), view, event);
             });
+            homeWorkshopViewHolder.homeWorkshopOrganizer.setText(event.getUsername().replace('_', ' ').toUpperCase());
         } else {
             EventViewHolder eventViewHolder = (EventViewHolder) holder;
             eventViewHolder.eventName.setText(event.getName());
@@ -161,13 +162,15 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         private LinearLayout homeWorkshopItem;
         private ImageView homeWorkshopImg;
         private TextView homeWorkshopName;
+        private TextView homeWorkshopOrganizer;
 
         public HomeWorkshopViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            homeWorkshopItem = itemView.findViewById(R.id.home_workshop_item);
-            homeWorkshopImg = itemView.findViewById(R.id.home_workshop_img);
-            homeWorkshopName = itemView.findViewById(R.id.home_workshop_name);
+            homeWorkshopItem = itemView.findViewById(R.id.home_event_item);
+            homeWorkshopImg = itemView.findViewById(R.id.home_event_img);
+            homeWorkshopName = itemView.findViewById(R.id.home_event_name);
+            homeWorkshopOrganizer = itemView.findViewById(R.id.home_event_organizer);
 
         }
     }

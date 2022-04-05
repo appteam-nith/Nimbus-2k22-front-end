@@ -63,14 +63,12 @@ public class HomeFragment extends Fragment {
         homeImgSliderVP2 = view.findViewById(R.id.home_img_slider_VP2);
         sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
 
-        List<HomeSilderItem> silderItemList = new ArrayList<>();
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        silderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        List<HomeSilderItem> sliderItemList = new ArrayList<>();
+        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
 
-        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(silderItemList, homeImgSliderVP2);
+        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2);
         homeImgSliderVP2.setAdapter(viewPagerAdapter);
         dotsCount = viewPagerAdapter.getItemCount();
         dots = new ImageView[dotsCount];
@@ -138,7 +136,7 @@ public class HomeFragment extends Fragment {
             public void onChanged(ArrayList<Sponsors> sponsors_list) {
 
 
-                Log.d("xxxxx", sponsors_list.get(0).getName());
+                Log.d("sponsors", sponsors_list.get(0).getName());
 
 
                 sponsorsAdapter = new SponsorsHomeAdapter(sponsors_list, getActivity());

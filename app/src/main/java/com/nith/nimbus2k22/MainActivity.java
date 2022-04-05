@@ -12,32 +12,27 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.AllEventsAndWorkshopsFragment;
 import com.nith.nimbus2k22.screens.home.HomeFragment;
-import com.nith.nimbus2k22.screens.quiz.AllQuizzesFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
 
 public class MainActivity extends AppCompatActivity {
     private  int flag = 1;
-    private BottomNavigationItemView one;
-    private BottomNavigationItemView two;
-    private BottomNavigationItemView three;
-    private BottomNavigationItemView four;
-    private BottomNavigationItemView five;
+    private BottomNavigationItemView homeBottomNavItem;
+    private BottomNavigationItemView eventsBottomNavItem;
+    private BottomNavigationItemView sigmaBottomNavItem;
+    private BottomNavigationItemView profileBottomNavItem;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        one = findViewById(R.id.home_icon);
-        two = findViewById(R.id.Quizzes_icon);
-        three = findViewById(R.id.eventsAndWorkshop_icon);
-        four = findViewById(R.id.sigma_icon);
-        five = findViewById(R.id.profile_icon);
-
-
+        homeBottomNavItem = findViewById(R.id.home_icon);
+        eventsBottomNavItem = findViewById(R.id.eventsAndWorkshop_icon);
+        sigmaBottomNavItem = findViewById(R.id.sigma_icon);
+        profileBottomNavItem = findViewById(R.id.profile_icon);
 
         on_Click();
-        one.setOnClickListener(new View.OnClickListener() {
+        homeBottomNavItem.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Your code.
                 flag = 1;
@@ -51,54 +46,41 @@ public class MainActivity extends AppCompatActivity {
         switch (flag) {
             case 1:
                 replaceFragment(new HomeFragment());
-                one.setVisibility(View.INVISIBLE);
-                two.setVisibility(View.VISIBLE);
-                three.setVisibility(View.VISIBLE);
-                four.setVisibility(View.VISIBLE);
-                five.setVisibility(View.VISIBLE);
-
+                homeBottomNavItem.setVisibility(View.VISIBLE);
+                eventsBottomNavItem.setVisibility(View.VISIBLE);
+                sigmaBottomNavItem.setVisibility(View.VISIBLE);
+                profileBottomNavItem.setVisibility(View.VISIBLE);
                 break;
+
             case 2:
-                replaceFragment(new AllQuizzesFragment());
-                two.setVisibility(View.INVISIBLE);
-                one.setVisibility(View.VISIBLE);
-                three.setVisibility(View.VISIBLE);
-                four.setVisibility(View.VISIBLE);
-                five.setVisibility(View.VISIBLE);
-
-                break;
-            case 3:
                 replaceFragment(new AllEventsAndWorkshopsFragment());
-                three.setVisibility(View.INVISIBLE);
-                two.setVisibility(View.VISIBLE);
-                one.setVisibility(View.VISIBLE);
-                four.setVisibility(View.VISIBLE);
-                five.setVisibility(View.VISIBLE);
-
+                eventsBottomNavItem.setVisibility(View.INVISIBLE);
+                homeBottomNavItem.setVisibility(View.VISIBLE);
+                sigmaBottomNavItem.setVisibility(View.VISIBLE);
+                profileBottomNavItem.setVisibility(View.VISIBLE);
                 break;
-            case 4:
+
+            case 3:
                 replaceFragment(new SigmaFragment());
-                four.setVisibility(View.INVISIBLE);
-                two.setVisibility(View.VISIBLE);
-                three.setVisibility(View.VISIBLE);
-                one.setVisibility(View.VISIBLE);
-                five.setVisibility(View.VISIBLE);
-
+                sigmaBottomNavItem.setVisibility(View.INVISIBLE);
+                eventsBottomNavItem.setVisibility(View.VISIBLE);
+                homeBottomNavItem.setVisibility(View.VISIBLE);
+                profileBottomNavItem.setVisibility(View.VISIBLE);
                 break;
-            case 5:
+
+            case 4:
                 replaceFragment(new ViewProfileFragment());
-                five.setVisibility(View.INVISIBLE);
-                two.setVisibility(View.VISIBLE);
-                three.setVisibility(View.VISIBLE);
-                four.setVisibility(View.VISIBLE);
-                one.setVisibility(View.VISIBLE);
-
+                profileBottomNavItem.setVisibility(View.INVISIBLE);
+                eventsBottomNavItem.setVisibility(View.VISIBLE);
+                sigmaBottomNavItem.setVisibility(View.VISIBLE);
+                homeBottomNavItem.setVisibility(View.VISIBLE);
                 break;
+
         }
 
     }
-    private void replaceFragment(Fragment fragment){
 
+    private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_frame_layout,fragment);
