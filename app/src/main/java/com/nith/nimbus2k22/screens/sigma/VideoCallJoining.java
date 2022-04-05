@@ -37,6 +37,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.huawei.multimedia.audiokit.utils.Constant;
 import com.nith.nimbus2k22.R;
 
@@ -49,7 +51,8 @@ import java.util.Map;
 public class VideoCallJoining extends AppCompatActivity {
     // Here the main url of the app to addedre
     private String Url ="http://appteam.monuk7735.cf";
-    TextView videoJoin,remainingT;
+    Button videoJoin;
+    TextView remainingT;
     CountDownTimer timer;
     RequestQueue requestQueue;
     private String uid;
@@ -71,6 +74,8 @@ public class VideoCallJoining extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_call_joining);
         progressBar = findViewById(R.id.pb);
+
+        Log.e("onCreate", "reached");
         //handler sets the event that to be handled in future
         handler = new Handler();
         //runnable to this thread   after some interval of time
@@ -114,15 +119,22 @@ public class VideoCallJoining extends AppCompatActivity {
         videoJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) &&
-                        checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID) &&
-                        checkSelfPermission(REQUESTED_PERMISSIONS[2], PERMISSION_REQ_ID)) {
-                    progressBar.setVisibility(View.VISIBLE);
+               Log.e("onclick", "reached");
+//                if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) &&
+//                        checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID) &&
+//                        checkSelfPermission(REQUESTED_PERMISSIONS[2], PERMISSION_REQ_ID)) {
+//                    Log.e("onclick if", "reached");
+//                    progressBar.setVisibility(View.VISIBLE);
+//                    videoJoin.setText("Searching the User...");
+//                    videoJoin.setEnabled(false);
+//                    timer.start();
+//                    getUserId();
+//                }
+                progressBar.setVisibility(View.VISIBLE);
                     videoJoin.setText("Searching the User...");
                     videoJoin.setEnabled(false);
                     timer.start();
                     getUserId();
-                }
 
             }
         });
@@ -130,19 +142,26 @@ public class VideoCallJoining extends AppCompatActivity {
 
     // this will get  firbase uid from shared prefrences that made durin sign up processs
     private void getUserId() {
-        sharedPref = getSharedPreferences("app", MODE_PRIVATE);
-        uid = sharedPref.getString("firebaseUid","");
+        Log.e("getUserId", "reached");
+        //sharedPref = getSharedPreferences("app", MODE_PRIVATE);
+       //uid = sharedPref.getString("firebaseUid","");
+        Log.e("UID", "before");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
+        Log.e("UID", "after");
+
         if (!uid.isEmpty()) {
             Log.e("UID", uid);
             getChannelNameAndTokenId();
         } else {
+            Log.e("UID", "Hello");
             Toast toast = Toast.makeText(this,"Try reinstalling the app or clearing data", Toast.LENGTH_SHORT);
             toast.show();
             progressBar.setVisibility(View.GONE);
             videoJoin.setText("Video");
         }
     }
-    // this method is for gettin channel name and token so that user can hop on channel using  agoira
+    // this method is for getting channel name and token so that user can hop on channel using  agoira
     private void getChannelNameAndTokenId() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
