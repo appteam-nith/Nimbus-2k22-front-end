@@ -29,7 +29,7 @@ public class EventsVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+   String BaseUrl = "";
     public static MutableLiveData<ArrayList<Events_List>> eventslist;
     public void getEvents(){
         eventslist = new MutableLiveData<>();
