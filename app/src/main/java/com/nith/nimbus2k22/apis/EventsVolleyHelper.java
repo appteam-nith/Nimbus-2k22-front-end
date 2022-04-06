@@ -13,7 +13,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.nith.nimbus2k22.Models.EventList;
-import com.nith.nimbus2k22.Models.EventList;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +40,7 @@ public class EventsVolleyHelper {
                 ArrayList<EventList> elist = new ArrayList<>();
                 for(int i=0;i< response.length();i++){
                     try {
+                        Log.e("SATYAM_DEBUG", "ADDED SO,E DATA");
                         Log.e("eventlistresp", String.valueOf(response));
                         JSONObject jsonObject = response.getJSONObject(i);
                         int id = jsonObject.getInt("id");
@@ -49,22 +50,21 @@ public class EventsVolleyHelper {
                         String description = jsonObject.getString("description");
                         String from = jsonObject.getString("from");
                         String to = jsonObject.getString("to");
+                        String venue = jsonObject.getString("venue");
                         String registrationUrl = jsonObject.getString("registrationUrl");
                         String image = jsonObject.getString("image");
                         String pdf = jsonObject.getString("pdf");
+                        String updatedAt = jsonObject.getString("updatedAt");
                         String username = jsonObject.getString("username");
 
-                        elist.add(new EventList(id,name,type,shortDescription,description,from,to,registrationUrl,image,pdf,username));
-
-
-
+                        elist.add(new EventList(id,name,type,shortDescription,description,from,to,venue,registrationUrl,image,pdf,updatedAt,username));
                     } catch (JSONException e) {
                         Log.e("exceptioneventslist", e.getMessage());
                         e.printStackTrace();
                     }
                 }
-                eventslist.postValue(elist);
 
+                eventslist.postValue(elist);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -86,15 +86,18 @@ public class EventsVolleyHelper {
                     Log.e("readevents", String.valueOf(response));
                     int id = response.getInt("id");
                     String name = response.getString("name");
-                    String abtract = response.getString("abstract");
-                    String info = response.getString("info");
+                    String type = response.getString("type");
+                    String shortDescription = response.getString("shortDescription");
+                    String description = response.getString("description");
+                    String from = response.getString("from");
+                    String to = response.getString("to");
                     String venue = response.getString("venue");
-                    String start = response.getString("start");
-                    String end = response.getString("end");
+                    String registrationUrl = response.getString("registrationUrl");
                     String image = response.getString("image");
-                    String regUrl = response.getString("regURL");
-                    int type = response.getInt("type");
-                    String department = response.getString("department");
+                    String pdf = response.getString("pdf");
+                    String updatedAt = response.getString("updatedAT");
+                    String username = response.getString("username");
+
                 } catch (JSONException e) {
                     Log.e("eventreadexception", String.valueOf(e));
                     e.printStackTrace();

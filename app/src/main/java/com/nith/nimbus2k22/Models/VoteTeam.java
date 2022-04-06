@@ -1,12 +1,22 @@
 package com.nith.nimbus2k22.Models;
 
-public class TeamList {
+public class VoteTeam {
+    String id;
     String name;
     String image;
 
-    public TeamList(String name, String image) {
+    public VoteTeam(String id, String name, String image) {
+        this.id = id;
         this.name = name;
         this.image = image;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

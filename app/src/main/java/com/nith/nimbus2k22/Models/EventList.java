@@ -8,16 +8,18 @@ public class EventList {
     String description;
     String from;
     String to;
+    String venue;
     String registrationUrl;
     String image;
     String pdf;
+    String updatedAt;
     String username;
 
 
     public EventList() {
     }
 
-    public EventList(int id, String name, String type, String shortDescription, String description, String from, String to, String registrationUrl, String image, String pdf, String username) {
+    public EventList(int id, String name, String type, String shortDescription, String description, String from, String to, String venue, String registrationUrl, String image, String pdf, String updatedAt, String username) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -25,12 +27,15 @@ public class EventList {
         this.description = description;
         this.from = from;
         this.to = to;
+        this.venue = venue;
         this.registrationUrl = registrationUrl;
         this.image = image;
         this.pdf = pdf;
+        this.updatedAt = updatedAt;
         this.username = username;
-
     }
+
+
 
     public int getId() {
         return id;
@@ -120,5 +125,19 @@ public class EventList {
         this.username = username;
     }
 
+    public String getVenue() {
+        return venue;
+    }
 
+    public void setVenue(String venue) {
+        this.venue = venue;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

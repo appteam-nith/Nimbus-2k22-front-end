@@ -5,26 +5,28 @@ public class User_List {
     String Username;
     String phone;
     String email;
-    String firstname;
-    String  lastname;
+    String name;
+    String  FavTeam;
     int omegleReports;
     boolean omegleAllowed;
     String profileImage;
+    int totalScore;
 
 
     public User_List(String s, String name, String phoneNumber, String emailAdd, String name1, String s1, int i, boolean b, String s2, boolean b1, String nith) {
     }
 
-    public User_List(String firebase, String username, String phone, String email, String firstname, String lastname, int omegleReports, boolean omegleAllowed, String profileImage) {
+    public User_List(String firebase, String username, String phone, String email, String name, String FavTeam, int omegleReports, boolean omegleAllowed, String profileImage,int totalScore) {
         this.firebase = firebase;
-        Username = username;
+       Username = username;
         this.phone = phone;
         this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.name = name;
+        this.FavTeam = FavTeam;
         this.omegleReports = omegleReports;
         this.omegleAllowed = omegleAllowed;
         this.profileImage = profileImage;
+        this.totalScore = totalScore;
 
     }
 
@@ -60,20 +62,20 @@ public class User_List {
         this.email = email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setName(String firstname) {
+        this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getFavTeam() {
+        return FavTeam;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setFavTeam(String FavTeam) {
+        this.FavTeam = FavTeam;
     }
 
     public int getOmegleReports() {
@@ -99,6 +101,11 @@ public class User_List {
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
+    public void setTotalScore(int totalScore){
+        this.totalScore =totalScore;
+    }
 
-
+    public int getTotalScore() {
+        return totalScore;
+    }
 }

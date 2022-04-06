@@ -62,13 +62,13 @@ public class UserVolleyHelper {
                         String username = jsonObject.getString("username");
                         String phone = jsonObject.getString("phone");
                         String email = jsonObject.getString("email");
-                        String firstName = jsonObject.getString("firstName");
-                        String lastName = jsonObject.getString("lastName");
+                        String Name = jsonObject.getString("name");
+                        String favTeam = jsonObject.getString("favTeam");
                         int omegleReports = jsonObject.getInt("omegleReports");
                         boolean omegleAllowed = jsonObject.getBoolean("omegleAllowed");
                         String profileImage = jsonObject.getString("profileImage");
-
-                        alist.add(new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage ));
+                       int totalScore  = jsonObject.getInt("totalScore");
+                        alist.add(new User_List(firebase, username, phone, email, Name, favTeam, omegleReports, omegleAllowed, profileImage,totalScore ));
 
 
                     } catch (JSONException e) {
@@ -102,13 +102,14 @@ public class UserVolleyHelper {
                     String username = response.getString("username");
                     String phone = response.getString("phone");
                     String email = response.getString("email");
-                    String firstName = response.getString("firstName");
-                    String lastName = response.getString("lastName");
+                    String Name = response.getString("name");
+                    String favTeam = response.getString("favTeam");
                     int omegleReports = response.getInt("omegleReports");
                     boolean omegleAllowed = response.getBoolean("omegleAllowed");
                     String profileImage = response.getString("profileImage");
+                    int totalScore  = response.getInt("totalScore");
 
-                    User_List ulist = new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage);
+                    User_List ulist = new User_List(firebase, username, phone, email, Name, favTeam, omegleReports, omegleAllowed, profileImage,totalScore);
                     user_read.postValue(ulist);
                 } catch (JSONException e) {
                     Log.e("userReadexception", e.getMessage());
@@ -156,11 +157,12 @@ public class UserVolleyHelper {
             jsonbody.put("username",ulist.getUsername());
             jsonbody.put("phone",ulist.getPhone());
             jsonbody.put("email",ulist.getEmail());
-            jsonbody.put("firstName",ulist.getFirstname());
-            jsonbody.put("lastName",ulist.getLastname());
+            jsonbody.put("name",ulist.getName());
+            jsonbody.put("favTeam",ulist.getFavTeam());
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
             jsonbody.put("profileImage",ulist.getProfileImage());
+            jsonbody.put("totalScore",ulist.getTotalScore());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -247,11 +249,12 @@ public class UserVolleyHelper {
             jsonbody.put("username",ulist.getUsername());
             jsonbody.put("phone",ulist.getPhone());
             jsonbody.put("email",ulist.getEmail());
-            jsonbody.put("firstName",ulist.getFirstname());
-            jsonbody.put("lastName",ulist.getLastname());
+            jsonbody.put("name",ulist.getName());
+            jsonbody.put("favTeam",ulist.getFavTeam());
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
             jsonbody.put("profileImage",ulist.getProfileImage());
+            jsonbody.put("totalScore",ulist.getTotalScore());
 
         } catch (JSONException e) {
             e.printStackTrace();

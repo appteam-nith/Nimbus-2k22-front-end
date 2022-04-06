@@ -48,6 +48,7 @@ public class SponsorsVolleyHelper {
                         String image = jsonObject.getString("image");
                         String website = jsonObject.getString("website");
                         int level = jsonObject.getInt("level");
+                        slist.add(new Sponsors(id,name,description,image,website,level));
                     } catch (JSONException e) {
                         Log.e("sponsorsexepction", String.valueOf(e));
                         e.printStackTrace();
