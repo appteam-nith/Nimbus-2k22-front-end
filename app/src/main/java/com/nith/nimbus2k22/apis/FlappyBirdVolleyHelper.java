@@ -111,6 +111,7 @@ public class FlappyBirdVolleyHelper {
 
             }
         });
+        requestQueue.add(jsonObjectRequest);
 
     }
 
