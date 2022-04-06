@@ -15,7 +15,8 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.nith.nimbus2k22.Models.Events_List;
+import com.nith.nimbus2k22.Models.EventList;
+import com.nith.nimbus2k22.Models.EventList;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.EventDetailsFragment;
 import com.squareup.picasso.Picasso;
@@ -24,12 +25,12 @@ import java.util.ArrayList;
 
 public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<Events_List> eventsModalArrayList;
+    private ArrayList<EventList> eventsModalArrayList;
     private Context context;
     private boolean isUsedInHomeEvent;
     private boolean isUsedInHomeWorkshop;
 
-    public EventsAdapter(ArrayList<Events_List> eventsModalArrayList, Context context, boolean isUsedInHomeEvent, boolean isUsedInHomeWorkshop) {
+    public EventsAdapter(ArrayList<EventList> eventsModalArrayList, Context context, boolean isUsedInHomeEvent, boolean isUsedInHomeWorkshop) {
         this.eventsModalArrayList = eventsModalArrayList;
         this.context = context;
         this.isUsedInHomeEvent = isUsedInHomeEvent;
@@ -37,15 +38,15 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
-    private void changeFragment(Fragment fragment, View view, Events_List events) {
+    private void changeFragment(Fragment fragment, View view, EventList events) {
         AppCompatActivity activity = (AppCompatActivity) view.getContext();
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame_layout, fragment).addToBackStack(null).commit();
 
         Bundle bundle = new Bundle();
-        bundle.putString("Title", events.getTitle());
+        bundle.putString("Title", events.getName());
         bundle.putString("ImageUrl", events.getImage());
-        bundle.putString("description", events.getDescription());
-        bundle.putString("regUrl", events.getRegUrl());
+        bundle.putString("description", events.getShortDescription());
+        bundle.putString("regUrl", events.getRegistrationUrl());
         fragment.setArguments(bundle);
     }
 
@@ -80,10 +81,10 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Events_List event = eventsModalArrayList.get(position);
+        EventList event = eventsModalArrayList.get(position);
         if (isUsedInHomeEvent) {
             HomeEventViewHolder homeEventViewHolder = (HomeEventViewHolder) holder;
-            homeEventViewHolder.homeEventName.setText(event.getTitle());
+            homeEventViewHolder.homeEventName.setText(event.getName());
             //load img
             Picasso.get().load("https://media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(homeEventViewHolder.homeEventImg);
             homeEventViewHolder.homeEventCard.setOnClickListener(view -> {
@@ -91,15 +92,16 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             });
         } else if (isUsedInHomeWorkshop) {
             HomeWorkshopViewHolder homeWorkshopViewHolder = (HomeWorkshopViewHolder) holder;
-            homeWorkshopViewHolder.homeWorkshopName.setText(event.getTitle());
+            homeWorkshopViewHolder.homeWorkshopName.setText(event.getName());
             //load img;
             homeWorkshopViewHolder.homeWorkshopItem.setOnClickListener(view -> {
                 changeFragment(new EventDetailsFragment(), view, event);
             });
+            homeWorkshopViewHolder.homeWorkshopOrganizer.setText(event.getUsername().replace('_', ' ').toUpperCase());
         } else {
             EventViewHolder eventViewHolder = (EventViewHolder) holder;
-            eventViewHolder.eventName.setText(event.getTitle());
-            eventViewHolder.eventDetail.setText(event.getDescription());
+            eventViewHolder.eventName.setText(event.getName());
+            eventViewHolder.eventDetail.setText(event.getShortDescription());
             eventViewHolder.regBtn.setOnClickListener(view -> {
                 //reg url
 //            Glide.with(context).load("https:media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(eventViewHolder.eventImg);
@@ -109,8 +111,12 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 changeFragment(new EventDetailsFragment(), view, event);
 
             });
-            //load Img
-            Picasso.get().load("https://media.geeksforgeeks.org/img-practice/banner/fork-cpp-thumbnail.png").into(eventViewHolder.eventImg);
+            if (event.getImage().isEmpty()){
+//            Picasso.get().load(imgUrl.replace("http", "https")).into(holder.sponsorImage);
+            }else {
+                Picasso.get().load("https://api.festnimbus.com/"+event.getImage().replace("http", "https")).into(eventViewHolder.eventImg);
+            }
+
         }
     }
 
@@ -156,13 +162,15 @@ public class EventsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         private LinearLayout homeWorkshopItem;
         private ImageView homeWorkshopImg;
         private TextView homeWorkshopName;
+        private TextView homeWorkshopOrganizer;
 
         public HomeWorkshopViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            homeWorkshopItem = itemView.findViewById(R.id.home_workshop_item);
-            homeWorkshopImg = itemView.findViewById(R.id.home_workshop_img);
-            homeWorkshopName = itemView.findViewById(R.id.home_workshop_name);
+            homeWorkshopItem = itemView.findViewById(R.id.home_event_item);
+            homeWorkshopImg = itemView.findViewById(R.id.home_event_img);
+            homeWorkshopName = itemView.findViewById(R.id.home_event_name);
+            homeWorkshopOrganizer = itemView.findViewById(R.id.home_event_organizer);
 
         }
     }

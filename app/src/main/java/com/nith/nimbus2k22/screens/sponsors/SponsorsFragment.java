@@ -1,6 +1,5 @@
 package com.nith.nimbus2k22.screens.sponsors;
 
-import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
 import static com.nith.nimbus2k22.apis.SponsorsVolleyHelper.sponsorslist;
 
 import android.os.Bundle;
@@ -14,12 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nith.nimbus2k22.Models.Events_List;
 import com.nith.nimbus2k22.Models.Sponsors;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.adapters.EventsAdapter;
-import com.nith.nimbus2k22.adapters.SponsorsAdapter;
-import com.nith.nimbus2k22.apis.EventsVolleyHelper;
+//import com.nith.nimbus2k22.adapters.SponsorsAdapter;
+import com.nith.nimbus2k22.adapters.SponsorsFragAdapter;
 import com.nith.nimbus2k22.apis.SponsorsVolleyHelper;
 
 import java.util.ArrayList;
@@ -28,7 +25,7 @@ public class SponsorsFragment extends Fragment {
 
     private RecyclerView sponsorsRV;
     //    private ArrayList<Sponsors> sponsorsModalArrayList;
-    private SponsorsAdapter sponsorsAdapter;
+    private SponsorsFragAdapter sponsorsAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,10 +70,10 @@ public class SponsorsFragment extends Fragment {
             public void onChanged(ArrayList<Sponsors> sponsors_list) {
 
 
-                Log.d("xxxxx", sponsors_list.get(0).getName());
+//                Log.d("xxxxx", sponsors_list.get(0).getName());
 
 
-                sponsorsAdapter = new SponsorsAdapter(sponsors_list, getActivity(), false);
+                sponsorsAdapter = new SponsorsFragAdapter(sponsors_list, getActivity());
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity());
                 sponsorsRV.setHasFixedSize(true);
