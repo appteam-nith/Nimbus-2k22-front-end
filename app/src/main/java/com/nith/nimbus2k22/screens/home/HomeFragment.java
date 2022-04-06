@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,8 @@ import com.nith.nimbus2k22.screens.sponsors.SponsorsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HomeFragment extends Fragment {
 
@@ -52,6 +55,7 @@ public class HomeFragment extends Fragment {
     private LinearLayout sliderDotsPanel;
     private int dotsCount;
     private ImageView[] dots;
+    private int currentItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,16 +63,56 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        Log.d("SATYAM_DEBUG", " AFTER CHANGES");
+
         homeImgSliderVP2 = view.findViewById(R.id.home_img_slider_VP2);
         sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
 
-        List<HomeSilderItem> sliderItemList = new ArrayList<>();
+        ArrayList<HomeSilderItem> sliderItemList = new ArrayList<>();
         sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
         sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
         sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
 
         HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2);
         homeImgSliderVP2.setAdapter(viewPagerAdapter);
+
+        currentItem = 0;
+
+        Log.d("IN_RUN", " before run:23444444 ");
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("IN_RUN", "run:23444444 ");
+                if (currentItem == 3) {
+                    currentItem = 0;
+                }
+                homeImgSliderVP2.setCurrentItem(currentItem++, true);
+//                currentItem++;
+                handler.postDelayed(this, 5000);
+            }
+        }, 5000);
+
+//        final Handler handler = new Handler();
+//        final Runnable Update = new Runnable() {
+//            public void run() {
+//                Log.d("IN RUN", "run:000 ");
+//                if (currentItem == 2) {
+//                    currentItem = 0;
+//                }
+//                homeImgSliderVP2.setCurrentItem(currentItem++, true);
+//            }
+//        };
+//
+//        Timer timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                handler.post(Update);
+//
+//            }
+//        }, 5000, 3000000);
+
         dotsCount = viewPagerAdapter.getItemCount();
         dots = new ImageView[dotsCount];
 
@@ -83,6 +127,7 @@ public class HomeFragment extends Fragment {
             sliderDotsPanel.addView(dots[i], params);
         }
 
+
         dots[0].setImageResource(R.drawable.active_dot);
         homeImgSliderVP2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -93,6 +138,8 @@ public class HomeFragment extends Fragment {
                 dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.active_dot));
             }
         });
+
+
 
 
         // Events and Workshops
