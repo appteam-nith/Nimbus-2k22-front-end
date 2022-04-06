@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.EventFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.WorkshopFragment;
+import com.nith.nimbus2k22.screens.sponsors.SponsorsFragment;
 
 public class EventWorkshopAdapter extends FragmentStateAdapter {
     public EventWorkshopAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
@@ -18,7 +19,7 @@ public class EventWorkshopAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         if (position == 1){
-            return new WorkshopFragment();
+            return new SponsorsFragment();
         }
         return new EventFragment();
     }

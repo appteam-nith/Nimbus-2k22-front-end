@@ -13,17 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.nith.nimbus2k22.Models.TeamMemberlist;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.screens.models.TeamDetailModel;
 
 import java.util.List;
 
 public class TeamDetailAdapter extends RecyclerView.Adapter<TeamDetailAdapter.MyViewHolder> {
-   private Context context;
-   private List<TeamDetailModel> teamDetailModelList;
+   private final Context context;
+   private final List<TeamMemberlist> teamDetailModelList;
    RequestOptions options;
- public TeamDetailAdapter(List<TeamDetailModel>teamDetailModelList,Context context){
-     this.context=context;
+ public TeamDetailAdapter(List<TeamMemberlist>teamDetailModelList, Context context){
+     this.context= (Context) context;
      this.teamDetailModelList=teamDetailModelList;
      options=new RequestOptions().centerCrop().placeholder(R.drawable.refresh).error(R.drawable.refresh);
  }
@@ -36,18 +36,23 @@ public class TeamDetailAdapter extends RecyclerView.Adapter<TeamDetailAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull TeamDetailAdapter.MyViewHolder detailholder, int position) {
-          TeamDetailModel teamDetail=teamDetailModelList.get(position);
+          TeamMemberlist teamDetail=teamDetailModelList.get(position);
         detailholder.teamMemImage.setImageURI(Uri.parse(teamDetail.getImage()));
         detailholder.teamMemName.setText(teamDetail.getName());
         detailholder.memDesignation.setText(teamDetail.getPosition());
         Glide.with(context).load(teamDetail.getImage().replace("http","https")).apply(options).into(detailholder.teamMemImage);
 
-
     }
 
     @Override
     public int getItemCount() {
-        return teamDetailModelList.size();
+        if( teamDetailModelList.size()==0){
+
+        }
+        else {
+            return teamDetailModelList.size();
+        }
+        return 0;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

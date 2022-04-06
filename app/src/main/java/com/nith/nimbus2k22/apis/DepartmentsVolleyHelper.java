@@ -29,7 +29,7 @@ public class DepartmentsVolleyHelper {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
     }
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://appteam.monuk7735.cf/";
     public static MutableLiveData<List<Departments>> DepartmentList;
     public void getDepartments(){
         DepartmentList = new MutableLiveData<>();
