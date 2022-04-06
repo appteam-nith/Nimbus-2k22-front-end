@@ -24,4 +24,7 @@
     <string name="prodygiki">Prodygiki</string>
     <string name="Team_iste">Team ISTE</string>
     <string name="shop">Shop</string>
+    <string name="details">Details:</string>
+    <string name="price">Price:</string>
+    <string name="contact">Contact</string>
 </resources>
