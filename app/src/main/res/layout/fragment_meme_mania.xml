@@ -9,7 +9,7 @@
     tools:ignore="ExtraText">
 
 
- <androidx.cardview.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cardView_Team_Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,9 +64,6 @@
         app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-/>
+        />
 
 </RelativeLayout>
-
-
-

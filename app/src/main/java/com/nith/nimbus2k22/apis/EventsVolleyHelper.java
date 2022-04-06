@@ -32,6 +32,7 @@ public class EventsVolleyHelper {
 
     String BaseUrl = "https://api.festnimbus.com/api/";
     public static MutableLiveData<ArrayList<EventList>> eventslist;
+
     public void getEvents(){
         eventslist = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "events/", null, new Response.Listener<JSONArray>() {
