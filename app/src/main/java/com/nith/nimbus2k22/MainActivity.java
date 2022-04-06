@@ -2,6 +2,7 @@ package com.nith.nimbus2k22;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         homeBottomNavItem = findViewById(R.id.home_icon);
         eventsBottomNavItem = findViewById(R.id.eventsAndWorkshop_icon);
         sigmaBottomNavItem = findViewById(R.id.sigma_icon);

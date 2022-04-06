@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Log.d("IN_RUN", " onCreateView");
+        Log.d("SATYAM_DEBUG", " AFTER CHANGES");
 
         homeImgSliderVP2 = view.findViewById(R.id.home_img_slider_VP2);
         sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
@@ -85,14 +85,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void run() {
                 Log.d("IN_RUN", "run:23444444 ");
-                if (currentItem == 2) {
+                if (currentItem == 3) {
                     currentItem = 0;
                 }
                 homeImgSliderVP2.setCurrentItem(currentItem++, true);
-                currentItem++;
-                handler.postDelayed(this, 100000);
+//                currentItem++;
+                handler.postDelayed(this, 5000);
             }
-        }, 1000);
+        }, 5000);
 
 //        final Handler handler = new Handler();
 //        final Runnable Update = new Runnable() {
