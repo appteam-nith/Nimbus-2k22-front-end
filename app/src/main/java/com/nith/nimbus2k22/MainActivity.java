@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         config.put("cloud_name", "dfinmhios");
         config.put("api_key","981293366339261");
         config.put("api_secret","tknXky4p8K5bRT6Aws_xnAnlAFg");
-        //  config.put("secure", true);
+          config.put("secure", true);
         MediaManager.init(this, config);
     }
 

@@ -88,38 +88,34 @@ public class VideoCallJoining extends AppCompatActivity {
 
         remainingT = findViewById(R.id.remaining_time);
         //count down timer , after this many seconds the user should know tha we are not able to find user so he should try again
-        timer = new CountDownTimer(60000,1000) {
-            @SuppressLint("SetTextI18n")
-            @Override
-            // it after count down inteval tick should make changes
-            public void onTick(long millisUntilFinished) {
-                remainingT.setText("Retry After : "+millisUntilFinished/1000 + "s");
-                if (remainingT.getText().toString().equals("0")){
-                    timer.onFinish();
-                }
-            }
-            //afte time is finished the video button is enabled , so that user can try again
-            @Override
-            public void onFinish() {
-                videoJoin.setEnabled(true);
-                videoJoin.setText("Video");
-                handler.removeCallbacks(runnable);
-                progressBar.setVisibility(View.GONE);
-                remainingT.setText("Please Try Again");
-                Toast.makeText(getApplicationContext(), "No connection present Try Again!", Toast.LENGTH_SHORT).show();
-            }
-        };
+//        timer = new CountDownTimer(60000,1000) {
+//            @SuppressLint("SetTextI18n")
+//            @Override
+//            // it after count down inteval tick should make changes
+//            public void onTick(long millisUntilFinished) {
+//                remainingT.setText("Retry After : "+millisUntilFinished/1000 + "s");
+//                if (remainingT.getText().toString().equals("0")){
+//                    timer.onFinish();
+//                }
+//            }
+//            //afte time is finished the video button is enabled , so that user can try again
+//            @Override
+//            public void onFinish() {
+//                videoJoin.setEnabled(true);
+//                videoJoin.setText("Video");
+//                handler.removeCallbacks(runnable);
+//                progressBar.setVisibility(View.GONE);
+//                remainingT.setText("Please Try Again");
+//                Toast.makeText(getApplicationContext(), "No connection present Try Again!", Toast.LENGTH_SHORT).show();
+//            }
+//        };
 
         videoJoin = findViewById(R.id.video_join);
 
-        // this whole process is to report particular user
-
-
-
         videoJoin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-               Log.e("onclick", "reached");
+            public void onClick(View view) {
+                Log.e("SATYAM_DEBUG", "onClick reached");
 //                if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) &&
 //                        checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID) &&
 //                        checkSelfPermission(REQUESTED_PERMISSIONS[2], PERMISSION_REQ_ID)) {
@@ -129,15 +125,41 @@ public class VideoCallJoining extends AppCompatActivity {
 //                    videoJoin.setEnabled(false);
 //                    timer.start();
 //                    getUserId();
-//                }
+//               }
                 progressBar.setVisibility(View.VISIBLE);
                     videoJoin.setText("Searching the User...");
                     videoJoin.setEnabled(false);
                     timer.start();
                     getUserId();
-
             }
         });
+
+        // this whole process is to report particular user
+
+
+
+//        videoJoin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               Log.e("onclick", "reached");
+//                if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) &&
+//                        checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID) &&
+//                        checkSelfPermission(REQUESTED_PERMISSIONS[2], PERMISSION_REQ_ID)) {
+//                    Log.e("onclick if", "reached");
+//                    progressBar.setVisibility(View.VISIBLE);
+//                    videoJoin.setText("Searching the User...");
+//                    videoJoin.setEnabled(false);
+//                    timer.start();
+//                    getUserId();
+//               }
+//                progressBar.setVisibility(View.VISIBLE);
+//                    videoJoin.setText("Searching the User...");
+//                    videoJoin.setEnabled(false);
+//                    timer.start();
+//                    getUserId();
+//
+//            }
+//        });
     }
 
     // this will get  firbase uid from shared prefrences that made durin sign up processs
@@ -145,9 +167,10 @@ public class VideoCallJoining extends AppCompatActivity {
         Log.e("getUserId", "reached");
         //sharedPref = getSharedPreferences("app", MODE_PRIVATE);
        //uid = sharedPref.getString("firebaseUid","");
-        Log.e("UID", "before");
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        uid = user.getUid();
+       // Log.e("UID", "before");
+        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //uid = user.getUid();
+        uid ="YjoCiuanixTpTQhFld3cWgL40xm2";
         Log.e("UID", "after");
 
         if (!uid.isEmpty()) {
