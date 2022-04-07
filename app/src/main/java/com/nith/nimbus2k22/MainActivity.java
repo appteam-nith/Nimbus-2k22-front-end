@@ -3,6 +3,7 @@ package com.nith.nimbus2k22;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -17,10 +18,10 @@ import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
 
 public class MainActivity extends AppCompatActivity {
     private  int flag = 1;
-    private BottomNavigationItemView homeBottomNavItem;
-    private BottomNavigationItemView eventsBottomNavItem;
-    private BottomNavigationItemView sigmaBottomNavItem;
-    private BottomNavigationItemView profileBottomNavItem;
+    private ImageView homeBottomNavItem;
+    private ImageView eventsBottomNavItem;
+    private ImageView sigmaBottomNavItem;
+    private ImageView profileBottomNavItem;
 
 
     @Override
