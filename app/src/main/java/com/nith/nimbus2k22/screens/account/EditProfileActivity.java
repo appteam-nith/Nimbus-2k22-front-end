@@ -104,7 +104,7 @@ public class EditProfileActivity extends AppCompatActivity {
 //                User_List user=new User_List("6",)
                 User_List user=new User_List(auth.getUid(),name,phoneNumber,emailAdd,"hello",true,0,false,"",picUrl,0);
                 UserVolleyHelper User=new UserVolleyHelper(EditProfileActivity.this);
-                User.createUser(user, "5");
+                User.createUser(user);
 
                 startActivity(new Intent(EditProfileActivity.this,MainActivity.class));
                 UserVolleyHelper UserPresent=new UserVolleyHelper(EditProfileActivity.this);
@@ -112,10 +112,13 @@ public class EditProfileActivity extends AppCompatActivity {
              final androidx.lifecycle.Observer<Check_User>ch1 = new androidx.lifecycle.Observer<Check_User>() {
                  @Override
                  public void onChanged(Check_User check_user) {
+                     Log.e("Kamal","hello");
                      if(check_user.getUser_present()=="true")
-                         User.updateUser(user, auth.getUid());
+
+                        User.updateUser(user, auth.getUid());
                      else
-                         User.createUser(user, auth.getUid());
+                        User.createUser(user);
+                     Log.e("Rohit",String.valueOf(auth.getUid()));
                  }
              };
              user_check.observe(EditProfileActivity.this,ch1);
