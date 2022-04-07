@@ -2,7 +2,8 @@ package com.nith.nimbus2k22.screens.teams;
 
 
 
-import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.teamslist;
+import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.teamlist;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -51,20 +52,20 @@ public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
 //                    new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 //            recyclerView.setLayoutManager(gridLayoutManager);
        CoreTeamVolleyHelper Ct1 = new CoreTeamVolleyHelper(getActivity());
-       Ct1.getTeams();
+       Ct1.getTeamList();
        final androidx.lifecycle.Observer<List<TeamList>> listObserver = new androidx.lifecycle.Observer<List<TeamList>>() {
            @Override
            public void onChanged(List<TeamList> teamLists) {
                TeamAdapter teamAdapter = new TeamAdapter(teamLists, getContext());
             recyclerView.setAdapter(teamAdapter);
-            Log.e("abcd",String.valueOf(teamLists.get(0).getClub_name()));
+            Log.e("abcd",String.valueOf(teamLists.get(0).getName()));
             teamAdapter.setItemOnClickListener(Teams.this);
             StaggeredGridLayoutManager gridLayoutManager =
                     new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(gridLayoutManager);
            }
        };
-        teamslist.observe(getActivity(),listObserver);
+        teamlist.observe(getActivity(),listObserver);
         return view;
         }
     @Override
@@ -72,7 +73,7 @@ public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
         teamList.get(position);
         Intent intent = new Intent(getActivity(), TeamDetail.class);
         // put team name in the intent as extra
-        intent.putExtra(EXTRA_TEAM_NAME, teamList.get(position).getClub_name());
+        intent.putExtra(EXTRA_TEAM_NAME, teamList.get(position).getImage());
         startActivity(intent);
     }
 }

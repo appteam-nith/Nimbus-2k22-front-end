@@ -41,7 +41,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         TeamList teamModel=teamModelList.get(position);
-        holder.teamName.setText(teamModel.getClub_name());
+        holder.teamName.setText(teamModel.getName());
         holder.teamImage.setImageURI(Uri.parse(teamModel.getImage()));
         Glide.with(context).load(teamModel.getImage().replace("http","https")).apply(requestOptions).into(holder.teamImage);
     }

@@ -102,7 +102,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 String emailAdd=etEmailId.getText().toString();
 
 //                User_List user=new User_List("6",)
-                User_List user=new User_List(auth.getUid(),name,phoneNumber,emailAdd,"hello","world",0,false,picUrl);
+                User_List user=new User_List(auth.getUid(),name,phoneNumber,emailAdd,"hello",true,0,false,"",picUrl,0);
                 UserVolleyHelper User=new UserVolleyHelper(EditProfileActivity.this);
                 User.createUser(user, "5");
 

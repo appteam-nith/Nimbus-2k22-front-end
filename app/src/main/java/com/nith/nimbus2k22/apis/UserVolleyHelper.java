@@ -62,13 +62,15 @@ public class UserVolleyHelper {
                         String username = jsonObject.getString("username");
                         String phone = jsonObject.getString("phone");
                         String email = jsonObject.getString("email");
-                        String firstName = jsonObject.getString("firstName");
-                        String lastName = jsonObject.getString("lastName");
+                        String name = jsonObject.getString("name");
+                        boolean favTeamVote = jsonObject.getBoolean("favTeamVote");
                         int omegleReports = jsonObject.getInt("omegleReports");
                         boolean omegleAllowed = jsonObject.getBoolean("omegleAllowed");
+                        String instaId = jsonObject.getString("instaId");
                         String profileImage = jsonObject.getString("profileImage");
+                        int totalScore  = jsonObject.getInt("totalScore");
 
-                        alist.add(new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage ));
+                        alist.add(new User_List(firebase, username, phone, email, name, favTeamVote, omegleReports, omegleAllowed,instaId, profileImage,totalScore ));
 
 
                     } catch (JSONException e) {
@@ -102,13 +104,15 @@ public class UserVolleyHelper {
                     String username = response.getString("username");
                     String phone = response.getString("phone");
                     String email = response.getString("email");
-                    String firstName = response.getString("firstName");
-                    String lastName = response.getString("lastName");
+                    String name = response.getString("name");
+                   boolean favTeamVote = response.getBoolean("favTeamVote");
                     int omegleReports = response.getInt("omegleReports");
                     boolean omegleAllowed = response.getBoolean("omegleAllowed");
+                    String instaId = response.getString("instaId");
                     String profileImage = response.getString("profileImage");
+                    int totalScore = response.getInt("totalScore");
 
-                    User_List ulist = new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage);
+                    User_List ulist = new User_List(firebase, username, phone, email, name, favTeamVote, omegleReports, omegleAllowed,instaId, profileImage,totalScore);
                     user_read.postValue(ulist);
                 } catch (JSONException e) {
                     Log.e("userReadexception", e.getMessage());
@@ -156,11 +160,13 @@ public class UserVolleyHelper {
             jsonbody.put("username",ulist.getUsername());
             jsonbody.put("phone",ulist.getPhone());
             jsonbody.put("email",ulist.getEmail());
-            jsonbody.put("firstName",ulist.getFirstname());
-            jsonbody.put("lastName",ulist.getLastname());
+            jsonbody.put("name",ulist.getName());
+            jsonbody.put("favTeamVote",ulist.isFavTeamVote());
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
+            jsonbody.put("instaId",ulist.getInstaId());
             jsonbody.put("profileImage",ulist.getProfileImage());
+            jsonbody.put("totalScore",ulist.getTotalScore());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -247,11 +253,13 @@ public class UserVolleyHelper {
             jsonbody.put("username",ulist.getUsername());
             jsonbody.put("phone",ulist.getPhone());
             jsonbody.put("email",ulist.getEmail());
-            jsonbody.put("firstName",ulist.getFirstname());
-            jsonbody.put("lastName",ulist.getLastname());
+            jsonbody.put("firstName",ulist.getName());
+            jsonbody.put("favTeamVote",ulist.isFavTeamVote());
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
+            jsonbody.put("instaId",ulist.getInstaId());
             jsonbody.put("profileImage",ulist.getProfileImage());
+            jsonbody.put("totalScore",ulist.getTotalScore());
 
         } catch (JSONException e) {
             e.printStackTrace();
