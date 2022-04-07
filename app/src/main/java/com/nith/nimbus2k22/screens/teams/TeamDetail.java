@@ -1,6 +1,7 @@
 package com.nith.nimbus2k22.screens.teams;
 
-import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.MemberList;
+
+import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.memberslist;
 import static com.nith.nimbus2k22.screens.teams.Teams.EXTRA_TEAM_NAME;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,7 +49,7 @@ public class TeamDetail extends AppCompatActivity {
         recyclerView.setLayoutManager(gridLayoutManager);
             }
         };
-        MemberList.observe(this,obs2);
+        memberslist.observe(this,obs2);
 
     }
     }

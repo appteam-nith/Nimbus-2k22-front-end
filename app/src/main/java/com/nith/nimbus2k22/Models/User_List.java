@@ -1,27 +1,30 @@
 package com.nith.nimbus2k22.Models;
 
 public class User_List {
-    String firebase;
-    String Username;
-    String phone;
-    String email;
-    String firstname;
-    String  lastname;
-    int omegleReports;
-    boolean omegleAllowed;
-    String profileImage;
+   String firebase;
+   String username;
+   String phone;
+   String email;
+   String name;
+   boolean favTeamVote;
+   int omegleReports;
+   boolean omegleAllowed;
+   String instaId;
+   String profileImage;
+   int totalScore;
 
-    public User_List(String firebase, String username, String phone, String email, String firstname, String lastname, int omegleReports, boolean omegleAllowed, String profileImage) {
+    public User_List(String firebase, String username, String phone, String email, String name, boolean favTeamVote, int omegleReports, boolean omegleAllowed, String instaId, String profileImage, int totalScore) {
         this.firebase = firebase;
-        Username = username;
+        this.username = username;
         this.phone = phone;
         this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.name = name;
+        this.favTeamVote = favTeamVote;
         this.omegleReports = omegleReports;
         this.omegleAllowed = omegleAllowed;
+        this.instaId = instaId;
         this.profileImage = profileImage;
-
+        this.totalScore = totalScore;
     }
 
     public String getFirebase() {
@@ -33,11 +36,11 @@ public class User_List {
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
     public String getPhone() {
@@ -56,20 +59,20 @@ public class User_List {
         this.email = email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public boolean isFavTeamVote() {
+        return favTeamVote;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setFavTeamVote(boolean favTeamVote) {
+        this.favTeamVote = favTeamVote;
     }
 
     public int getOmegleReports() {
@@ -88,6 +91,14 @@ public class User_List {
         this.omegleAllowed = omegleAllowed;
     }
 
+    public String getInstaId() {
+        return instaId;
+    }
+
+    public void setInstaId(String instaId) {
+        this.instaId = instaId;
+    }
+
     public String getProfileImage() {
         return profileImage;
     }
@@ -96,5 +107,11 @@ public class User_List {
         this.profileImage = profileImage;
     }
 
+    public int getTotalScore() {
+        return totalScore;
+    }
 
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
+    }
 }

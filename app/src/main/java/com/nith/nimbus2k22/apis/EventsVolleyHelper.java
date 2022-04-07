@@ -50,12 +50,14 @@ public class EventsVolleyHelper {
                         String description = jsonObject.getString("description");
                         String from = jsonObject.getString("from");
                         String to = jsonObject.getString("to");
+                        String venue = jsonObject.getString("venue");
                         String registrationUrl = jsonObject.getString("registrationUrl");
                         String image = jsonObject.getString("image");
                         String pdf = jsonObject.getString("pdf");
+                        String updatedAt = jsonObject.getString("updatedAt");
                         String username = jsonObject.getString("username");
 
-                        elist.add(new EventList(id,name,type,shortDescription,description,from,to,registrationUrl,image,pdf,username));
+                        elist.add(new EventList(id,name,type,shortDescription,description,from,to,venue,registrationUrl,image,pdf,updatedAt,username));
 
 
 
@@ -75,40 +77,4 @@ public class EventsVolleyHelper {
         });
         requestQueue.add(jsonArrayRequest);
     }
-
-    public static MutableLiveData<EventList> eventread;
-
-    public void readEvents(String title) {
-        eventread = new MutableLiveData<>();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, BaseUrl + "events/" + title, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    Log.e("readevents", String.valueOf(response));
-                    int id = response.getInt("id");
-                    String name = response.getString("name");
-                    String abtract = response.getString("abstract");
-                    String info = response.getString("info");
-                    String venue = response.getString("venue");
-                    String start = response.getString("start");
-                    String end = response.getString("end");
-                    String image = response.getString("image");
-                    String regUrl = response.getString("regURL");
-                    int type = response.getInt("type");
-                    String department = response.getString("department");
-                } catch (JSONException e) {
-                    Log.e("eventreadexception", String.valueOf(e));
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("errorreadevents", error.getMessage());
-            }
-        });
-        requestQueue.add(jsonObjectRequest);
-    }
-
-
 }
