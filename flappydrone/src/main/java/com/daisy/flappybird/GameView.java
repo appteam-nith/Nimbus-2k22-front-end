@@ -36,7 +36,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private Bitmap bitmap;
 
     // The colors
-    private static final int colorPipe = Color.parseColor("#C75B39");
+    private static final int colorPipe = Color.parseColor("#e06234");
 
     // The current score
     private int score = 0;

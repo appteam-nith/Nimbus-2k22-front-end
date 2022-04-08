@@ -72,7 +72,7 @@ public class GameActivity extends AppCompatActivity {
 
                         alertDialog = new AlertDialog.Builder(GameActivity.this);
                         alertDialog.setTitle("GAME OVER");
-                        alertDialog.setMessage("Score: " + String.valueOf(gameView.getScore()) +
+                        alertDialog.setMessage("Score: " + String.valueOf(gameView.getScore()*10) +
                                 "\n" + "Would you like to RESTART?");
                         alertDialog.setCancelable(false);
                         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
@@ -143,7 +143,7 @@ public class GameActivity extends AppCompatActivity {
             public void run() {
                 try {
                     // Sleep for 3 seconds for the Surface to initialize
-                    Thread.sleep(3000);
+                    Thread.sleep(300);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 } finally {
@@ -320,7 +320,7 @@ public class GameActivity extends AppCompatActivity {
      * @param score The new score.
      */
     public void updateScore(int score) {
-        textViewScore.setText(String.valueOf(score));
+        textViewScore.setText(String.valueOf(score*10));
     }
 
     /**
@@ -357,7 +357,7 @@ public class GameActivity extends AppCompatActivity {
                 public void run() {
                     try {
                         // Sleep for 3 seconds
-                        Thread.sleep(3000);
+                        Thread.sleep(300);
                     } catch (Exception exception) {
                         exception.printStackTrace();
                     } finally {

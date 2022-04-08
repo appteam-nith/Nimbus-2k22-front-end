@@ -10,11 +10,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
-import com.nith.nimbus2k22.screens.eventsAndWorkshops.AllEventsAndWorkshopsFragment;
+import com.nith.nimbus2k22.screens.eventsAndWorkshops.WorkshopFragment;
 import com.nith.nimbus2k22.screens.home.HomeFragment;
-import com.nith.nimbus2k22.screens.home.MemeManiaFragment;
-import com.nith.nimbus2k22.screens.quiz.AllQuizzesFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
+import com.nith.nimbus2k22.store.StoreFragment;
 
 public class MainActivity extends AppCompatActivity {
     private  int flag = 1;
@@ -101,7 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
         switch (flag) {
             case 1:
-                replaceFragment(new MemeManiaFragment());
+                replaceFragment(new HomeFragment());
+
+
                 one.setVisibility(View.INVISIBLE);
                 two.setVisibility(View.VISIBLE);
                 three.setVisibility(View.VISIBLE);
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case 2:
-                replaceFragment(new AllQuizzesFragment());
+                replaceFragment(new StoreFragment());
 
                 two.setVisibility(View.INVISIBLE);
                 one.setVisibility(View.VISIBLE);
@@ -141,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case 3:
-                replaceFragment(new AllEventsAndWorkshopsFragment());
+                replaceFragment(new WorkshopFragment());
                 three.setVisibility(View.INVISIBLE);
                 two.setVisibility(View.VISIBLE);
                 one.setVisibility(View.VISIBLE);

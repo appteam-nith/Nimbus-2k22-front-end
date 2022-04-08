@@ -35,7 +35,7 @@ import java.util.List;
 
 public class memeComment extends AppCompatActivity {
     private static final String TAG = "hello";
-    private List<CommentModel> commentModels = new ArrayList<>();
+    private List<CommentList> commentModels = new ArrayList<>();
     private static final String EXTRA_USERNAME = "MemeComment";
     ImageView img;
     ImageView img2;
