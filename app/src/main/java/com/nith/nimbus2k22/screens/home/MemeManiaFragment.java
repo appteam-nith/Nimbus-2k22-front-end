@@ -44,7 +44,7 @@ import java.util.List;
 
 public class MemeManiaFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "Meme Mania Fragment";
-    private List<MemeManiaModel> memeList = new ArrayList<>();
+    private List<Memes> memeList = new ArrayList<>();
     FloatingActionButton fab;
     ImageView comment_btn;
 

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.nith.nimbus2k22.Models.Departments;
 import com.nith.nimbus2k22.Models.TeamList;
 import com.nith.nimbus2k22.R;
 
@@ -21,11 +22,11 @@ import java.util.List;
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> {
     private OnItemClickListener mListener;
     private  Context context;
-    private List<TeamList> teamModelList;
+    private List<Departments> teamModelList;
     RequestOptions requestOptions;
 
 
-    public TeamAdapter(List<TeamList> teamModelList, Context context){
+    public TeamAdapter(List<Departments> teamModelList, Context context){
         this.teamModelList=teamModelList;
         this.context=context;
         requestOptions=new RequestOptions().centerCrop().placeholder(R.drawable.refresh).error(R.drawable.refresh);
@@ -40,7 +41,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        TeamList teamModel=teamModelList.get(position);
+        Departments teamModel=teamModelList.get(position);
         holder.teamName.setText(teamModel.getName());
         holder.teamImage.setImageURI(Uri.parse(teamModel.getImage()));
         Glide.with(context).load(teamModel.getImage().replace("http","https")).apply(requestOptions).into(holder.teamImage);

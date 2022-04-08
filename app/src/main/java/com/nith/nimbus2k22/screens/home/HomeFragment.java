@@ -52,6 +52,9 @@ public class HomeFragment extends Fragment {
     private ImageView[] dots;
     private int currentItem;
 
+    Handler handler ;
+    Runnable r ;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,64 +63,68 @@ public class HomeFragment extends Fragment {
 
         Log.d("SATYAM_DEBUG", " AFTER CHANGES");
 
-//        homeImgSliderVP2 = view.findViewById(R.id.home_img_slider_VP2);
-//        sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
-//
-//        ArrayList<HomeSilderItem> sliderItemList = new ArrayList<>();
-//        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-//        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-//        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-//
-//        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2);
-//        homeImgSliderVP2.setAdapter(viewPagerAdapter);
+        homeImgSliderVP2 = view.findViewById(R.id.home_img_slider_VP2);
+        sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
+
+        ArrayList<HomeSilderItem> sliderItemList = new ArrayList<>();
+        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+
+        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2,requireActivity());
+        homeImgSliderVP2.setAdapter(viewPagerAdapter);
 
 
         // auto img slider
-//        currentItem = 0;
-//
-//        Log.d("IN_RUN", " before run:23444444 ");
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Log.d("IN_RUN", "run:23444444 ");
-//                if (currentItem == 3) {
-//                    currentItem = 0;
-//                }
-//                homeImgSliderVP2.setCurrentItem(currentItem++, true);
-//                handler.postDelayed(this, 5000);
-//            }
-//        }, 5000);
+
+
+
+            handler = new Handler();
+            r = new Runnable() {
+                @Override
+                public void run() {
+                    currentItem = homeImgSliderVP2.getCurrentItem();
+                    Log.d("AUTO_SLIDER", String.valueOf(currentItem));
+                    if (currentItem == 2) {
+                        currentItem = -1;
+                    }
+                    currentItem++;
+                    homeImgSliderVP2.setCurrentItem(currentItem, true);
+                    handler.postDelayed(this, 2500);
+                }
+
+            };
+        handler.postDelayed(r, 2500);
 
 
 
 
         // indicator dots
-//        dotsCount = viewPagerAdapter.getItemCount();
-//        dots = new ImageView[dotsCount];
-//
-//        for (int i = 0; i < dotsCount; i++) {
-//            dots[i] = new ImageView(getActivity());
-//            dots[i].setImageResource(R.drawable.inactive_dot);
-//
-//
-//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//
-//            params.setMargins(8, 0, 8, 0);
-//            sliderDotsPanel.addView(dots[i], params);
-//        }
-//
-//
-//        dots[0].setImageResource(R.drawable.active_dot);
-//        homeImgSliderVP2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                for (int i = 0; i < dotsCount; i++) {
-//                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.inactive_dot));
-//                }
-//                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.active_dot));
-//            }
-//        });
+        dotsCount = viewPagerAdapter.getItemCount();
+        dots = new ImageView[dotsCount];
+
+        for (int i = 0; i < dotsCount; i++) {
+            dots[i] = new ImageView(getActivity());
+            dots[i].setImageResource(R.drawable.inactive_dot);
+
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+            params.setMargins(8, 0, 8, 0);
+            sliderDotsPanel.addView(dots[i], params);
+        }
+
+
+        dots[0].setImageResource(R.drawable.active_dot);
+        homeImgSliderVP2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                for (int i = 0; i < dotsCount; i++) {
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.inactive_dot));
+                }
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.active_dot));
+            }
+        });
 
 
 
@@ -201,5 +208,11 @@ public class HomeFragment extends Fragment {
             }
         };
         eventslist.observe(getActivity(), observer);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(r);
     }
 }

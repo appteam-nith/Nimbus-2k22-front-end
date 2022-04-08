@@ -3,6 +3,7 @@ package com.nith.nimbus2k22.screens.teams;
 
 
 import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.teamlist;
+import static com.nith.nimbus2k22.apis.DepartmentsVolleyHelper.DepartmentList;
 
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -18,16 +20,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nith.nimbus2k22.Models.Departments;
 import com.nith.nimbus2k22.Models.TeamList;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.apis.CoreTeamVolleyHelper;
+import com.nith.nimbus2k22.apis.DepartmentsVolleyHelper;
 import com.nith.nimbus2k22.screens.adapters.TeamAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
     public static final String EXTRA_TEAM_NAME = "Team_Name";
-    private final List<TeamList> teamList = new ArrayList<>();
+    private final List<Departments> teamList = new ArrayList<>();
     private RecyclerView recyclerView;
     private TeamAdapter teamAdapter;
     private static final String TAG="Team Fragment";
@@ -51,21 +55,22 @@ public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
 //            StaggeredGridLayoutManager gridLayoutManager =
 //                    new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 //            recyclerView.setLayoutManager(gridLayoutManager);
-       CoreTeamVolleyHelper Ct1 = new CoreTeamVolleyHelper(getActivity());
-       Ct1.getTeamList();
-       final androidx.lifecycle.Observer<List<TeamList>> listObserver = new androidx.lifecycle.Observer<List<TeamList>>() {
+       DepartmentsVolleyHelper Ct1 = new DepartmentsVolleyHelper(getActivity());
+       Ct1.getDepartments();
+       final androidx.lifecycle.Observer<List<Departments>> listObserver1 = new androidx.lifecycle.Observer<List<Departments>>() {
            @Override
-           public void onChanged(List<TeamList> teamLists) {
-               TeamAdapter teamAdapter = new TeamAdapter(teamLists, getContext());
-            recyclerView.setAdapter(teamAdapter);
-            Log.e("abcd",String.valueOf(teamLists.get(0).getName()));
-            teamAdapter.setItemOnClickListener(Teams.this);
-            StaggeredGridLayoutManager gridLayoutManager =
-                    new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(gridLayoutManager);
+           public void onChanged(List<Departments> departments) {
+
+               TeamAdapter teamAdapter = new TeamAdapter(departments, getContext());
+               recyclerView.setAdapter(teamAdapter);
+               Log.e("abcd",String.valueOf(departments.get(0).getName()));
+               teamAdapter.setItemOnClickListener(Teams.this);
+               StaggeredGridLayoutManager gridLayoutManager =
+                       new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+               recyclerView.setLayoutManager(gridLayoutManager);
            }
        };
-        teamlist.observe(getActivity(),listObserver);
+        DepartmentList.observe(getActivity(),  listObserver1);
         return view;
         }
     @Override
