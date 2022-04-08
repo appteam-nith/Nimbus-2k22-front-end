@@ -3,6 +3,7 @@ package com.nith.nimbus2k22.store;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +44,7 @@ public class StoreFragment extends Fragment {
 
         storeAdapter = new StoreAdapter(getActivity(),storeListArrayList);
 
-        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        LinearLayoutManager manager = new GridLayoutManager(requireContext(),2);
         storeRV.setHasFixedSize(true);
 
         storeRV.setLayoutManager(manager);

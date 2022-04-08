@@ -22,24 +22,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nith.nimbus2k22.Models.EventList;
-import com.nith.nimbus2k22.Models.EventList;
 import com.nith.nimbus2k22.Models.Sponsors;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.adapters.EventsAdapter;
-import com.nith.nimbus2k22.adapters.HomeImgSliderAdapter;
 //import com.nith.nimbus2k22.adapters.SponsorsAdapter;
+import com.nith.nimbus2k22.adapters.HomeImgSliderAdapter;
 import com.nith.nimbus2k22.adapters.SponsorsHomeAdapter;
+import com.nith.nimbus2k22.adapters.WorkshopHomeAdapter;
 import com.nith.nimbus2k22.apis.EventsVolleyHelper;
 import com.nith.nimbus2k22.apis.SponsorsVolleyHelper;
 import com.nith.nimbus2k22.modals.HomeSilderItem;
-import com.nith.nimbus2k22.screens.eventsAndWorkshops.EventFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.WorkshopFragment;
 import com.nith.nimbus2k22.screens.sponsors.SponsorsFragment;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class HomeFragment extends Fragment {
 
@@ -49,7 +44,7 @@ public class HomeFragment extends Fragment {
 
     private TextView homeWorkshopBtn, homesponsorsBtn;
 
-    private EventsAdapter eventsAdapter;
+    private WorkshopHomeAdapter eventsAdapter;
     private SponsorsHomeAdapter sponsorsAdapter;
 
     private LinearLayout sliderDotsPanel;
@@ -65,84 +60,69 @@ public class HomeFragment extends Fragment {
 
         Log.d("SATYAM_DEBUG", " AFTER CHANGES");
 
-        homeImgSliderVP2 = view.findViewById(R.id.home_img_slider_VP2);
-        sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
+//        homeImgSliderVP2 = view.findViewById(R.id.home_img_slider_VP2);
+//        sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
+//
+//        ArrayList<HomeSilderItem> sliderItemList = new ArrayList<>();
+//        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+//        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+//        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+//
+//        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2);
+//        homeImgSliderVP2.setAdapter(viewPagerAdapter);
 
-        ArrayList<HomeSilderItem> sliderItemList = new ArrayList<>();
-        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
 
-        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2);
-        homeImgSliderVP2.setAdapter(viewPagerAdapter);
-
-        currentItem = 0;
-
-        Log.d("IN_RUN", " before run:23444444 ");
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.d("IN_RUN", "run:23444444 ");
-                if (currentItem == 3) {
-                    currentItem = 0;
-                }
-                homeImgSliderVP2.setCurrentItem(currentItem++, true);
-//                currentItem++;
-                handler.postDelayed(this, 5000);
-            }
-        }, 5000);
-
-//        final Handler handler = new Handler();
-//        final Runnable Update = new Runnable() {
+        // auto img slider
+//        currentItem = 0;
+//
+//        Log.d("IN_RUN", " before run:23444444 ");
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
 //            public void run() {
-//                Log.d("IN RUN", "run:000 ");
-//                if (currentItem == 2) {
+//                Log.d("IN_RUN", "run:23444444 ");
+//                if (currentItem == 3) {
 //                    currentItem = 0;
 //                }
 //                homeImgSliderVP2.setCurrentItem(currentItem++, true);
+//                handler.postDelayed(this, 5000);
 //            }
-//        };
+//        }, 5000);
+
+
+
+
+        // indicator dots
+//        dotsCount = viewPagerAdapter.getItemCount();
+//        dots = new ImageView[dotsCount];
 //
-//        Timer timer = new Timer();
-//        timer.schedule(new TimerTask() {
+//        for (int i = 0; i < dotsCount; i++) {
+//            dots[i] = new ImageView(getActivity());
+//            dots[i].setImageResource(R.drawable.inactive_dot);
+//
+//
+//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//
+//            params.setMargins(8, 0, 8, 0);
+//            sliderDotsPanel.addView(dots[i], params);
+//        }
+//
+//
+//        dots[0].setImageResource(R.drawable.active_dot);
+//        homeImgSliderVP2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
 //            @Override
-//            public void run() {
-//                handler.post(Update);
-//
+//            public void onPageSelected(int position) {
+//                for (int i = 0; i < dotsCount; i++) {
+//                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.inactive_dot));
+//                }
+//                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.active_dot));
 //            }
-//        }, 5000, 3000000);
-
-        dotsCount = viewPagerAdapter.getItemCount();
-        dots = new ImageView[dotsCount];
-
-        for (int i = 0; i < dotsCount; i++) {
-            dots[i] = new ImageView(getActivity());
-            dots[i].setImageResource(R.drawable.inactive_dot);
-
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-            params.setMargins(8, 0, 8, 0);
-            sliderDotsPanel.addView(dots[i], params);
-        }
-
-
-        dots[0].setImageResource(R.drawable.active_dot);
-        homeImgSliderVP2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                for (int i = 0; i < dotsCount; i++) {
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.inactive_dot));
-                }
-                dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.active_dot));
-            }
-        });
+//        });
 
 
 
 
-        // Events and Workshops
+        // Events
         homeworkshopRV = view.findViewById(R.id.home_workshop_RV);
         getWorkshopData();
 
@@ -153,6 +133,7 @@ public class HomeFragment extends Fragment {
         homeWorkshopBtn=view.findViewById(R.id.home_workshop_btn);
         homesponsorsBtn=view.findViewById(R.id.home_sponsors_btn);
 
+        //btns
         homeWorkshopBtn.setOnClickListener(view1 -> {
             replaceFragment(new WorkshopFragment(),view);
         });
@@ -182,10 +163,11 @@ public class HomeFragment extends Fragment {
             public void onChanged(ArrayList<Sponsors> sponsors_list) {
 
 
-                Log.d("sponsors", sponsors_list.get(0).getName());
 
 
                 sponsorsAdapter = new SponsorsHomeAdapter(sponsors_list, getActivity());
+
+                Log.d("SPONSORS", sponsors_list.get(1).getName());
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 homesponsorRV.setHasFixedSize(true);
@@ -206,7 +188,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<EventList> events_lists) {
 
-                eventsAdapter = new EventsAdapter(events_lists, getActivity(), false, true);
+                eventsAdapter = new WorkshopHomeAdapter(events_lists, getActivity());
+
+                Log.d("EVENTS", events_lists.get(1).getName());
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 homeworkshopRV.setHasFixedSize(true);

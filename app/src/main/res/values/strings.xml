@@ -32,5 +32,8 @@
     <string name="prodygiki">Prodygiki</string>
     <string name="username1">Username</string>
     <string name="comment">comment:</string>
+    <string name="details">details</string>
+    <string name="price">price</string>
+    <string name="contact">store</string>
 
 </resources>

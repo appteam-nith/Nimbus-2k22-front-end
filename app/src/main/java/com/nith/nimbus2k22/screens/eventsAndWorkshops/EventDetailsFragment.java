@@ -12,8 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.nith.nimbus2k22.R;
+import com.squareup.picasso.Picasso;
 
 
 public class EventDetailsFragment extends Fragment {
@@ -44,11 +47,13 @@ public class EventDetailsFragment extends Fragment {
         eventDetailName.setText(title);
         eventDetailDes.setText(description);
 
-        if (imageUrl.isEmpty()){
-//            Picasso.get().load(imgUrl.replace("http", "https")).into(holder.sponsorImage);
-        } else {
-//            Picasso.get().load(imageUrl).into(eventDeatilImg);
+        if (!imageUrl.isEmpty()){
+//            Picasso.get().load("https://media.geeksforgeeks.org/img-practice/banner/dsa-self-paced-thumbnail.png").into(eventDetailImage);
+            Picasso.get().load("https://api.festnimbus.com/"+imageUrl).into(eventDetailImage);
+            Log.d("IMG_URL", imageUrl);
+            Log.d("REG_URL", regUrl);
         }
+
 
         eventDetailRegBtn.setOnClickListener(view1 -> {
             Uri uri = Uri.parse(regUrl);

@@ -1,5 +1,6 @@
 package com.nith.nimbus2k22.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,21 @@ public class HomeImgSliderAdapter extends RecyclerView.Adapter<HomeImgSliderAdap
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder holder, int position) {
         holder.setSliderImg(sliderItems.get(position));
+
+        holder.sliderImg.setOnClickListener(view -> {
+            switch (position){
+                case 0:
+                    //intent
+                    Intent i = new Intent();
+                    break;
+                case 1:
+                    //memme mania
+                    break;
+                case 2:
+                    //departmental
+                    break;
+            }
+        });
     }
 
     @Override
