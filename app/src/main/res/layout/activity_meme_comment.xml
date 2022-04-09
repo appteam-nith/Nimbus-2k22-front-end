@@ -150,7 +150,7 @@
         app:srcCompat="@drawable/ic_teamdetailscommentbackground" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyView"
+        android:id="@+id/recyView_comment"
         android:layout_width="315dp"
         android:layout_height="319dp"
         app:layout_constraintLeft_toLeftOf="parent"

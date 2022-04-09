@@ -29,9 +29,9 @@ import com.nith.nimbus2k22.screens.adapters.TeamAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
+public class Teams extends Fragment  {
     public static final String EXTRA_TEAM_NAME = "Team_Name";
-    private final List<Departments> teamList = new ArrayList<>();
+    private final List<TeamList> mteamList = new ArrayList<>();
     private RecyclerView recyclerView;
     private TeamAdapter teamAdapter;
     private static final String TAG="Team Fragment";
@@ -49,36 +49,37 @@ public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
 
             View view = inflater.inflate(R.layout.fragment_teams, container, false);
             RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-//            TeamAdapter teamAdapter = new TeamAdapter(teamList, getContext());
-//            recyclerView.setAdapter(teamAdapter);
-//            teamAdapter.setItemOnClickListener(Teams.this);
-//            StaggeredGridLayoutManager gridLayoutManager =
-//                    new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-//            recyclerView.setLayoutManager(gridLayoutManager);
-       DepartmentsVolleyHelper Ct1 = new DepartmentsVolleyHelper(getActivity());
-       Ct1.getDepartments();
-       final androidx.lifecycle.Observer<List<Departments>> listObserver1 = new androidx.lifecycle.Observer<List<Departments>>() {
+       CoreTeamVolleyHelper Ct1 = new CoreTeamVolleyHelper(getActivity());
+       Ct1.getTeamList();
+       final androidx.lifecycle.Observer<List<TeamList>> listObserver1 = new androidx.lifecycle.Observer<List<TeamList>>() {
            @Override
-           public void onChanged(List<Departments> departments) {
+           public void onChanged(List<TeamList> departments) {
 
                TeamAdapter teamAdapter = new TeamAdapter(departments, getContext());
                recyclerView.setAdapter(teamAdapter);
-               Log.e("abcd",String.valueOf(departments.get(0).getName()));
-               teamAdapter.setItemOnClickListener(Teams.this);
+               for(int i=0;i<departments.size();i++) {
+                   Log.e("nnn", departments.get(i).getName());
+               }
+//               teamAdapter.setItemOnClickListener(Teams.this);
                StaggeredGridLayoutManager gridLayoutManager =
                        new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                recyclerView.setLayoutManager(gridLayoutManager);
+               for (int i=0; i<departments.size();i++ ){
+                   mteamList.add(departments.get(i));
+               }
            }
        };
-        DepartmentList.observe(getActivity(),  listObserver1);
+        teamlist.observe(getActivity(),  listObserver1);
         return view;
         }
-    @Override
-    public void onItemClick(int position) {
-        teamList.get(position);
-        Intent intent = new Intent(getActivity(), TeamDetail.class);
-        // put team name in the intent as extra
-        intent.putExtra(EXTRA_TEAM_NAME, teamList.get(position).getImage());
-        startActivity(intent);
-    }
+//    @Override
+//    public void onItemClick(int position) {
+////        mteamList.get(position);
+////        Intent intent = new Intent(requireActivity(), TeamDetail.class);
+////        // put team name in the intent as extra
+//////        intent.putExtra(EXTRA_TEAM_NAME, mteamList.get(position).getName());
+////
+////        intent.putExtra("team_name",TeamDetail.class.getName());
+////        startActivity(intent);
+//    }
 }

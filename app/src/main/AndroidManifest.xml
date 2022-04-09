@@ -36,6 +36,9 @@
         <activity
             android:name=".memeComment"
             android:exported="false" />
+        <activity android:name=".screens.teams.TeamDetail"
+            android:exported="false"
+            />
         <activity
             android:name=".memePost"
             android:exported="false" />
