@@ -90,7 +90,7 @@ public class MemeManiaFragment extends Fragment implements MemeManiaAdapter.OnIt
         Intent intent = new Intent(getActivity(), memeComment.class);
         // put username in the intent as extra
         intent.putExtra(EXTRA_IMAGE_,memeList.get(position).getPhoto());
-        intent.putExtra(EXTRA_USERNAME,  memeList.get(position).getAutohr());
+//        intent.putExtra(EXTRA_USERNAME,  memeList.get(position).getAutohr());
         startActivity(intent);
     }
 }

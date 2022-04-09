@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.nith.nimbus2k22.Models.Departments;
 import com.nith.nimbus2k22.Models.TeamList;
@@ -34,6 +35,7 @@ public class Teams extends Fragment  {
     private final List<TeamList> mteamList = new ArrayList<>();
     private RecyclerView recyclerView;
     private TeamAdapter teamAdapter;
+    private ProgressBar teamPG;
     private static final String TAG="Team Fragment";
 
 
@@ -49,11 +51,16 @@ public class Teams extends Fragment  {
 
             View view = inflater.inflate(R.layout.fragment_teams, container, false);
             RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+            teamPG=view.findViewById(R.id.team_pg);
+
        CoreTeamVolleyHelper Ct1 = new CoreTeamVolleyHelper(getActivity());
        Ct1.getTeamList();
        final androidx.lifecycle.Observer<List<TeamList>> listObserver1 = new androidx.lifecycle.Observer<List<TeamList>>() {
            @Override
            public void onChanged(List<TeamList> departments) {
+
+               teamPG.setVisibility(View.GONE);
+               recyclerView.setVisibility(View.VISIBLE);
 
                TeamAdapter teamAdapter = new TeamAdapter(departments, getContext());
                recyclerView.setAdapter(teamAdapter);

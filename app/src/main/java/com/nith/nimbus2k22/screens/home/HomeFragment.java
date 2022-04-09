@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nith.nimbus2k22.Models.EventList;
@@ -46,6 +47,7 @@ public class HomeFragment extends Fragment {
     private ViewPager2 homeImgSliderVP2;
     private RecyclerView homeworkshopRV;
     private RecyclerView homesponsorRV, homeTeamsRV;
+    ProgressBar pG;
 
     private TextView homeWorkshopBtn, homesponsorsBtn, homeTemasBtn;
 
@@ -97,11 +99,11 @@ public class HomeFragment extends Fragment {
                     }
                     currentItem++;
                     homeImgSliderVP2.setCurrentItem(currentItem, true);
-                    handler.postDelayed(this, 2500);
+                    handler.postDelayed(this, 3500);
                 }
 
             };
-        handler.postDelayed(r, 2500);
+        handler.postDelayed(r, 3500);
 
 
 
@@ -135,7 +137,6 @@ public class HomeFragment extends Fragment {
 
 
 
-
         // Events_RV
         homeworkshopRV = view.findViewById(R.id.home_workshop_RV);
         getWorkshopData();
@@ -161,7 +162,7 @@ public class HomeFragment extends Fragment {
             replaceFragment(new SponsorsFragment(),view);
         });
         homeTemasBtn.setOnClickListener(view1 -> {
-//            replaceFragment(new Teams(),view);
+            replaceFragment(new Teams(),view);
         });
 
 
@@ -209,8 +210,6 @@ public class HomeFragment extends Fragment {
         final androidx.lifecycle.Observer<ArrayList<Sponsors>> observer = new androidx.lifecycle.Observer<ArrayList<Sponsors>>() {
             @Override
             public void onChanged(ArrayList<Sponsors> sponsors_list) {
-
-
 
 
                 sponsorsAdapter = new SponsorsHomeAdapter(sponsors_list, getActivity());

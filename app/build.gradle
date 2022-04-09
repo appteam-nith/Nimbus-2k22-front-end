@@ -79,7 +79,4 @@ dependencies {
 
     // agora
     implementation 'io.agora.rtc:full-sdk:3.5.0'
-
-    //auto img slider
-//    implementation 'com.github.smarteist:autoimageslider:1.4.0'
 }
