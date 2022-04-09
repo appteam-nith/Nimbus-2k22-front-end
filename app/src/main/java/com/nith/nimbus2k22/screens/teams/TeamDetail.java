@@ -35,7 +35,7 @@ public class TeamDetail extends AppCompatActivity {
         TextView textViewTeamName = findViewById(R.id.team_name1);
         textViewTeamName.setText(Team_Name);
         CoreTeamVolleyHelper n1 = new CoreTeamVolleyHelper(TeamDetail.this);
-        n1.getTeamMembers("appteam");
+        n1.getTeamMembers(Team_Name);
         final androidx.lifecycle.Observer<List<TeamMemberlist>> obs2 = new  androidx.lifecycle.Observer<List<TeamMemberlist>>() {
             @Override
             public void onChanged(List<TeamMemberlist> newMembersList) {

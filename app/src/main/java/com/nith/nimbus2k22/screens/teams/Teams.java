@@ -31,7 +31,7 @@ import java.util.List;
 
 public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
     public static final String EXTRA_TEAM_NAME = "Team_Name";
-    private final List<Departments> teamList = new ArrayList<>();
+    private final List<TeamList> teamList = new ArrayList<>();
     private RecyclerView recyclerView;
     private TeamAdapter teamAdapter;
     private static final String TAG="Team Fragment";
@@ -55,11 +55,11 @@ public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
 //            StaggeredGridLayoutManager gridLayoutManager =
 //                    new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 //            recyclerView.setLayoutManager(gridLayoutManager);
-       DepartmentsVolleyHelper Ct1 = new DepartmentsVolleyHelper(getActivity());
-       Ct1.getDepartments();
-       final androidx.lifecycle.Observer<List<Departments>> listObserver1 = new androidx.lifecycle.Observer<List<Departments>>() {
+       CoreTeamVolleyHelper Ct1 = new CoreTeamVolleyHelper(getActivity());
+       Ct1.getTeamList();
+       final androidx.lifecycle.Observer<List<TeamList>> listObserver1 = new androidx.lifecycle.Observer<List<TeamList>>() {
            @Override
-           public void onChanged(List<Departments> departments) {
+           public void onChanged(List<TeamList> departments) {
 
                TeamAdapter teamAdapter = new TeamAdapter(departments, getContext());
                recyclerView.setAdapter(teamAdapter);
@@ -70,7 +70,7 @@ public class Teams extends Fragment implements TeamAdapter.OnItemClickListener {
                recyclerView.setLayoutManager(gridLayoutManager);
            }
        };
-        DepartmentList.observe(getActivity(),  listObserver1);
+        teamlist.observe(getActivity(),  listObserver1);
         return view;
         }
     @Override

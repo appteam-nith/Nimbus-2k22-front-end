@@ -22,11 +22,11 @@ import java.util.List;
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> {
     private OnItemClickListener mListener;
     private  Context context;
-    private List<Departments> teamModelList;
+    private List<TeamList> teamModelList;
     RequestOptions requestOptions;
 
 
-    public TeamAdapter(List<Departments> teamModelList, Context context){
+    public TeamAdapter(List<TeamList> teamModelList, Context context){
         this.teamModelList=teamModelList;
         this.context=context;
         requestOptions=new RequestOptions().centerCrop().placeholder(R.drawable.refresh).error(R.drawable.refresh);
@@ -41,7 +41,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Departments teamModel=teamModelList.get(position);
+        TeamList teamModel=teamModelList.get(position);
         holder.teamName.setText(teamModel.getName());
         holder.teamImage.setImageURI(Uri.parse(teamModel.getImage()));
         Glide.with(context).load(teamModel.getImage().replace("http","https")).apply(requestOptions).into(holder.teamImage);

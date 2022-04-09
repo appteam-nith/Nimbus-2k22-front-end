@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,20 +38,22 @@ public class memeComment extends AppCompatActivity {
     private static final String TAG = "hello";
     private List<CommentList> commentModels = new ArrayList<>();
     private static final String EXTRA_USERNAME = "MemeComment";
+    private static final String EXTRA_IMAGE ="MemeMania" ;
     ImageView img;
     ImageView img2;
     ToggleButton togglebtn;
-
-
     RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meme_comment);
-        RecyclerView recyclerView = findViewById(R.id.recyView);
+        RecyclerView recyclerView = findViewById(R.id.recyView_comment);
         Intent intent = getIntent();
         String username = intent.getStringExtra(EXTRA_USERNAME);
+        String userimage=intent.getStringExtra(EXTRA_IMAGE);
+        ImageView userimage1=findViewById(R.id.userimage);
+        userimage1.setImageURI(Uri.parse(userimage));
         TextView textusername = findViewById(R.id.usrname);
         textusername.setText(username);
         MemesManiaVolleyHelper c4 = new MemesManiaVolleyHelper(memeComment.this);

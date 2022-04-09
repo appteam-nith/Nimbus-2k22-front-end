@@ -25,6 +25,7 @@ import java.util.List;
 
 public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyViewHolder> {
     private Context context;
+    private OnItemClickListener mListener;
     private List<Memes> memeList=new ArrayList<>();
     RequestOptions requestOptions1;
     public MemeManiaAdapter(List<Memes> memeList, Context context){
@@ -42,18 +43,25 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
       Memes memeManiaModel=memeList.get(position);
-      //holder.userimage.setImageURI(Uri.parse(memeManiaModel.()));
+      holder.userimage.setImageURI(Uri.parse(memeManiaModel.getPhoto()));
       holder.caption.setText(memeManiaModel.getText());
       holder.memeImage.setImageURI(Uri.parse(memeManiaModel.getPhoto()));
-      //holder.username.setText(memeManiaModel.get());
-       // Glide.with(context).load(memeManiaModel.getMemeImage().replace("http","https")).apply(requestOptions1).into(holder.memeImage);
-       // Glide.with(context).load(memeManiaModel.getUserimage().replace("http","https")).apply(requestOptions1).into(holder.userimage);
+      holder.username.setText((CharSequence) memeManiaModel.getAutohr());
+        Glide.with(context).load(memeManiaModel.getPhoto().replace("http","https")).apply(requestOptions1).into(holder.memeImage);
+        Glide.with(context).load(memeManiaModel.getPhoto().replace("http","https")).apply(requestOptions1).into(holder.userimage);
     }
-
     @Override
     public int getItemCount() {
         return memeList.size();
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+    public void setItemOnClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView username;
@@ -63,20 +71,21 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
         ImageView fab1;
         public MyViewHolder(View view) {
             super(view);
-            fab1=view.findViewById(R.id.comment1);
-            fab1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent=new Intent(view.getContext(), memeComment.class);
-                    view.getContext().startActivity(intent);
-                }
-
-            });
            userimage= view.findViewById(R.id.userimage);
            username=view.findViewById(R.id.usrname);
            caption=view.findViewById(R.id.caption);
            memeImage=view.findViewById(R.id.meme_image);
-
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }
