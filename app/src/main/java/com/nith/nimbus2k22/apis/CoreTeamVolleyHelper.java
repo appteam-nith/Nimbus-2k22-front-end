@@ -30,13 +30,13 @@ public class CoreTeamVolleyHelper {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
     }
-    public static MutableLiveData<List<TeamList>> teamlist;
+    public static MutableLiveData<ArrayList<TeamList>> teamlist;
     public void getTeamList(){
         teamlist = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseURL + "departments", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                List<TeamList>tlist = new ArrayList<>();
+                ArrayList<TeamList>tlist = new ArrayList<>();
                 for(int i=0;i<response.length();i++){
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
