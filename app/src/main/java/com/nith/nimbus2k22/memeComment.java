@@ -53,7 +53,6 @@ public class memeComment extends AppCompatActivity {
         String username = intent.getStringExtra(EXTRA_USERNAME);
         String userimage=intent.getStringExtra(EXTRA_IMAGE);
         ImageView userimage1=findViewById(R.id.userimage);
-        userimage1.setImageURI(Uri.parse(userimage));
         TextView textusername = findViewById(R.id.usrname);
         textusername.setText(username);
         MemesManiaVolleyHelper c4 = new MemesManiaVolleyHelper(memeComment.this);

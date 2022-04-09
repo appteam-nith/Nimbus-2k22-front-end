@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import com.nith.nimbus2k22.Models.UserSerializerForMemes;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
 import com.nith.nimbus2k22.memeComment;
@@ -28,6 +30,15 @@ import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.memePost;
 import com.nith.nimbus2k22.screens.adapters.MemeManiaAdapter;
 import com.nith.nimbus2k22.screens.models.MemeManiaModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,13 +72,14 @@ public class MemeManiaFragment extends Fragment implements MemeManiaAdapter.OnIt
         final androidx.lifecycle.Observer<List<Memes>> memesObserver = new androidx.lifecycle.Observer<List<Memes>>() {
             @Override
             public void onChanged(List<Memes> memes) {
+
                 MemeManiaAdapter memeManiaAdapter = new MemeManiaAdapter(memes, getContext());
+                memeManiaAdapter.setItemOnClickListener(MemeManiaFragment.this);
                 recyclerView1.setAdapter(memeManiaAdapter);
                 recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
             }
 
         };
-//        addTeamDataFromJSON1();
         Memeslist.observe(getActivity(), memesObserver);
         return view;
     }
@@ -78,7 +90,7 @@ public class MemeManiaFragment extends Fragment implements MemeManiaAdapter.OnIt
         Intent intent = new Intent(getActivity(), memeComment.class);
         // put username in the intent as extra
         intent.putExtra(EXTRA_IMAGE_,memeList.get(position).getPhoto());
-        intent.putExtra(EXTRA_USERNAME, (Parcelable) memeList.get(position).getAutohr());
+        intent.putExtra(EXTRA_USERNAME,  memeList.get(position).getAutohr());
         startActivity(intent);
     }
 }
