@@ -246,14 +246,14 @@ public class UserVolleyHelper {
 
 
     }
-    public void createUser(User_List ulist, String s){
+    public void createUser(User_List ulist){
         JSONObject jsonbody = new JSONObject();
         try {
             jsonbody.put("firebase",ulist.getFirebase());
             jsonbody.put("username",ulist.getUsername());
             jsonbody.put("phone",ulist.getPhone());
             jsonbody.put("email",ulist.getEmail());
-            jsonbody.put("firstName",ulist.getName());
+            jsonbody.put("name",ulist.getName());
             jsonbody.put("favTeamVote",ulist.isFavTeamVote());
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
@@ -289,7 +289,13 @@ public class UserVolleyHelper {
                                 Log.e("jsonObject", emailErr);
                                 Toast.makeText(context, emailErr, Toast.LENGTH_SHORT).show();
 
-                            } else {
+                            }
+                            if(object.getJSONObject("Errors").has("firebase")){
+                                String firebaseerr = object.getJSONObject("Errors:").getJSONArray("firebase").get(0).toString();
+                                Log.e("jsonObject",firebaseerr);
+                            }
+
+                            else {
                                 String ResultMsg = object.getString("Message");
                                 Log.e("jsonObject", ResultMsg);
                                 Toast.makeText(context, ResultMsg, Toast.LENGTH_SHORT).show();
@@ -334,7 +340,14 @@ public class UserVolleyHelper {
 
 
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
         requestQueue.add(jsonObjectRequest);
 
 
