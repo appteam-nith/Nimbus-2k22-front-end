@@ -7,12 +7,15 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_gravity="center"
         android:id="@+id/wrkshp_item"
-        android:layout_width="380dp"
-        android:layout_height="220dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="7dp"
+        android:minWidth="350dp"
+        android:minHeight="150dp"
+       android:layout_marginEnd="20dp"
         android:background="@drawable/ic_card_home"
         android:paddingLeft="4dp"
         android:paddingRight="4dp">
@@ -20,9 +23,11 @@
 
         <ImageView
             android:id="@+id/event_item_img"
-            android:layout_width="109dp"
-            android:layout_height="148dp"
-            android:layout_marginStart="28dp"
+            android:layout_width="110dp"
+            android:layout_height="138dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="28dp"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +45,7 @@
             android:maxWidth="200dp"
             android:maxLines="1"
             android:text="Prodygiki_by_ISTE"
-            android:textAlignment="center"
+            android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +63,7 @@
             android:maxWidth="200dp"
             android:maxLines="1"
             android:text="@string/dummy_text"
-            android:textAlignment="center"
+            android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:flow_wrapMode="aligned"
