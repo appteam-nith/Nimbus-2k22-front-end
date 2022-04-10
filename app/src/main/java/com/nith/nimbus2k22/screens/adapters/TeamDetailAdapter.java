@@ -46,9 +46,15 @@ public class TeamDetailAdapter extends RecyclerView.Adapter<TeamDetailAdapter.My
 
     @Override
     public int getItemCount() {
-    return  teamDetailModelList.size();
-    }
+        if (teamDetailModelList ==null) {
 
+        }
+        else {
+            return teamDetailModelList.size();
+        }
+        return 0;
+
+    }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         int id;
         TextView teamName;

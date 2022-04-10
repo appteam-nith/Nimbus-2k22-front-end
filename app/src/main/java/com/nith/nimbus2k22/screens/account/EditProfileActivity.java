@@ -102,26 +102,25 @@ public class EditProfileActivity extends AppCompatActivity {
                 String emailAdd=etEmailId.getText().toString();
 
 //                User_List user=new User_List("6",)
-                User_List user=new User_List(auth.getUid(),name,phoneNumber,emailAdd,"hello",true,0,false,"",picUrl,0);
+                User_List user=new User_List(auth.getUid(),name,phoneNumber,emailAdd,name,false,0,true,instaID,picUrl,0);
                 UserVolleyHelper User=new UserVolleyHelper(EditProfileActivity.this);
-                User.createUser(user, "5");
-
-                startActivity(new Intent(EditProfileActivity.this,MainActivity.class));
                 UserVolleyHelper UserPresent=new UserVolleyHelper(EditProfileActivity.this);
               UserPresent.check_User(emailAdd);
              final androidx.lifecycle.Observer<Check_User>ch1 = new androidx.lifecycle.Observer<Check_User>() {
                  @Override
                  public void onChanged(Check_User check_user) {
-                     if(check_user.getUser_present()=="true")
+                     if(check_user.getUser_present()=="true") {
                          User.updateUser(user, auth.getUid());
+                     }
                      else
-                         User.createUser(user, auth.getUid());
+                         User.createUser(user);
                  }
              };
              user_check.observe(EditProfileActivity.this,ch1);
 
 
                 startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
+                finish();
             }
         });
     }
