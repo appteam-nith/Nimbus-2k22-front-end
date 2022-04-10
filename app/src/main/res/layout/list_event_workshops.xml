@@ -9,10 +9,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/wrkshp_item"
         android:layout_width="380dp"
-        android:layout_height="230dp"
+        android:layout_height="220dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="7dp"
         android:background="@drawable/ic_card_home"
         android:paddingLeft="4dp"
         android:paddingRight="4dp">
@@ -20,14 +20,14 @@
 
         <ImageView
             android:id="@+id/event_item_img"
-            android:layout_width="138dp"
-            android:layout_height="167dp"
-            android:layout_marginStart="24dp"
+            android:layout_width="109dp"
+            android:layout_height="148dp"
+            android:layout_marginStart="28dp"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.375" />
+            app:layout_constraintVertical_bias="0.347" />
 
         <TextView
             android:id="@+id/Event_name"
@@ -39,7 +39,6 @@
             android:ellipsize="end"
             android:maxWidth="200dp"
             android:maxLines="1"
-            android:padding="3dp"
             android:text="Prodygiki_by_ISTE"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -58,7 +57,6 @@
             android:ellipsize="end"
             android:maxWidth="200dp"
             android:maxLines="1"
-            android:padding="3dp"
             android:text="@string/dummy_text"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -66,10 +64,10 @@
             app:flow_wrapMode="aligned"
             app:layout_constraintBottom_toTopOf="@+id/eventRegUrl"
             app:layout_constraintEnd_toEndOf="@+id/Event_name"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/Event_name"
             app:layout_constraintTop_toBottomOf="@+id/Event_name"
-            app:layout_constraintVertical_bias="0.347" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/eventRegUrl"
