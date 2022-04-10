@@ -3,19 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:padding="5dp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/ic_bg_screen_logos">
+    android:layout_height="wrap_content">
 
 
     <ImageView
-
         android:id="@+id/store_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
         android:background="@drawable/ic_store_card"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -24,27 +26,29 @@
         android:id="@+id/store_details_TV"
         android:layout_width="120dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginTop="140dp"
+        android:padding="3dp"
         android:text="@string/details"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/store_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/store_card"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="@+id/store_card"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <TextView
         android:id="@+id/store_price_TV"
         android:layout_width="120dp"
         android:layout_height="20dp"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="4dp"
+        android:padding="3dp"
         android:text="@string/price"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/store_details_TV"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/store_details_TV"
+        app:layout_constraintTop_toBottomOf="@+id/store_details_TV" />
 
     <TextView
         android:id="@+id/store_contact_TV"
@@ -66,12 +70,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:src="@drawable/ic_android_black_24dp"
         android:background="@color/white"
+        android:src="@drawable/ic_android_black_24dp"
         app:layout_constraintEnd_toEndOf="@+id/store_card"
         app:layout_constraintStart_toStartOf="@+id/store_card"
-        app:layout_constraintTop_toTopOf="@+id/store_card"
-         />
+        app:layout_constraintTop_toTopOf="@+id/store_card" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
