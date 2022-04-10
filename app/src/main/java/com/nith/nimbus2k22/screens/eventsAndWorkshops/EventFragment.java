@@ -13,11 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.nith.nimbus2k22.Models.EventList;
 import com.nith.nimbus2k22.Models.EventList;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.adapters.EventsAdapter;
 import com.nith.nimbus2k22.apis.EventsVolleyHelper;
+import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
+import com.nith.nimbus2k22.splashscreen.SplashScreenActivity;
 
 import java.util.ArrayList;
 
@@ -25,6 +28,8 @@ public class EventFragment extends Fragment {
 
     private RecyclerView eventRV;
     private EventsAdapter eventsAdapter;
+
+
 //    private ArrayList<Events_List> eventsModalArrayList;
 
     @Override
