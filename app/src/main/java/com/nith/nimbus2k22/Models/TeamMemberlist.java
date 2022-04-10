@@ -1,7 +1,5 @@
 package com.nith.nimbus2k22.Models;
-
-
- public class TeamMemberlist {
+public class TeamMemberlist {
     String id;
     String name;
     String team_name;

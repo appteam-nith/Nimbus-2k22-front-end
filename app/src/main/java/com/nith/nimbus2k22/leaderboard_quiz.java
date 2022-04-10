@@ -1,12 +1,25 @@
 package com.nith.nimbus2k22;
 
+import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.nith.nimbus2k22.Models.EventList;
+import com.nith.nimbus2k22.Models.FlappyBirdScore;
+import com.nith.nimbus2k22.adapters.LeaderboardAdapter;
+import com.nith.nimbus2k22.adapters.WorkshopFragAdapter;
+import com.nith.nimbus2k22.apis.EventsVolleyHelper;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +27,11 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class leaderboard_quiz extends Fragment {
+
+
+    private RecyclerView leaderBoardRV;
+
+    private LeaderboardAdapter leaderboardAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +77,16 @@ public class leaderboard_quiz extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_leaderboard_quiz, container, false);
+        View view = inflater.inflate(R.layout.fragment_leaderboard_quiz, container, false);
+
+        leaderBoardRV=view.findViewById(R.id.leaderboard_Rv);
+
+//        getLeaderBoardData();
+
+
+
+
+        return  view;
     }
+
 }
