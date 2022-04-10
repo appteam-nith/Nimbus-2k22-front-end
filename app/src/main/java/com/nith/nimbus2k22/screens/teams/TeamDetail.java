@@ -41,7 +41,6 @@ public class TeamDetail extends AppCompatActivity {
         final androidx.lifecycle.Observer<List<TeamMemberlist>> obs2 = new  androidx.lifecycle.Observer<List<TeamMemberlist>>() {
             @Override
             public void onChanged(List<TeamMemberlist> newMembersList) {
-                Log.e("hello",newMembersList.get(0).getId());
                 TeamDetailAdapter teamDetailAdapter=new TeamDetailAdapter(newMembersList,getApplicationContext());
         recyclerView.setAdapter(teamDetailAdapter);
         StaggeredGridLayoutManager gridLayoutManager =

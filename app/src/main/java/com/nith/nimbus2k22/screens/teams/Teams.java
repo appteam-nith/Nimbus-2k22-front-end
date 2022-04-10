@@ -1,7 +1,5 @@
 package com.nith.nimbus2k22.screens.teams;
 
-
-
 import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.teamlist;
 import static com.nith.nimbus2k22.apis.DepartmentsVolleyHelper.DepartmentList;
 
