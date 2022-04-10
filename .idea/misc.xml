@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.38125" />
+        <entry key="app/src/main/res/drawable/ic_card_home.xml" value="0.204" />
+        <entry key="app/src/main/res/drawable/ic_store_card.xml" value="0.1045" />
+        <entry key="app/src/main/res/drawable/ic_vecrtor_sponsors.xml" value="0.295" />
+        <entry key="app/src/main/res/drawable/inactive_dot.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/item_bottom_nav_background.xml" value="0.2065" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/activity_team_detail.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_all_events_and_workshops.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_all_quizzes.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_event.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_event_details.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_sponsors.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_store.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_teams.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/fragment_workshop.xml" value="0.2945205479452055" />
+        <entry key="app/src/main/res/layout/home_img_slider_item.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/item_team.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/item_teamdetail.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/list_event_workshops.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/list_item_event.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/list_item_leaderboard.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/list_item_sponsors.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/list_item_sponsors_home.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/list_item_store.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/list_item_teams_home.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/layout/list_workshops_home.xml" value="0.35260416666666666" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.35260416666666666" />
+        <entry key="flappydrone/src/main/res/layout/activity_game.xml" value="0.35260416666666666" />
+        <entry key="flappydrone/src/main/res/layout/activity_starting.xml" value="0.35260416666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

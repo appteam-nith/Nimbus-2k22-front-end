@@ -192,7 +192,7 @@ public class HomeFragment extends Fragment {
                 homeTeamsRV.setAdapter(teamnAdapter);
             }
         };
-        teamlist.observe(getActivity(), observer);
+        teamlist.observe(requireActivity(), observer);
     }
 
     private void replaceFragment(Fragment fragment, View view){
