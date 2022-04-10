@@ -1,6 +1,7 @@
 package com.nith.nimbus2k22.apis;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -31,13 +32,13 @@ public class CoreTeamVolleyHelper {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
     }
-    public static MutableLiveData<ArrayList<TeamList>> teamlist;
+    public static MutableLiveData<List<TeamList>> teamlist;
     public void getTeamList(){
         teamlist = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseURL + "departments", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                ArrayList<TeamList>tlist = new ArrayList<>();
+                List<TeamList>tlist = new ArrayList<>();
                 for(int i=0;i<response.length();i++){
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
@@ -60,7 +61,7 @@ public class CoreTeamVolleyHelper {
         });
         requestQueue.add(jsonArrayRequest);
     }
-    public static MutableLiveData<List<TeamMemberlist>> newmemberlist;
+     public static MutableLiveData<List<TeamMemberlist>> newmemberlist;
     public void getTeamMembers(String team_name){
         newmemberlist = new MutableLiveData<>();
 
@@ -68,6 +69,7 @@ public class CoreTeamVolleyHelper {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+                    Log.e("Response",String.valueOf(response));
                     JSONArray jsonArray = response.getJSONArray(team_name+"Members");
                     List<TeamMemberlist> mmlist = new ArrayList<>();
                     for(int i=0;i<jsonArray.length();i++){
@@ -89,7 +91,9 @@ public class CoreTeamVolleyHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
             }
-        });requestQueue.add(jsonObjectRequest);
+        });
+        requestQueue.add(jsonObjectRequest);
     }
 }
