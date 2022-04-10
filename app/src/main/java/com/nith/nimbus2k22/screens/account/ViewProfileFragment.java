@@ -110,7 +110,6 @@ public class ViewProfileFragment extends Fragment {
             public void onClick(View v) {
                 auth.signOut();
                 startActivity(new Intent(getActivity(),LoginActivity.class));
-
             }
         });
 
