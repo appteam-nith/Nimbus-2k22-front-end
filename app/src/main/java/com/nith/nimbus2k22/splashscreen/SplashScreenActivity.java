@@ -1,22 +1,38 @@
 package com.nith.nimbus2k22.splashscreen;
 
+
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.cloudinary.android.MediaManager;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
+
+import com.nith.nimbus2k22.apis.FlappyBirdVolleyHelper;
+import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
 import com.nith.nimbus2k22.screens.account.LoginActivity;
 import com.nith.nimbus2k22.MainActivity;
 import com.nith.nimbus2k22.R;
 
 import java.util.HashMap;
+
 import java.util.Map;
 
+import javax.security.auth.login.LoginException;
+
 public class SplashScreenActivity extends AppCompatActivity {
-    private FirebaseAuth auth;
+ FirebaseAuth auth=FirebaseAuth.getInstance();
 
     private void initConfig() {
         Map config = new HashMap();
@@ -26,11 +42,40 @@ public class SplashScreenActivity extends AppCompatActivity {
         //  config.put("secure", true);
         MediaManager.init(this, config);
     }
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    Context context = SplashScreenActivity.this;
+    String idToken = "";
+    FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+//        mUser.getIdToken(true).addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<GetTokenResult> task) {
+//                Log.d("something", "valled");
+//                if (task.isSuccessful()) {
+//                    idToken = task.getResult().getToken();
+//                    Log.e("NoToken",idToken);
+//                    sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+//                    editor = sharedPreferences.edit();
+//                    editor.putString("idToken", idToken);
+//
+//
+//                    editor.commit();
+//                    MemesManiaVolleyHelper M1 = new MemesManiaVolleyHelper(SplashScreenActivity.this);
+//                  //  M1.createMeme("Rohit Yadav", "http://res.cloudinary.com/dfinmhios/image/upload/v1646543091/erdbf1frm6guzqthdy9j.jpg", "hello", "location", idToken);
+//
+//                } else {
+//                    task.getException();
+//                    Log.e("String Exception", String.valueOf(task.getException()));
+//                }
+//
+//            }
+//        });
+
+
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
 

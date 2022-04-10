@@ -1,7 +1,8 @@
 package com.nith.nimbus2k22.screens.teams;
 
 
-import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.memberslist;
+
+import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.newmemberlist;
 import static com.nith.nimbus2k22.screens.teams.Teams.EXTRA_TEAM_NAME;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.nith.nimbus2k22.Models.TeamMemberlist;
@@ -35,21 +37,22 @@ public class TeamDetail extends AppCompatActivity {
         TextView textViewTeamName = findViewById(R.id.team_name1);
         textViewTeamName.setText(Team_Name);
         CoreTeamVolleyHelper n1 = new CoreTeamVolleyHelper(TeamDetail.this);
-        n1.getTeamMembers("appteam");
-        final androidx.lifecycle.Observer<List<TeamMemberlist>> obs2 = new  androidx.lifecycle.Observer<List<TeamMemberlist>>() {
-            @Override
-            public void onChanged(List<TeamMemberlist> newMembersList) {
-                for (int i=0; i<newMembersList.size();i++ ){
-                    teamDetailModelList.add(newMembersList.get(i));
-                }
-                TeamDetailAdapter teamDetailAdapter=new TeamDetailAdapter(teamDetailModelList,getApplicationContext());
-        recyclerView.setAdapter(teamDetailAdapter);
-        StaggeredGridLayoutManager gridLayoutManager =
-                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(gridLayoutManager);
-            }
-        };
-        memberslist.observe(this,obs2);
+       // n1.getTeamMembers("Appteam");
+//        final androidx.lifecycle.Observer<List<TeamMemberlist>> obs2 = new  androidx.lifecycle.Observer<List<TeamMemberlist>>() {
+//            @Override
+//            public void onChanged(List<TeamMemberlist> newMembersList) {
+//                for (int i=0; i<newMembersList.size();i++ ){
+//
+//                    teamDetailModelList.add(newMembersList.get(i));
+//                }
+//                TeamDetailAdapter teamDetailAdapter=new TeamDetailAdapter(teamDetailModelList,getApplicationContext());
+//        recyclerView.setAdapter(teamDetailAdapter);
+//        StaggeredGridLayoutManager gridLayoutManager =
+//                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+//        recyclerView.setLayoutManager(gridLayoutManager);
+//            }
+//        };
+//        newmemberlist.observe(this,obs2);
 
     }
     }

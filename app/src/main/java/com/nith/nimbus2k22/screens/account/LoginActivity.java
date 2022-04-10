@@ -2,6 +2,7 @@ package com.nith.nimbus2k22.screens.account;
 
 import static com.nith.nimbus2k22.apis.UserVolleyHelper.user_check;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -15,10 +16,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.nith.nimbus2k22.MainActivity;
 import com.nith.nimbus2k22.Models.Check_User;
 import com.nith.nimbus2k22.R;
@@ -32,7 +36,9 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progrssDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+
+                        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         inputEmail = findViewById(R.id.etEmail);
@@ -44,7 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         progrssDialog = new ProgressDialog(this);
 
 
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
+
+                        forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));

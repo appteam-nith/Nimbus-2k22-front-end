@@ -1,6 +1,7 @@
 package com.nith.nimbus2k22.screens.account;
 
 import static com.nith.nimbus2k22.apis.UserVolleyHelper.user_check;
+import static com.nith.nimbus2k22.apis.UserVolleyHelper.user_list;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -104,7 +105,7 @@ public class EditProfileActivity extends AppCompatActivity {
 //                User_List user=new User_List("6",)
                 User_List user=new User_List(auth.getUid(),name,phoneNumber,emailAdd,"hello",true,0,false,"",picUrl,0);
                 UserVolleyHelper User=new UserVolleyHelper(EditProfileActivity.this);
-                User.createUser(user);
+
 
                 startActivity(new Intent(EditProfileActivity.this,MainActivity.class));
                 UserVolleyHelper UserPresent=new UserVolleyHelper(EditProfileActivity.this);
@@ -113,13 +114,15 @@ public class EditProfileActivity extends AppCompatActivity {
                  @Override
                  public void onChanged(Check_User check_user) {
                      Log.e("Kamal","hello");
-                     if(check_user.getUser_present()=="true")
-
+                     if(check_user.getUser_present()=="true"){
+                         Log.e("abcIdUser",String.valueOf(user.getUsername()));
                         User.updateUser(user, auth.getUid());
+
+                     }
                      else
-                        User.createUser(user);
-                     Log.e("Rohit",String.valueOf(auth.getUid()));
-                 }
+                        User.createUser(user);{
+                     Log.e("abcUserId",String.valueOf(auth.getUid()));
+                 }}
              };
              user_check.observe(EditProfileActivity.this,ch1);
 

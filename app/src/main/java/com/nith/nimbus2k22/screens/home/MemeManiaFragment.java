@@ -66,7 +66,7 @@ public class MemeManiaFragment extends Fragment implements View.OnClickListener 
             }
         });
         MemesManiaVolleyHelper c3 = new MemesManiaVolleyHelper(getActivity());
-        c3.getMemes();
+       // c3.getMemes();
         final androidx.lifecycle.Observer<List<Memes>> memesObserver = new androidx.lifecycle.Observer<List<Memes>>() {
             @Override
             public void onChanged(List<Memes> memes) {
@@ -77,7 +77,7 @@ public class MemeManiaFragment extends Fragment implements View.OnClickListener 
 
         };
 //        addTeamDataFromJSON1();
-        Memeslist.observe(getActivity(), memesObserver);
+        //Memeslist.observe(getActivity(), memesObserver);
         return view;
     }
 
