@@ -40,8 +40,6 @@ public class Teams extends Fragment  {
     public Teams() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,12 +67,10 @@ public class Teams extends Fragment  {
                StaggeredGridLayoutManager gridLayoutManager =
                        new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                recyclerView.setLayoutManager(gridLayoutManager);
-               for (int i=0; i<departments.size();i++ ){
-                   mteamList.add(departments.get(i));
-               }
+               mteamList.addAll(departments);
            }
        };
-        teamlist.observe(getActivity(),  listObserver1);
+        teamlist.observe(requireActivity(),  listObserver1);
         return view;
         }
 //    @Override
