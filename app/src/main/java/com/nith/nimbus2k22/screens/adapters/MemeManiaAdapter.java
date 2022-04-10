@@ -3,6 +3,7 @@ package com.nith.nimbus2k22.screens.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +18,13 @@ import com.bumptech.glide.request.RequestOptions;
 import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.memeComment;
-import com.nith.nimbus2k22.screens.models.MemeManiaModel;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyViewHolder> {
+    private static final String TAG ="hello" ;
     private Context context;
-    private OnItemClickListener mListener;
     private List<Memes> memeList=new ArrayList<>();
     RequestOptions requestOptions1;
     public MemeManiaAdapter(List<Memes> memeList, Context context){
@@ -47,20 +46,35 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
       holder.caption.setText(memeManiaModel.getText());
       holder.memeImage.setImageURI(Uri.parse(memeManiaModel.getPhoto()));
       holder.username.setText((CharSequence) memeManiaModel.getAutohr());
-        Glide.with(context).load(memeManiaModel.getPhoto().replace("http","https")).apply(requestOptions1).into(holder.memeImage);
-        Glide.with(context).load(memeManiaModel.getPhoto().replace("http","https")).apply(requestOptions1).into(holder.userimage);
-    }
-    @Override
-    public int getItemCount() {
-        return memeList.size();
+        Glide.with(context).load(memeManiaModel.getPhoto()).apply(requestOptions1).into(holder.memeImage);
+        Glide.with(context).load(memeManiaModel.getPhoto()).apply(requestOptions1).into(holder.userimage);
+
+   holder.comment.setOnClickListener(v -> {
+               Intent i = new Intent(context, memeComment.class);
+               i.putExtra("Meme_image", memeManiaModel.getPhoto());
+               i.putExtra("User_image", memeManiaModel.getPhoto());
+               i.putExtra("username", memeManiaModel.getAutohr());
+               Log.d("hello_ji",memeManiaModel.getAutohr());
+               Log.d("hello_ji",memeManiaModel.getPhoto());
+               context.startActivity(i);
+           }
+       );
+
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(int position);
+
+    @Override
+    public int getItemCount() {
+        if (memeList==null) {
+
+        }
+        else {
+            return memeList.size();
+        }
+        return 0;
     }
-    public void setItemOnClickListener(OnItemClickListener listener) {
-        mListener = listener;
-    }
+
+
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -69,23 +83,15 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
         ImageView memeImage;
         ImageView userimage;
         ImageView fab1;
+        private final ImageView comment;
         public MyViewHolder(View view) {
             super(view);
            userimage= view.findViewById(R.id.userimage);
            username=view.findViewById(R.id.usrname);
            caption=view.findViewById(R.id.caption);
            memeImage=view.findViewById(R.id.meme_image);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (mListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            mListener.onItemClick(position);
-                        }
-                    }
-                }
-            });
+           comment=view.findViewById(R.id.comment1);
+
         }
     }
 }
