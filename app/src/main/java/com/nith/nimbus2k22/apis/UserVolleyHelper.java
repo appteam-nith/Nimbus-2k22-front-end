@@ -171,7 +171,7 @@ public class UserVolleyHelper {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PATCH, BaseUrl + "users/"+firebase+"/", jsonbody, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, BaseUrl + "users/"+firebase+"/", jsonbody, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
             Log.e("updateUser",String.valueOf(response));
@@ -187,14 +187,14 @@ public class UserVolleyHelper {
                             JSONObject object = new JSONObject(new String(response.data));
                             if (object.getJSONObject("Errors:").has("username")) {
                                 String usernameErr = object.getJSONObject("Errors:").getJSONArray("username").get(0).toString();
-                                Log.e("jsonObject", usernameErr);
-                                Toast.makeText(context, usernameErr, Toast.LENGTH_SHORT).show();
+                               // Log.e("jsonObject", usernameErr);
+                              //  Toast.makeText(context, usernameErr, Toast.LENGTH_SHORT).show();
 
                             }
                             if (object.getJSONObject("Errors:").has("email")) {
                                 String emailErr = object.getJSONObject("Errors:").getJSONArray("email").get(0).toString();
-                                Log.e("jsonObject", emailErr);
-                                Toast.makeText(context, emailErr, Toast.LENGTH_SHORT).show();
+                              //  Log.e("jsonObject", emailErr);
+                                //Toast.makeText(context, emailErr, Toast.LENGTH_SHORT).show();
 
                             } else {
                                 String ResultMsg = object.getString("Message");
