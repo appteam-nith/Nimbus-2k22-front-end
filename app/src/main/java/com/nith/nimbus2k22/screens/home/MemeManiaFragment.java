@@ -10,9 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +18,7 @@ import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import com.nith.nimbus2k22.Models.UserSerializerForMemes;
+
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
 import com.nith.nimbus2k22.memeComment;
@@ -29,20 +26,11 @@ import com.nith.nimbus2k22.memeComment;
 import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.memePost;
 import com.nith.nimbus2k22.screens.adapters.MemeManiaAdapter;
-import com.nith.nimbus2k22.screens.models.MemeManiaModel;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MemeManiaFragment extends Fragment  {
+
     private static final String TAG = "Meme Mania Fragment";
     private static final String EXTRA_USERNAME = "MemeComment";
     private static final String EXTRA_IMAGE_ ="MemeMania" ;
@@ -81,9 +69,8 @@ public class MemeManiaFragment extends Fragment  {
             }
 
         };
-        Memeslist.observe(getActivity(), memesObserver);
+        Memeslist.observe(requireActivity(), memesObserver);
         return view;
     }
-
 
 }
