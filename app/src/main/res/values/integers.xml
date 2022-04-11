@@ -14,4 +14,5 @@
     <dimen name="ButtonHeight">49dp</dimen>
     <dimen name="CardviewWidthHeight">150dp</dimen>
     <dimen name="etMarginBottom">22dp</dimen>
+    <dimen name="fontweight">100</dimen>
 </resources>

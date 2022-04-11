@@ -103,7 +103,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 String emailAdd=etEmailId.getText().toString();
 
 //                User_List user=new User_List("6",)
-                User_List user=new User_List(auth.getUid(),name,phoneNumber,emailAdd,name,false,0,true,instaID,picUrl,0);
+                User_List user=new User_List(auth.getUid(),name,phoneNumber,emailAdd,"hello","world",0,false,picUrl,false,"NITH");
                 UserVolleyHelper User=new UserVolleyHelper(EditProfileActivity.this);
 
 
@@ -128,7 +128,6 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
                 startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
-                finish();
             }
         });
     }

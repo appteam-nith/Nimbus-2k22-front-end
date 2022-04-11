@@ -11,6 +11,23 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <item name="android:fontFamily">@font/poppins_black</item>
+        <item name="fontFamily">@font/poppins_black</item>
+
+<!--        <item name="android:textViewStyle">@style/PoppinsTextView</item>-->
+<!--        <item name="android:buttonStyle">@style/PoppinsTextView</item>-->
+
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="PoppinsTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/poppins_black</item>
+    </style>
+
+    <style name="PoppinsButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/poppins_black</item>
+    </style>
+
+
 </resources>
