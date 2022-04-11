@@ -1,4 +1,4 @@
-package com.nith.nimbus2k22.modals;
+package com.nith.nimbus2k22.Models;
 
 public class HomeSilderItem {
 

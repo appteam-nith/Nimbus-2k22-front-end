@@ -30,13 +30,13 @@ public class StoreVolleyHelper {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
     }
-    public static MutableLiveData<List<StoreList>> storelist;
+    public static MutableLiveData<ArrayList<StoreList>> storelist;
     public void getStore(){
         storelist = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "store/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                List<StoreList> slist = new ArrayList<>();
+                ArrayList<StoreList> slist = new ArrayList<>();
                 for(int i=0;i<response.length();i++){
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
@@ -91,13 +91,13 @@ public class StoreVolleyHelper {
         });
         requestQueue.add(jsonObjectRequest);
     }
-    public static MutableLiveData<List<ProductImage>> storeimage;
-    public void getStoreImage(int id){
+    public static MutableLiveData<ArrayList<ProductImage>> storeimage;
+    public void getStoreImage(String id){
         storeimage = new MutableLiveData<>();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseUrl + "store/image" + id + "/", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                List<ProductImage> pimage = new ArrayList<>();
+                ArrayList<ProductImage> pimage = new ArrayList<>();
                 for(int i=0;i<response.length();i++){
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);

@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 import com.nith.nimbus2k22.Models.TeamMemberlist;
 import com.nith.nimbus2k22.R;
+import com.nith.nimbus2k22.adapters.TeamDetailAdapter;
 import com.nith.nimbus2k22.apis.CoreTeamVolleyHelper;
-import com.nith.nimbus2k22.screens.adapters.TeamDetailAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

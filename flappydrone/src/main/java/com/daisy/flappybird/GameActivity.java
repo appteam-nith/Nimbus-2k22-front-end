@@ -1,6 +1,7 @@
 package com.daisy.flappybird;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaPlayer;
@@ -81,10 +82,16 @@ public class GameActivity extends AppCompatActivity {
                                 GameActivity.this.restartGame();
                             }
                         });
-                        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                        alertDialog.setNegativeButton("Add to LeadderBoard", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                GameActivity.this.onBackPressed();
+//                                GameActivity.this.onBackPressed();
+//                                Intent i = getIntent();
+//
+//                                String s = i.getStringExtra("flappyUid");
+//                                Log.d("FlappyUID", s);
+
+
                             }
                         });
                         alertDialog.show();

@@ -1,4 +1,4 @@
-package com.nith.nimbus2k22.screens.adapters;
+package com.nith.nimbus2k22.adapters;
 
 import android.content.Context;
 import android.net.Uri;
@@ -29,13 +29,13 @@ public class TeamDetailAdapter extends RecyclerView.Adapter<TeamDetailAdapter.My
  }
     @NonNull
     @Override
-    public TeamDetailAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemDetailView = LayoutInflater.from(context).inflate(R.layout.item_teamdetail, parent, false);
         return new MyViewHolder(itemDetailView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TeamDetailAdapter.MyViewHolder detailholder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder detailholder, int position) {
           TeamMemberlist teamDetail=teamDetailModelList.get(position);
         detailholder.teamMemImage.setImageURI(Uri.parse(teamDetail.getImage()));
         detailholder.teamMemName.setText(teamDetail.getName());

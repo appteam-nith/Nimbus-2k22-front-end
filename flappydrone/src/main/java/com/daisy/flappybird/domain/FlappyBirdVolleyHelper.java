@@ -1,4 +1,4 @@
-package com.nith.nimbus2k22.apis;
+package com.daisy.flappybird.domain;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -16,8 +16,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.nith.nimbus2k22.Models.FlappyBirdGame;
-import com.nith.nimbus2k22.Models.FlappyBirdScore;
 
 import org.json.JSONArray;
 import org.json.JSONException;

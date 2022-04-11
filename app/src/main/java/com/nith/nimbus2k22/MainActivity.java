@@ -2,14 +2,9 @@ package com.nith.nimbus2k22;
 
 
 
-import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.newmemberlist;
-import static com.nith.nimbus2k22.apis.FlappyBirdVolleyHelper.flappyscore;
-import static com.nith.nimbus2k22.apis.MemesManiaVolleyHelper.Memeslist;
-
 import android.content.Context;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -19,29 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GetTokenResult;
-import com.nith.nimbus2k22.Models.FlappyBirdScore;
-import com.nith.nimbus2k22.Models.Memes;
-import com.nith.nimbus2k22.Models.TeamMemberlist;
-import com.nith.nimbus2k22.Models.User_List;
-import com.nith.nimbus2k22.apis.CoreTeamVolleyHelper;
-import com.nith.nimbus2k22.apis.FlappyBirdVolleyHelper;
-import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
-import com.nith.nimbus2k22.apis.UserVolleyHelper;
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.WorkshopFragment;
 import com.nith.nimbus2k22.screens.home.HomeFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
-import com.nith.nimbus2k22.store.StoreFragment;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.List;
+import com.nith.nimbus2k22.screens.store.StoreFragment;
 
 public class MainActivity extends AppCompatActivity {
     private int flag = 1;
@@ -72,38 +50,8 @@ public class MainActivity extends AppCompatActivity {
         String id = auth.getUid();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-     CoreTeamVolleyHelper coreTeamVolleyHelper = new CoreTeamVolleyHelper(MainActivity.this);
-     coreTeamVolleyHelper.getTeamMembers("Appteam");
-     final  androidx.lifecycle.Observer<List<TeamMemberlist>> Ctobs = new androidx.lifecycle.Observer<List<TeamMemberlist>>() {
-         @Override
-         public void onChanged(List<TeamMemberlist> teamMemberlists) {
-             Log.e("teamMemberListabc",teamMemberlists.get(0).getId());
-         }
-     };
-     newmemberlist.observe(this,Ctobs);
-FlappyBirdVolleyHelper fp = new FlappyBirdVolleyHelper(MainActivity.this);
-fp.getFlappyBirdScore();
-final androidx.lifecycle.Observer<List<FlappyBirdScore>> fpobs = new androidx.lifecycle.Observer<List<FlappyBirdScore>>() {
-    @Override
-    public void onChanged(List<FlappyBirdScore> flappyBirdScores) {
-      for(int i=0;i<flappyBirdScores.size();i++){
-          Log.e("abcflappy",String.valueOf(flappyBirdScores.get(0).getFirebase()));
-      }
-    }
-};
-flappyscore.observe(this,fpobs);
-MemesManiaVolleyHelper M3 = new MemesManiaVolleyHelper(MainActivity.this);
-M3.createMeme(auth.getUid(),"https://res.cloudinary.com/dfinmhios/image/upload/v1646238049/exkjzlxgzhhhox4wavxc.jpg","Notext","nolocation","NUll");
-M3.getMemes();
-final androidx.lifecycle.Observer<List<Memes>> memesobs = new androidx.lifecycle.Observer<List<Memes>>() {
-    @Override
-    public void onChanged(List<Memes> memes) {
-        for(int i=0;i<memes.size();i++){
-            Log.e("Memesobs",String.valueOf(memes.get(i).getText()));
-        }
-    }
-};
-        Memeslist.observe(this,memesobs);
+
+
 
 //        FileInputStream serviceAccount = new FileInputStream("");
 //        FirebaseOptions options = new FirebaseOptions.Builder().set

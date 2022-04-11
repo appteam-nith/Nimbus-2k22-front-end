@@ -9,15 +9,22 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.NumberPicker;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class StartingActivity extends AppCompatActivity {
 
     private static final int RECORD_AUDIO_PERMISSION_REQUEST_CODE = 0x00;
+    private FloatingActionButton flappyLB_FAB;
 
     private int volumeThreshold;
 
@@ -25,6 +32,20 @@ public class StartingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting);
+
+        flappyLB_FAB=findViewById(R.id.flappy_lb);
+//        flappyLB_FAB.setOnClickListener(view -> {
+//
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction.replace(R.id.fragment_frame_layout, new );
+//            fragmentTransaction.commit();
+//
+//
+//
+//        });
+
+
 
         // Hide the status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

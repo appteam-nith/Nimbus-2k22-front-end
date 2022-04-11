@@ -35,7 +35,8 @@ import com.nith.nimbus2k22.adapters.WorkshopHomeAdapter;
 import com.nith.nimbus2k22.apis.CoreTeamVolleyHelper;
 import com.nith.nimbus2k22.apis.EventsVolleyHelper;
 import com.nith.nimbus2k22.apis.SponsorsVolleyHelper;
-import com.nith.nimbus2k22.modals.HomeSilderItem;
+import com.nith.nimbus2k22.Models.HomeSilderItem;
+import com.nith.nimbus2k22.leaderboard_quiz;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.WorkshopFragment;
 import com.nith.nimbus2k22.screens.sponsors.SponsorsFragment;
 import com.nith.nimbus2k22.screens.teams.Teams;
@@ -61,8 +62,8 @@ public class HomeFragment extends Fragment {
     private int currentItem;
 
 
-    Handler handler ;
-    Runnable r ;
+    Handler handler;
+    Runnable r;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,32 +81,29 @@ public class HomeFragment extends Fragment {
         sliderItemList.add(new HomeSilderItem(R.drawable.meme_mania_home));
         sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
 
-        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2,requireActivity());
+        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2, requireActivity());
         homeImgSliderVP2.setAdapter(viewPagerAdapter);
 
 
         // auto img slider
 
 
-
-            handler = new Handler();
-            r = new Runnable() {
-                @Override
-                public void run() {
-                    currentItem = homeImgSliderVP2.getCurrentItem();
-                    Log.d("AUTO_SLIDER", String.valueOf(currentItem));
-                    if (currentItem == 2) {
-                        currentItem = -1;
-                    }
-                    currentItem++;
-                    homeImgSliderVP2.setCurrentItem(currentItem, true);
-                    handler.postDelayed(this, 3500);
+        handler = new Handler();
+        r = new Runnable() {
+            @Override
+            public void run() {
+                currentItem = homeImgSliderVP2.getCurrentItem();
+                Log.d("AUTO_SLIDER", String.valueOf(currentItem));
+                if (currentItem == 2) {
+                    currentItem = -1;
                 }
+                currentItem++;
+                homeImgSliderVP2.setCurrentItem(currentItem, true);
+                handler.postDelayed(this, 3500);
+            }
 
-            };
+        };
         handler.postDelayed(r, 3500);
-
-
 
 
         // indicator dots
@@ -136,7 +134,6 @@ public class HomeFragment extends Fragment {
         });
 
 
-
         // Events_RV
         homeworkshopRV = view.findViewById(R.id.home_workshop_RV);
         getWorkshopData();
@@ -146,25 +143,34 @@ public class HomeFragment extends Fragment {
         getSponsorsData();
 
         //teams_RV
-        homeTeamsRV=view.findViewById(R.id.home_teams_RV);
+        homeTeamsRV = view.findViewById(R.id.home_teams_RV);
         getTeamsData();
 
         //btns
-        homeWorkshopBtn=view.findViewById(R.id.home_workshop_btn);
-        homesponsorsBtn=view.findViewById(R.id.home_sponsors_btn);
-        homeTemasBtn=view.findViewById(R.id.home_team_btn);
+        homeWorkshopBtn = view.findViewById(R.id.home_workshop_btn);
+        homesponsorsBtn = view.findViewById(R.id.home_sponsors_btn);
+        homeTemasBtn = view.findViewById(R.id.home_team_btn);
 
 
         homeWorkshopBtn.setOnClickListener(view1 -> {
-            replaceFragment(new WorkshopFragment(),view);
-        });
-        homesponsorsBtn.setOnClickListener(view1 -> {
-            replaceFragment(new SponsorsFragment(),view);
-        });
-        homeTemasBtn.setOnClickListener(view1 -> {
-            replaceFragment(new Teams(),view);
+//            replaceFragment(new WorkshopFragment(), view);
+
+
+
+//
+            replaceFragment(new leaderboard_quiz(),view);
+
         });
 
+
+
+
+        homesponsorsBtn.setOnClickListener(view1 -> {
+            replaceFragment(new SponsorsFragment(), view);
+        });
+        homeTemasBtn.setOnClickListener(view1 -> {
+            replaceFragment(new Teams(), view);
+        });
 
 
         return view;
@@ -177,8 +183,6 @@ public class HomeFragment extends Fragment {
         final androidx.lifecycle.Observer<ArrayList<TeamList>> observer = new androidx.lifecycle.Observer<ArrayList<TeamList>>() {
             @Override
             public void onChanged(ArrayList<TeamList> teamLists) {
-
-
 
 
                 teamnAdapter = new TeamsHomeAdapter(teamLists, getActivity());
@@ -195,7 +199,7 @@ public class HomeFragment extends Fragment {
         teamlist.observe(requireActivity(), observer);
     }
 
-    private void replaceFragment(Fragment fragment, View view){
+    private void replaceFragment(Fragment fragment, View view) {
 
         AppCompatActivity activity = (AppCompatActivity) view.getContext();
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame_layout, fragment).addToBackStack(null).commit();

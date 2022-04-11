@@ -21,8 +21,8 @@ import android.widget.ToggleButton;
 import com.bumptech.glide.Glide;
 import com.nith.nimbus2k22.Models.CommentList;
 import com.nith.nimbus2k22.Models.Memes;
+import com.nith.nimbus2k22.adapters.CommentAdapter;
 import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
-import com.nith.nimbus2k22.screens.adapters.CommentAdapter;
 import java.util.ArrayList;
 import java.util.List;
 

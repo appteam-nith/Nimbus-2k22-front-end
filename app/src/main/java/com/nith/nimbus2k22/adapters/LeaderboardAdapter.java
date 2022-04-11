@@ -29,7 +29,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     public LBViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view;
-        view = layoutInflater.inflate(R.layout.list_item_sponsors, parent, false);
+        view = layoutInflater.inflate(R.layout.list_item_leaderboard, parent, false);
         return new LBViewHolder(view);
     }
 

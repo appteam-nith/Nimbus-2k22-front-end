@@ -22,9 +22,9 @@ import android.widget.ProgressBar;
 import com.nith.nimbus2k22.Models.Departments;
 import com.nith.nimbus2k22.Models.TeamList;
 import com.nith.nimbus2k22.R;
+import com.nith.nimbus2k22.adapters.TeamAdapter;
 import com.nith.nimbus2k22.apis.CoreTeamVolleyHelper;
 import com.nith.nimbus2k22.apis.DepartmentsVolleyHelper;
-import com.nith.nimbus2k22.screens.adapters.TeamAdapter;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,22 +1,18 @@
-package com.nith.nimbus2k22.screens.adapters;
+package com.nith.nimbus2k22.adapters;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.nith.nimbus2k22.Models.CommentList;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.screens.models.CommentModel;
 
 import java.util.ArrayList;
 import java.util.List;

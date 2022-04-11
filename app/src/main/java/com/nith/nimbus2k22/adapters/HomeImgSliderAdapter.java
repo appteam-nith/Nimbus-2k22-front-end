@@ -2,6 +2,7 @@ package com.nith.nimbus2k22.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,14 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.daisy.flappybird.StartingActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.modals.HomeSilderItem;
+import com.nith.nimbus2k22.Models.HomeSilderItem;
+import com.nith.nimbus2k22.screens.bestTeam.BestTeamFragment;
 import com.nith.nimbus2k22.screens.home.MemeManiaFragment;
 import com.nith.nimbus2k22.screens.teams.Teams;
 
@@ -27,11 +29,13 @@ public class HomeImgSliderAdapter extends RecyclerView.Adapter<HomeImgSliderAdap
     private List<HomeSilderItem> sliderItems;
     private ViewPager2 imgSliderVP2;
     protected Context context;
+    private FirebaseAuth auth;
 
     public HomeImgSliderAdapter(List<HomeSilderItem> sliderItems, ViewPager2 imgSliderVP2, Context context) {
         this.sliderItems = sliderItems;
         this.imgSliderVP2 = imgSliderVP2;
         this.context = context;
+        auth = FirebaseAuth.getInstance();
     }
 
     @NonNull
@@ -49,6 +53,8 @@ public class HomeImgSliderAdapter extends RecyclerView.Adapter<HomeImgSliderAdap
                 case 0:
                     //intent
                     Intent i = new Intent(context, StartingActivity.class);
+                    i.putExtra("flappyUid",auth.getUid());
+                    Log.d("FLAPPYUID", auth.getUid());
                     context.startActivity(i);
                     break;
                 case 1:
@@ -57,7 +63,7 @@ public class HomeImgSliderAdapter extends RecyclerView.Adapter<HomeImgSliderAdap
                     break;
                 case 2:
                     //departmental
-                    replaceFragment(new Teams(),view);
+                    replaceFragment(new BestTeamFragment(),view);
                     break;
             }
         });

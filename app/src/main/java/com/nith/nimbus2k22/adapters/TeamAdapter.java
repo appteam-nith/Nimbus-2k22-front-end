@@ -1,4 +1,4 @@
-package com.nith.nimbus2k22.screens.adapters;
+package com.nith.nimbus2k22.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.nith.nimbus2k22.Models.Departments;
 import com.nith.nimbus2k22.Models.TeamList;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.screens.teams.TeamDetail;
