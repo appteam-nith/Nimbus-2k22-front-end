@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                     progrssDialog.setTitle("Login ");
                     progrssDialog.setCanceledOnTouchOutside(false);
                     progrssDialog.show();
-<
+
 
                     auth.signInWithEmailAndPassword(txt_email,txt_password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
