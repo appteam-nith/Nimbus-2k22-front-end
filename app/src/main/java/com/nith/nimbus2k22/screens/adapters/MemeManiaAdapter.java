@@ -19,7 +19,6 @@ import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.memeComment;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +42,7 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         Memes memeManiaModel=memeList.get(position);
         holder.userimage.setImageURI(Uri.parse(memeManiaModel.getPhoto()));
         holder.caption.setText(memeManiaModel.getText());
@@ -61,6 +61,7 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
 //                    context.startActivity(i);
 //                }
 //        );
+
 
     }
 
@@ -100,6 +101,7 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
                     view.getContext().startActivity(intnet);
                 }
             });
+
 
         }
     }

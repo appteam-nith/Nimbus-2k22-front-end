@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
@@ -43,6 +44,7 @@ public class memePost extends AppCompatActivity {
     Uri filepath;
     String encodedimg;
     long sizeOfImage;
+    FirebaseAuth auth;
     byte[] bytesofimage;
     Bitmap bitmap;
     String picUrl;
@@ -53,6 +55,7 @@ public class memePost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meme_post);
+
         auth = FirebaseAuth.getInstance();
         memedisplay=findViewById(R.id.memeDisplay);
         displaypic=findViewById(R.id.profilePic);
@@ -60,6 +63,7 @@ public class memePost extends AppCompatActivity {
 //        choosebutton=findViewById(R.id.memeChooseButton);
         btnuserpost=findViewById(R.id.btn_user_post_image);
         MemesManiaVolleyHelper m1 = new MemesManiaVolleyHelper(memePost.this);
+
         memedisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,14 +84,15 @@ public class memePost extends AppCompatActivity {
             }
         });
     }
+
     private void openGallery() {
 
         Dexter.withActivity(memePost.this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                Intent intent =new Intent(Intent.ACTION_PICK);
+                Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent,"browse image"),1);
+                startActivityForResult(Intent.createChooser(intent, "browse image"), 1);
             }
 
             @Override
@@ -103,6 +108,7 @@ public class memePost extends AppCompatActivity {
         }).check();
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
@@ -161,7 +167,7 @@ public class memePost extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             imageUri = data.getData();
             memedisplay.setImageURI(imageUri);
             Toast.makeText(this, "Image Selected", Toast.LENGTH_SHORT).show();
@@ -170,10 +176,11 @@ public class memePost extends AppCompatActivity {
 
 
     }
+
     private void encodeBitmapimage(Bitmap bitmap) {
-        ByteArrayOutputStream byteArrayOutputStream =new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
-        bytesofimage =byteArrayOutputStream.toByteArray();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        bytesofimage = byteArrayOutputStream.toByteArray();
 
         encodedimg = Base64.encodeToString(bytesofimage, Base64.DEFAULT);
     }
@@ -189,4 +196,4 @@ public class memePost extends AppCompatActivity {
 //
 //    }
 
-    }
+}

@@ -5,7 +5,7 @@ import static com.nith.nimbus2k22.apis.MemesManiaVolleyHelper.commentlist;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 
 import android.content.Intent;
 import android.net.Uri;
@@ -23,17 +23,6 @@ import com.nith.nimbus2k22.Models.CommentList;
 import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
 import com.nith.nimbus2k22.screens.adapters.CommentAdapter;
-import com.nith.nimbus2k22.screens.models.CommentModel;
-import com.nith.nimbus2k22.screens.models.MemeManiaModel;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +69,7 @@ public class memeComment extends AppCompatActivity {
 
           }
       });
+
         MemesManiaVolleyHelper c4 = new MemesManiaVolleyHelper(memeComment.this);
       c4.getCommentList(M.getId());
         final androidx.lifecycle.Observer<List<CommentList>> observer2 = new androidx.lifecycle.Observer<List<CommentList>>() {
