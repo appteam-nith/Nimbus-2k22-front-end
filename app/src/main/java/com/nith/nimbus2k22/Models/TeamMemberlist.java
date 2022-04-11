@@ -1,13 +1,12 @@
 package com.nith.nimbus2k22.Models;
-
 public class TeamMemberlist {
-    int id;
+    String id;
     String name;
     String team_name;
     String position;
     String image;
 
-    public TeamMemberlist(int id, String name, String team_name, String position, String image) {
+    public TeamMemberlist(String id, String name, String team_name, String position, String image) {
         this.id = id;
         this.name = name;
         this.team_name = team_name;
@@ -15,11 +14,11 @@ public class TeamMemberlist {
         this.image = image;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -53,5 +52,5 @@ public class TeamMemberlist {
 
     public void setImage(String image) {
         this.image = image;
-    };
+    }
 }

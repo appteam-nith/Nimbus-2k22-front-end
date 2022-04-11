@@ -22,111 +22,78 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CoreTeamVolleyHelper {
     Context context;
     RequestQueue requestQueue;
-    String BaseURL  = "https://anmol26.pythonanywhere.com/";
+    String BaseURL = "https://appteam.monuk7735.cf/";
 
     public CoreTeamVolleyHelper(Context context) {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
     }
-    public static MutableLiveData<List<TeamList>> Teams;
-    public void getTeams(){
-        Teams = new MutableLiveData<>();
-        List<TeamList> Tlist = new ArrayList<>();
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseURL + "team/team/", null, new Response.Listener<JSONArray>() {
+    public static MutableLiveData<ArrayList<TeamList>> teamlist;
+    public void getTeamList(){
+        teamlist = new MutableLiveData<>();
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, BaseURL + "departments", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                Log.e("Teamresponse",String.valueOf(response));
-             for(int i=0;i< response.length();i++){
-                 try {
+                ArrayList<TeamList>tlist = new ArrayList<>();
+                for(int i=0;i<response.length();i++){
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        String name = jsonObject.getString("name");
+                        String image = jsonObject.getString("image");
+                        tlist.add(new TeamList(name,image));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                     JSONObject jsonObject = response.getJSONObject(i);
-                     int id = jsonObject.getInt("id");
-                     String club_name = jsonObject.getString("club_name");
-                     String image = jsonObject.getString("image");
-                     Tlist.add(new TeamList(id,club_name,image));
-                 } catch (JSONException e) {
-                     Log.e("exceptionTeams",String.valueOf(e));
-                     e.printStackTrace();
-                 }
-             }
-             Teams.postValue(Tlist);
+
+                } teamlist.postValue(tlist);
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-            Log.e("TeamsErro",error.getMessage());
+
             }
         });
-       requestQueue.add(jsonArrayRequest);
-
+        requestQueue.add(jsonArrayRequest);
     }
-    public static MutableLiveData<TeamList> teamRead;
-    public void readTeam(int id){
-        teamRead = new MutableLiveData<>();
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, BaseURL + "team/team/"+id+ "/", null, new Response.Listener<JSONObject>() {
+     public static MutableLiveData<List<TeamMemberlist>> newmemberlist;
+    public void getTeamMembers(String team_name){
+        newmemberlist = new MutableLiveData<>();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, BaseURL + "teams/" + team_name, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-           Log.e("teamRead",String.valueOf(response));
                 try {
-                    Log.e("responseteamread",String.valueOf(response));
-                    int id = response.getInt("id");
-                    String club_name = response.getString("club_name");
-                    String image = response.getString("image");
-                    TeamList teams = new TeamList(id,club_name,image);
-                    teamRead.postValue(teams);
+                    Log.e("Response",String.valueOf(response));
+                    JSONArray jsonArray = response.getJSONArray(team_name+"Members");
+                    List<TeamMemberlist> mmlist = new ArrayList<>();
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String id = jsonObject.getString("id");
+                        String name = jsonObject.getString("name");
+                        String team_name = jsonObject.getString("team_name");
+                        String position = jsonObject.getString("position");
+                        String image = jsonObject.getString("image");
+                        mmlist.add(new TeamMemberlist(id,name,team_name,position,image));
+
+                    }
+                    newmemberlist.postValue(mmlist);
                 } catch (JSONException e) {
-                    Log.e("exceptionreadteam",String.valueOf(e));
                     e.printStackTrace();
                 }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("errorteamread",String.valueOf(error));
+
             }
         });
         requestQueue.add(jsonObjectRequest);
     }
-     public static MutableLiveData<List<TeamMemberlist>>MemberList;
-     public void getTeamMembers(String teamName){
-         MemberList = new MutableLiveData<>();
-
-         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, BaseURL + "team/teamMember/" + teamName +"/", null, new Response.Listener<JSONObject>() {
-             @Override
-             public void onResponse(JSONObject response) {
-                 Log.e("MemberList",String.valueOf(response));
-                 try {
-
-                     JSONArray jsonArray = response.getJSONArray(teamName+"Members");
-
-                     List<TeamMemberlist> Tlist = new ArrayList<>();
-                     for(int i=0;i<jsonArray.length();i++){
-                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                         int id = jsonObject.getInt("id");
-                         String name = jsonObject.getString("name");
-                         String team_name = jsonObject.getString("team_name");
-                         String position = jsonObject.getString("position");
-                         String image = jsonObject.getString("image");
-                         Tlist.add(new TeamMemberlist(id,name,team_name,position,image));
-                         MemberList.postValue(Tlist);
-
-                     }
-                 } catch (JSONException e) {
-                     Log.e("ExceptionMember",e.getMessage());
-                     e.printStackTrace();
-                 }
-
-             }
-         }, new Response.ErrorListener() {
-             @Override
-             public void onErrorResponse(VolleyError error) {
-           Log.e("ErrorMember",String.valueOf(error));
-             }
-         });
-          requestQueue.add(jsonObjectRequest);
-     }
-
 }

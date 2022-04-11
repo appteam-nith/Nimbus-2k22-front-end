@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Nimbus2k22"
 include ':app'
+include ':flappydrone'

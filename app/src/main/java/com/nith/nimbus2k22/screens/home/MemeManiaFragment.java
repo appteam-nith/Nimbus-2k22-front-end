@@ -1,66 +1,89 @@
 package com.nith.nimbus2k22.screens.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
+import static com.nith.nimbus2k22.apis.MemesManiaVolleyHelper.Memeslist;
 
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import com.nith.nimbus2k22.Models.UserSerializerForMemes;
 import com.nith.nimbus2k22.R;
+import com.nith.nimbus2k22.adapters.MemeManiaAdapter;
+import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
+import com.nith.nimbus2k22.memeComment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MemeManiaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class MemeManiaFragment extends Fragment {
+import com.nith.nimbus2k22.Models.Memes;
+import com.nith.nimbus2k22.memePost;
+import com.nith.nimbus2k22.screens.models.MemeManiaModel;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MemeManiaFragment extends Fragment  {
+
+    private static final String TAG = "Meme Mania Fragment";
+    private static final String EXTRA_USERNAME = "MemeComment";
+    private static final String EXTRA_IMAGE_ ="MemeMania" ;
+    private List<Memes> memeList = new ArrayList<>();
+    FloatingActionButton fab;
+    ImageView comment_btn;
 
     public MemeManiaFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MemeManiaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MemeManiaFragment newInstance(String param1, String param2) {
-        MemeManiaFragment fragment = new MemeManiaFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meme_mania, container, false);
+        View view = inflater.inflate(R.layout.fragment_meme_mania, container, false);
+        RecyclerView recyclerView1 = view.findViewById(R.id.recyclerView1);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), memePost.class));
+            }
+        });
+        MemesManiaVolleyHelper c3 = new MemesManiaVolleyHelper(getActivity());
+        c3.getMemes();
+        final androidx.lifecycle.Observer<List<Memes>> memesObserver = new androidx.lifecycle.Observer<List<Memes>>() {
+            @Override
+            public void onChanged(List<Memes> memes) {
+
+                MemeManiaAdapter memeManiaAdapter = new MemeManiaAdapter(memes, getContext());
+
+                recyclerView1.setAdapter(memeManiaAdapter);
+
+            }
+
+        };
+        Memeslist.observe(getActivity(), memesObserver);
+        return view;
     }
+
 }

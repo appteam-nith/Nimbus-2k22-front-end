@@ -1,6 +1,9 @@
 package com.nith.nimbus2k22.apis;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -27,7 +30,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserVolleyHelper {
     Context context;
@@ -38,7 +43,7 @@ public class UserVolleyHelper {
         requestQueue = Volley.newRequestQueue(context);
     }
 
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://appteam.monuk7735.cf/";
 
 
     public static MutableLiveData<List<User_List>> user_list;
@@ -57,14 +62,15 @@ public class UserVolleyHelper {
                         String username = jsonObject.getString("username");
                         String phone = jsonObject.getString("phone");
                         String email = jsonObject.getString("email");
-                        String firstName = jsonObject.getString("firstName");
-                        String lastName = jsonObject.getString("lastName");
+                        String name = jsonObject.getString("name");
+                        boolean favTeamVote = jsonObject.getBoolean("favTeamVote");
                         int omegleReports = jsonObject.getInt("omegleReports");
                         boolean omegleAllowed = jsonObject.getBoolean("omegleAllowed");
+                        String instaId = jsonObject.getString("instaId");
                         String profileImage = jsonObject.getString("profileImage");
-                        boolean campusAmbassador = jsonObject.getBoolean("campusAmbassador");
-                        String collegeName = jsonObject.getString("collegeName");
-                        alist.add(new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage, campusAmbassador, collegeName));
+                        int totalScore  = jsonObject.getInt("totalScore");
+
+                        alist.add(new User_List(firebase, username, phone, email, name, favTeamVote, omegleReports, omegleAllowed,instaId, profileImage,totalScore ));
 
 
                     } catch (JSONException e) {
@@ -98,14 +104,15 @@ public class UserVolleyHelper {
                     String username = response.getString("username");
                     String phone = response.getString("phone");
                     String email = response.getString("email");
-                    String firstName = response.getString("firstName");
-                    String lastName = response.getString("lastName");
+                    String name = response.getString("name");
+                   boolean favTeamVote = response.getBoolean("favTeamVote");
                     int omegleReports = response.getInt("omegleReports");
                     boolean omegleAllowed = response.getBoolean("omegleAllowed");
+                    String instaId = response.getString("instaId");
                     String profileImage = response.getString("profileImage");
-                    boolean campusAmbassador = response.getBoolean("campusAmbassador");
-                    String collegeName = response.getString("collegeName");
-                    User_List ulist = new User_List(firebase, username, phone, email, firstName, lastName, omegleReports, omegleAllowed, profileImage, campusAmbassador, collegeName);
+                    int totalScore = response.getInt("totalScore");
+
+                    User_List ulist = new User_List(firebase, username, phone, email, name, favTeamVote, omegleReports, omegleAllowed,instaId, profileImage,totalScore);
                     user_read.postValue(ulist);
                 } catch (JSONException e) {
                     Log.e("userReadexception", e.getMessage());
@@ -153,17 +160,18 @@ public class UserVolleyHelper {
             jsonbody.put("username",ulist.getUsername());
             jsonbody.put("phone",ulist.getPhone());
             jsonbody.put("email",ulist.getEmail());
-            jsonbody.put("firstName",ulist.getFirstname());
-            jsonbody.put("lastName",ulist.getLastname());
+            jsonbody.put("name",ulist.getName());
+            jsonbody.put("favTeamVote",ulist.isFavTeamVote());
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
+            jsonbody.put("instaId",ulist.getInstaId());
             jsonbody.put("profileImage",ulist.getProfileImage());
-            jsonbody.put("campusAmbassador",ulist.isCampusAmabassador());
-            jsonbody.put("collegeName",ulist.getCollegeName());
+            jsonbody.put("totalScore",ulist.getTotalScore());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PATCH, BaseUrl + "users/"+firebase+"/", jsonbody, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, BaseUrl + "users/"+firebase+"/", jsonbody, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
             Log.e("updateUser",String.valueOf(response));
@@ -179,14 +187,14 @@ public class UserVolleyHelper {
                             JSONObject object = new JSONObject(new String(response.data));
                             if (object.getJSONObject("Errors:").has("username")) {
                                 String usernameErr = object.getJSONObject("Errors:").getJSONArray("username").get(0).toString();
-                                Log.e("jsonObject", usernameErr);
-                                Toast.makeText(context, usernameErr, Toast.LENGTH_SHORT).show();
+                               // Log.e("jsonObject", usernameErr);
+                              //  Toast.makeText(context, usernameErr, Toast.LENGTH_SHORT).show();
 
                             }
                             if (object.getJSONObject("Errors:").has("email")) {
                                 String emailErr = object.getJSONObject("Errors:").getJSONArray("email").get(0).toString();
-                                Log.e("jsonObject", emailErr);
-                                Toast.makeText(context, emailErr, Toast.LENGTH_SHORT).show();
+                              //  Log.e("jsonObject", emailErr);
+                                //Toast.makeText(context, emailErr, Toast.LENGTH_SHORT).show();
 
                             } else {
                                 String ResultMsg = object.getString("Message");
@@ -245,13 +253,14 @@ public class UserVolleyHelper {
             jsonbody.put("username",ulist.getUsername());
             jsonbody.put("phone",ulist.getPhone());
             jsonbody.put("email",ulist.getEmail());
-            jsonbody.put("firstName",ulist.getFirstname());
-            jsonbody.put("lastName",ulist.getLastname());
+            jsonbody.put("name",ulist.getName());
+            jsonbody.put("favTeamVote",ulist.isFavTeamVote());
             jsonbody.put("omegleReports",ulist.getOmegleReports());
             jsonbody.put("omegleAllowed",ulist.isOmegleAllowed());
+            jsonbody.put("instaId",ulist.getInstaId());
             jsonbody.put("profileImage",ulist.getProfileImage());
-            jsonbody.put("campusAmbassador",ulist.isCampusAmabassador());
-            jsonbody.put("collegeName",ulist.getCollegeName());
+            jsonbody.put("totalScore",ulist.getTotalScore());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -280,7 +289,13 @@ public class UserVolleyHelper {
                                 Log.e("jsonObject", emailErr);
                                 Toast.makeText(context, emailErr, Toast.LENGTH_SHORT).show();
 
-                            } else {
+                            }
+                            if(object.getJSONObject("Errors").has("firebase")){
+                                String firebaseerr = object.getJSONObject("Errors:").getJSONArray("firebase").get(0).toString();
+                                Log.e("jsonObject",firebaseerr);
+                            }
+
+                            else {
                                 String ResultMsg = object.getString("Message");
                                 Log.e("jsonObject", ResultMsg);
                                 Toast.makeText(context, ResultMsg, Toast.LENGTH_SHORT).show();
@@ -325,7 +340,14 @@ public class UserVolleyHelper {
 
 
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
         requestQueue.add(jsonObjectRequest);
 
 

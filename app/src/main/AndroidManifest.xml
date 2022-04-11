@@ -2,14 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nith.nimbus2k22">
 
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <meta-data
+        android:name="CLOUDINARY_URL"
+        android:value="cloudinary:CLOUDINARY_URL=cloudinary://981293366339261:tknXky4p8K5bRT6Aws_xnAnlAFg@dfinmhios"/>
 
     //
 <!--    <network-security-config>-->
@@ -23,6 +28,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,10 +37,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nimbus2k22">
         <activity
+
             android:name=".screens.sigma.VideoCall"
             android:exported="false" />
         <activity
+            android:name=".screens.teams.TeamDetail"
+            android:exported="false" />
+        <activity
             android:name=".screens.sigma.VideoCallJoining"
+            android:exported="false" />
+        <activity
+
+            android:name=".memeComment"
+
+            android:exported="false" />
+        <activity android:name=".screens.teams.TeamDetail"
+            android:exported="false"
+            />
+        <activity
+
+            android:name=".memePost"
             android:exported="false" />
         <activity
             android:name=".screens.account.ForgotPasswordActivity"
@@ -43,17 +65,17 @@
             android:name=".screens.account.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.account.SignupActivity"
+            android:name=".screens.account.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.account.LoginActivity"
+            android:name=".screens.account.SignupActivity"
+
             android:exported="false" />
         <activity
             android:name=".splashscreen.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
