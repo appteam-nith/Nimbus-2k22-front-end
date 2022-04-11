@@ -31,11 +31,17 @@
             android:name=".screens.sigma.VideoCall"
             android:exported="false" />
         <activity
+            android:name=".screens.teams.TeamDetail"
+            android:exported="false" />
+        <activity
             android:name=".screens.sigma.VideoCallJoining"
             android:exported="false" />
         <activity
             android:name=".memeComment"
             android:exported="false" />
+        <activity android:name=".screens.teams.TeamDetail"
+            android:exported="false"
+            />
         <activity
             android:name=".memePost"
             android:exported="false" />

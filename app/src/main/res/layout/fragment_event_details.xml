@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/glass_morphism_background"
+    android:background="@drawable/ic_bg_screen_logos"
     tools:context=".screens.eventsAndWorkshops.EventDetailsFragment">
 
     <ScrollView
@@ -33,17 +33,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
                 android:background="@drawable/event_details_background"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/back_button"
-                app:layout_constraintVertical_bias="0.178">
+                app:layout_constraintVertical_bias="0.251">
 
                 <ImageView
                     android:id="@+id/event_detail_IV"
                     android:layout_width="241dp"
                     android:layout_height="227dp"
-                    android:background="@drawable/event_detail_nimbus"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -56,8 +59,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:text="Prodygiki"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="25sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -80,27 +84,25 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="132dp"
+                    android:layout_marginTop="356dp"
                     android:text="@string/description"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.104"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintHorizontal_bias="0.122"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/event_detail_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="14dp"
                     android:text="Lorem ipsum dolor sit amet"
                     android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.046"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textView2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView2"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -109,19 +111,19 @@
                 android:id="@+id/event_detail_reg_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="40dp"
                 android:background="@drawable/btn_register"
                 android:paddingHorizontal="40dp"
                 android:paddingVertical="5dp"
                 android:text="Register"
                 android:textColor="@color/white"
-                android:textSize="20sp"
-                android:layout_marginVertical="20dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.937" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

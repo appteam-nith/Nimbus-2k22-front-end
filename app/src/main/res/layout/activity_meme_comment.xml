@@ -138,7 +138,7 @@
         app:srcCompat="@drawable/ic_teamdetailscommentbackground" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyView"
+        android:id="@+id/recyView_comment"
         android:layout_width="315dp"
         android:layout_height="350dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -163,9 +163,12 @@
     <EditText
         android:id="@+id/comment"
         android:layout_width="185dp"
+
         android:layout_height="27dp"
+
         android:inputType="textPersonName"
         android:textSize="16sp"
+        android:padding="7dp"
         android:gravity="center"
         android:layout_marginBottom="24dp"
         android:textColor="@color/white"
@@ -190,9 +193,8 @@
             android:id="@+id/newimage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_ellipse_14"
-            android:scaleType="centerCrop">
-        </ImageView>
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_ellipse_14" />
 
     </androidx.cardview.widget.CardView>
     <ImageView

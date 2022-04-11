@@ -33,7 +33,7 @@
             android:orientation="vertical"
             android:text="@string/Prodygiki_by_ISTE"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:textColor="@color/white"/>
 
         <TextView

@@ -44,7 +44,7 @@ public class StoreFragment extends Fragment {
 
         storeAdapter = new StoreAdapter(getActivity(),storeListArrayList);
 
-        LinearLayoutManager manager = new GridLayoutManager(requireContext(),2);
+        LinearLayoutManager manager = new LinearLayoutManager(requireContext());
         storeRV.setHasFixedSize(true);
 
         storeRV.setLayoutManager(manager);

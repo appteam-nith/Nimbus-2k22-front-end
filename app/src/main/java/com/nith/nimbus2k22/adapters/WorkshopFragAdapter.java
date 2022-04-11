@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -68,14 +69,14 @@ public class WorkshopFragAdapter extends RecyclerView.Adapter<WorkshopFragAdapte
 
     public class WrkshpFrgVH extends RecyclerView.ViewHolder {
 
-        private CardView eventCard;
+        private ConstraintLayout eventCard;
         private ImageView eventImg;
         private TextView eventName, eventDetail, regBtn;
 
         public WrkshpFrgVH(@NonNull View itemView) {
             super(itemView);
 
-            eventCard = itemView.findViewById(R.id.trans);
+            eventCard = itemView.findViewById(R.id.wrkshp_item);
             eventImg = itemView.findViewById(R.id.event_item_img);
             eventName = itemView.findViewById(R.id.Event_name);
             eventDetail = itemView.findViewById(R.id.event_detail);

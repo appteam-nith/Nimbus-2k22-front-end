@@ -55,12 +55,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     // For the pipes
     private int iteratorInt = 0;
-    private static final int interval = 150;
+    private static final int interval = 70;
     private static final float gap = 450.0f;
     private static final float base = 100.0f;
     private float pipeWidth = 100.0f;
     private List<Pipe> pipeList;
-    private static final float pipeVelocity = 3.0f;
+    private static final float pipeVelocity = 8.0f;
 
     public GameView(Context context) {
         super(context);
@@ -163,7 +163,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         velocityX += accelerationX;
 //        velocityY += accelerationY;
         // Only accelerate velocityY when it is not too large
-        if (velocityY <= 10.0F) {
+        if (velocityY <= 15.0F) {
             velocityY += accelerationY;
         }
 

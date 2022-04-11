@@ -40,7 +40,7 @@ public class SponsorsFragAdapter extends RecyclerView.Adapter<SponsorsFragAdapte
     public void onBindViewHolder(@NonNull SponsorViewHolder holder, int position) {
         Sponsors sponsor = sponsorsModalArrayList.get(position);
 
-        holder.sponsorDes.setText(sponsor.getName());
+//        holder.sponsorDes.setText(sponsor.getName());
         //??
         //load img
         Glide.with(context).load("https://api.festnimbus.com/"+sponsor.getImage()).into(holder.sponsorImage);
@@ -60,7 +60,7 @@ public class SponsorsFragAdapter extends RecyclerView.Adapter<SponsorsFragAdapte
         public SponsorViewHolder(@NonNull View itemView) {
             super(itemView);
             sponsorImage = itemView.findViewById(R.id.sponsor_IV);
-            sponsorDes = itemView.findViewById(R.id.sponsor_des);
+//            sponsorDes = itemView.findViewById(R.id.sponsor_des);
             sponsorItem = itemView.findViewById(R.id.sponsor_item);
         }
     }

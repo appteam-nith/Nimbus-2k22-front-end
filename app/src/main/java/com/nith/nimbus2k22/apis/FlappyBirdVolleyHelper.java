@@ -1,9 +1,14 @@
 package com.nith.nimbus2k22.apis;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -19,7 +24,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FlappyBirdVolleyHelper {
     Context context;
@@ -56,7 +63,16 @@ public class FlappyBirdVolleyHelper {
             public void onErrorResponse(VolleyError error) {
 
             }
-        });
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                String s = sharedPreferences.getString("idToken", "");
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Bearer "+ s );
+                return headers;
+            }
+        };
         requestQueue.add(jsonArrayRequest);
     }
     public static MutableLiveData<List<FlappyBirdScore>> flappyscore;
@@ -66,8 +82,10 @@ public class FlappyBirdVolleyHelper {
             @Override
             public void onResponse(JSONArray response) {
                 List<FlappyBirdScore> fpscore = new ArrayList<>();
+                Log.e("flappyresponse",String.valueOf(response));
                 for(int i=0;i<response.length();i++){
                     try {
+
                         JSONObject jsonObject = response.getJSONObject(i);
                         String firebase = jsonObject.getString("firebase");
                         String username = jsonObject.getString("username");
@@ -76,6 +94,7 @@ public class FlappyBirdVolleyHelper {
                         fpscore.add(new FlappyBirdScore(firebase,username,name,totalScore));
 
                     } catch (JSONException e) {
+                        Log.e("exceptionflappy",String.valueOf(e));
                         e.printStackTrace();
                     }
                 }
@@ -84,9 +103,17 @@ public class FlappyBirdVolleyHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+           Log.e("flappyerror",error.getMessage());
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+       String s = sharedPreferences.getString("idToken", "");
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Bearer " + s );
+                return headers;
+            }};
         requestQueue.add(jsonArrayRequest);
 
 
@@ -103,14 +130,23 @@ public class FlappyBirdVolleyHelper {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, BaseUrl + "flappybird/", jsonbody, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+Log.e("FlappyBirdResponse",String.valueOf(response));
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
             }
-        });
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                String s = sharedPreferences.getString("idToken", "");
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Bearer "+ s );
+                return headers;
+            }
+        };
         requestQueue.add(jsonObjectRequest);
 
     }
