@@ -67,7 +67,7 @@ public class memeComment extends AppCompatActivity {
         String abc = M.getPhoto();
        Glide.with(getApplicationContext()).load(M.getPhoto().replace("http","https")).into(usermg);
 
-          Glide.with(getApplicationContext()).load(M.getPhoto().replace("http","httpsl̥")).into(userimage1);
+         Glide.with(getApplicationContext()).load(M.getPhoto().replace("http","https̥")).into(userimage1);
 //        Glide.with(getApplicationContext()).load(M.getPhoto()).into(usermg);
       img = findViewById(R.id.commentSend);
       ET1 = findViewById(R.id.comment);

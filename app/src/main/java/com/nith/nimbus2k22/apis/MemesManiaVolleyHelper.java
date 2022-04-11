@@ -78,14 +78,27 @@ public class MemesManiaVolleyHelper {
             public void onErrorResponse(VolleyError error) {
 
             }
-        });
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                String s = sharedPreferences.getString("idToken", "");
+
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+
+                headers.put("authorization", "Bearer "+s);
+                Log.e("Server", s);
+                return headers;
+            }
+        };
         requestQueue.add(jsonArrayRequest);
     }
 
     public void createMeme(String firebase, String photo, String text, String location, String Uid) {
         JSONObject jsonbody = new JSONObject();
-//        SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
-//        String s = sharedPreferences.getString("idToken", Uid);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+        String s = sharedPreferences.getString("idToken", "");
         Log.e("helloRohitYadav", "Bye Bye");
 
 
@@ -118,8 +131,8 @@ public class MemesManiaVolleyHelper {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json");
 
-                headers.put("Authorization", BEARER + Uid);
-                Log.e("Server", Uid);
+                headers.put("Authorization", "Bearer "+s);
+                Log.e("Server", s);
                 return headers;
             }
         };
@@ -148,9 +161,10 @@ public class MemesManiaVolleyHelper {
         }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                SharedPreferences sharedPreferences = context.getSharedPreferences("User", MODE_PRIVATE);
+                SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                String s = sharedPreferences.getString("idToken", "");
                 HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", "Bearer "  );
+                headers.put("Authorization", "Bearer "+ s );
                 return headers;
             }
         };
