@@ -48,22 +48,22 @@ public class memePost extends AppCompatActivity {
     byte[] bytesofimage;
     Bitmap bitmap;
     String picUrl;
+    FirebaseAuth auth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meme_post);
-        memedisplay = findViewById(R.id.memeDisplay);
-        displaypic = findViewById(R.id.profilePic);
-        caption = findViewById(R.id.caption);
-        auth = FirebaseAuth.getInstance();
-        String text = caption.getText().toString();
-        MemesManiaVolleyHelper memesManiaVolleyHelper = new MemesManiaVolleyHelper(memePost.this);
-        memesManiaVolleyHelper.createMeme(auth.getUid(),picUrl,text,"hiiakash","");
 
+        auth = FirebaseAuth.getInstance();
+        memedisplay=findViewById(R.id.memeDisplay);
+        displaypic=findViewById(R.id.profilePic);
+        caption=findViewById(R.id.caption);
 //        choosebutton=findViewById(R.id.memeChooseButton);
-        btnuserpost = findViewById(R.id.btn_user_post_image);
+        btnuserpost=findViewById(R.id.btn_user_post_image);
+        MemesManiaVolleyHelper m1 = new MemesManiaVolleyHelper(memePost.this);
+
         memedisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,8 +73,12 @@ public class memePost extends AppCompatActivity {
         });
 
         btnuserpost.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                String text = caption.getText().toString();
+              m1.createMeme(auth.getUid(),picUrl,text,"location","");
+
                 Toast.makeText(memePost.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
                 finish();
             }
@@ -82,8 +86,7 @@ public class memePost extends AppCompatActivity {
     }
 
     private void openGallery() {
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
+
         Dexter.withActivity(memePost.this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE).withListener(new PermissionListener() {
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {

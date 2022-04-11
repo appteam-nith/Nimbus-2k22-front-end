@@ -25,8 +25,9 @@ import java.util.List;
 public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyViewHolder> {
     private static final String TAG ="hello" ;
     private Context context;
-    private List<Memes> memeList=new ArrayList<>();
+ public static List<Memes> memeList;
     RequestOptions requestOptions1;
+
     public MemeManiaAdapter(List<Memes> memeList, Context context){
         this.memeList=memeList;
         this.context=context;
@@ -41,24 +42,26 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-      Memes memeManiaModel=memeList.get(position);
-      holder.userimage.setImageURI(Uri.parse(memeManiaModel.getPhoto()));
-      holder.caption.setText(memeManiaModel.getText());
-      holder.memeImage.setImageURI(Uri.parse(memeManiaModel.getPhoto()));
-      holder.username.setText((CharSequence) memeManiaModel.getAutohr());
-        Glide.with(context).load(memeManiaModel.getPhoto()).apply(requestOptions1).into(holder.memeImage);
-        Glide.with(context).load(memeManiaModel.getPhoto()).apply(requestOptions1).into(holder.userimage);
 
-   holder.comment.setOnClickListener(v -> {
-               Intent i = new Intent(context, memeComment.class);
-               i.putExtra("Meme_image", memeManiaModel.getPhoto());
-               i.putExtra("User_image", memeManiaModel.getPhoto());
-               i.putExtra("username", memeManiaModel.getAutohr());
-               Log.d("hello_ji",memeManiaModel.getAutohr());
-               Log.d("hello_ji",memeManiaModel.getPhoto());
-               context.startActivity(i);
-           }
-       );
+        Memes memeManiaModel=memeList.get(position);
+        holder.userimage.setImageURI(Uri.parse(memeManiaModel.getPhoto()));
+        holder.caption.setText(memeManiaModel.getText());
+        holder.memeImage.setImageURI(Uri.parse(memeManiaModel.getPhoto()));
+        holder.username.setText((CharSequence) memeManiaModel.getAutohr());
+        Glide.with(context).load(memeManiaModel.getPhoto().replace("http","https")).apply(requestOptions1).into(holder.memeImage);
+        Glide.with(context).load(memeManiaModel.getPhoto().replace("http","https")).apply(requestOptions1).into(holder.userimage);
+
+//        holder.comment.setOnClickListener(v -> {
+//                    Intent i = new Intent(context, memeComment.class);
+//                    i.putExtra("Meme_image", memeManiaModel.getPhoto());
+//                    i.putExtra("User_image", memeManiaModel.getPhoto());
+//                    i.putExtra("username", memeManiaModel.getAutohr());
+//                    Log.d("hello_ji",memeManiaModel.getAutohr());
+//                    Log.d("hello_ji",memeManiaModel.getPhoto());
+//                    context.startActivity(i);
+//                }
+//        );
+
 
     }
 
@@ -76,7 +79,6 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
 
 
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView username;
         TextView caption;
@@ -86,11 +88,20 @@ public class MemeManiaAdapter extends RecyclerView.Adapter<MemeManiaAdapter.MyVi
         private final ImageView comment;
         public MyViewHolder(View view) {
             super(view);
-           userimage= view.findViewById(R.id.userimage);
-           username=view.findViewById(R.id.usrname);
-           caption=view.findViewById(R.id.caption);
-           memeImage=view.findViewById(R.id.meme_image);
-           comment=view.findViewById(R.id.comment1);
+            userimage= view.findViewById(R.id.userimage);
+            username=view.findViewById(R.id.usrname);
+            caption=view.findViewById(R.id.caption);
+            memeImage=view.findViewById(R.id.meme_image);
+            comment=view.findViewById(R.id.comment1);
+            comment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intnet = new Intent(view.getContext(),memeComment.class);
+                    intnet.putExtra("Memes",(Serializable)memeList.get(getAdapterPosition()));
+                    view.getContext().startActivity(intnet);
+                }
+            });
+
 
         }
     }

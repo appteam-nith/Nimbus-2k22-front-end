@@ -29,7 +29,8 @@ import com.nith.nimbus2k22.screens.adapters.MemeManiaAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemeManiaFragment extends Fragment {
+public class MemeManiaFragment extends Fragment  {
+
     private static final String TAG = "Meme Mania Fragment";
     private static final String EXTRA_USERNAME = "MemeComment";
     private static final String EXTRA_IMAGE_ ="MemeMania" ;
@@ -47,6 +48,7 @@ public class MemeManiaFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_meme_mania, container, false);
         RecyclerView recyclerView1 = view.findViewById(R.id.recyclerView1);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +63,9 @@ public class MemeManiaFragment extends Fragment {
             public void onChanged(List<Memes> memes) {
 
                 MemeManiaAdapter memeManiaAdapter = new MemeManiaAdapter(memes, getContext());
+
                 recyclerView1.setAdapter(memeManiaAdapter);
-                recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
+
             }
 
         };
