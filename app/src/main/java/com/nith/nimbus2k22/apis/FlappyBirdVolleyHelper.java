@@ -63,7 +63,16 @@ public class FlappyBirdVolleyHelper {
             public void onErrorResponse(VolleyError error) {
 
             }
-        });
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                String s = sharedPreferences.getString("idToken", "");
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Bearer "+ s );
+                return headers;
+            }
+        };
         requestQueue.add(jsonArrayRequest);
     }
     public static MutableLiveData<List<FlappyBirdScore>> flappyscore;
@@ -121,14 +130,23 @@ public class FlappyBirdVolleyHelper {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, BaseUrl + "flappybird/", jsonbody, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+Log.e("FlappyBirdResponse",String.valueOf(response));
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
             }
-        });
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                String s = sharedPreferences.getString("idToken", "");
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Bearer "+ s );
+                return headers;
+            }
+        };
         requestQueue.add(jsonObjectRequest);
 
     }
