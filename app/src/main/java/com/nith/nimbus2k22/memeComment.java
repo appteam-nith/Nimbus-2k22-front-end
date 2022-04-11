@@ -18,7 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.android.volley.RequestQueue;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.nith.nimbus2k22.Models.CommentList;
 import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.apis.MemesManiaVolleyHelper;
@@ -36,17 +38,18 @@ public class memeComment extends AppCompatActivity {
     ToggleButton togglebtn;
     RecyclerView recyclerView;
     EditText ET1;
+    RequestOptions req;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meme_comment);
-        RecyclerView recyclerView = findViewById(R.id.recyView_comment);
+        RecyclerView recyclerView = findViewById(R.id.recyView);
         Intent intent = getIntent();
         Memes M =(Memes)intent.getSerializableExtra("Memes");
 //        String username = intent.getStringExtra(EXTRA_USERNAME);
 //        String userimage=intent.getStringExtra(EXTRA_IMAGE);
-        ImageView userimage1=findViewById(R.id.imag);
+        ImageView meme_userimage=findViewById(R.id.meme_user_avatar);
         ImageView usermg = findViewById(R.id.userimage1);
         TextView textusername = findViewById(R.id.usrname);
         TextView caption = findViewById(R.id.caption);
@@ -54,9 +57,9 @@ public class memeComment extends AppCompatActivity {
         caption.setText(M.getText());
         Log.e("helloComment",String.valueOf(M.getPhoto()));
         String abc = M.getPhoto();
-       Glide.with(getApplicationContext()).load(M.getPhoto().replace("http","https")).into(usermg);
-
-         Glide.with(getApplicationContext()).load(M.getPhoto().replace("http","https̥")).into(userimage1);
+        req=new RequestOptions().centerCrop().placeholder(R.drawable.refresh).error(R.drawable.refresh);
+       Glide.with(getApplicationContext()).load(M.getPhoto().replace("http","https")).apply(req).into(meme_userimage);
+       Glide.with(getApplicationContext()).load(abc.replace("http","https")).apply(req).into(usermg);
 //        Glide.with(getApplicationContext()).load(M.getPhoto()).into(usermg);
       img = findViewById(R.id.commentSend);
       ET1 = findViewById(R.id.comment);

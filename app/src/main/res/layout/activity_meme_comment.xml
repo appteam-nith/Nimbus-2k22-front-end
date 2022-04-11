@@ -5,20 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg2"
-    tools:context=".memeComment"
-    android:orientation="vertical">
-
-
-    <ImageView
-        android:id="@+id/memeDisplay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_teamdetails_rectangle"
-        />
+    android:orientation="vertical"
+    tools:context=".memeComment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,11 +31,11 @@
                 app:cardCornerRadius="18dp">
 
                 <ImageView
-                    android:id="@+id/userimage1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:id="@+id/meme_user_avatar"
+                    android:layout_width="659dp"
+                    android:layout_height="114dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/imagebackground"/>
+                    android:src="@drawable/imagebackground" />
 
             </androidx.cardview.widget.CardView>
 
@@ -89,47 +77,21 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="260dp"
-            android:layout_height="241dp"
+            android:layout_height="240dp"
             android:layout_gravity="center"
             android:background="@drawable/ic_group_99">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="228dp"
-                android:layout_height="158dp"
-                android:layout_gravity="center"
+            <ImageView
+                android:id="@+id/userimage1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/background">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.275">
-
-                        <ImageView
-                            android:id="@+id/imag"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/background" />
-
-                    </androidx.cardview.widget.CardView>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.cardview.widget.CardView>
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -150,12 +112,12 @@
         app:srcCompat="@drawable/ic_teamdetailscommentbackground" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyView_comment"
+        android:id="@+id/recyView"
         android:layout_width="315dp"
-        android:layout_height="319dp"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_meme_comment">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -164,60 +126,56 @@
         android:id="@+id/commentBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_rectangle_6"
+        app:layout_constraintBottom_toBottomOf="@id/imageView3"
         app:layout_constraintLeft_toLeftOf="@id/imageView3"
         app:layout_constraintRight_toRightOf="@id/imageView3"
-        app:layout_constraintBottom_toBottomOf="@id/imageView3"
-        >
+        app:srcCompat="@drawable/ic_rectangle_6">
 
     </ImageView>
 
     <EditText
         android:id="@+id/comment"
         android:layout_width="185dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        android:padding="7dp"
-        android:gravity="center"
+        android:layout_height="27dp"
         android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:inputType="textPersonName"
         android:textColor="@color/white"
-        app:layout_constraintLeft_toLeftOf="@id/commentBackground"
-        app:layout_constraintRight_toRightOf="@id/commentBackground"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/commentBackground"
-        />
+        app:layout_constraintLeft_toLeftOf="@id/commentBackground"
+        app:layout_constraintRight_toRightOf="@id/commentBackground" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardImag"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        app:cardCornerRadius="18dp"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintRight_toLeftOf="@id/commentBackground"
-        app:layout_constraintLeft_toLeftOf="@id/imageView3"
+        android:layout_marginBottom="47dp"
+        app:cardCornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintLeft_toLeftOf="@id/imageView3"
+        app:layout_constraintRight_toLeftOf="@id/commentBackground">
 
         <ImageView
             android:id="@+id/newimage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_ellipse_14" />
+            android:src="@drawable/ic_ellipse_14"></ImageView>
 
     </androidx.cardview.widget.CardView>
+
     <ImageView
         android:id="@+id/commentSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_commentsend"
-        app:layout_constraintLeft_toRightOf="@id/commentBackground"
-        app:layout_constraintBottom_toBottomOf="@id/imageView3"
         android:layout_marginBottom="24dp"
-        >
+        app:layout_constraintBottom_toBottomOf="@id/imageView3"
+        app:layout_constraintLeft_toRightOf="@id/commentBackground"
+        app:srcCompat="@drawable/ic_commentsend">
 
     </ImageView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

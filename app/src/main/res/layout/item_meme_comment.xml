@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -10,25 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="6dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardImage"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            app:cardCornerRadius="18dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <ImageView
-                android:id="@+id/userimagecomment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_ellipse_14"
-                android:scaleType="centerCrop">
-            </ImageView>
-
-        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/username1"
@@ -36,10 +17,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="11dp"
             android:layout_marginTop="21dp"
-            android:layout_toRightOf="@+id/cardImage"
             android:text="@string/username1"
             android:textColor="@color/black"
-            android:textSize="13dp"
+            android:textSize="14dp"
             android:textStyle="bold">
 
         </TextView>
@@ -48,13 +28,12 @@
             android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/username1"
             android:layout_marginStart="11dp"
             android:layout_marginLeft="21dp"
-            android:layout_below="@+id/username1"
-            android:layout_toRightOf="@+id/cardImage"
             android:text="Comment:"
             android:textColor="@color/black"
-            android:textSize="9dp">
+            android:textSize="12dp">
 
         </TextView>
     </RelativeLayout>

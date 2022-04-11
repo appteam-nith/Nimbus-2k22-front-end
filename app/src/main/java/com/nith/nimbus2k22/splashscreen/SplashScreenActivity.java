@@ -39,7 +39,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         config.put("api_key", "981293366339261");
         config.put("api_secret", "tknXky4p8K5bRT6Aws_xnAnlAFg");
         //  config.put("secure", true);
-        MediaManager.init(this, config);
+        try {
+            MediaManager.init(this, config);
+        } catch (Exception e) {
+            Log.e("init error", "error");
+        }
     }
 
     SharedPreferences sharedPreferences;
@@ -52,28 +56,30 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        mUser.getIdToken(true).addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
-            @Override
-            public void onComplete(@NonNull Task<GetTokenResult> task) {
-                Log.d("something", "valled");
-                if (task.isSuccessful()) {
-                    idToken = task.getResult().getToken();
-                    Log.e("NoToken", idToken);
-                    Log.e("Uidfirebase", auth.getUid());
-                    sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
-                    editor = sharedPreferences.edit();
-                    editor.putString("idToken", idToken);
+        if (mUser != null) {
+            mUser.getIdToken(true).addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+                @Override
+                public void onComplete(@NonNull Task<GetTokenResult> task) {
+                    Log.d("something", "valled");
+                    if (task.isSuccessful()) {
+                        idToken = task.getResult().getToken();
+                        Log.e("NoToken", idToken);
+                        Log.e("Uidfirebase", auth.getUid());
+                        sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                        editor = sharedPreferences.edit();
+                        editor.putString("idToken", idToken);
 
 
-                    editor.commit();
+                        editor.commit();
 
-                } else {
-                    task.getException();
-                    Log.e("String Exception", String.valueOf(task.getException()));
+                    } else {
+                        task.getException();
+                        Log.e("String Exception", String.valueOf(task.getException()));
+                    }
+
                 }
-
-            }
-        });
+            });
+        }
 
 
         Intent i = new Intent(getApplicationContext(), MainActivity.class);

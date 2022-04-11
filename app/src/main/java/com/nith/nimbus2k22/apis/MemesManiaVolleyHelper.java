@@ -18,6 +18,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.nith.nimbus2k22.Models.CommentList;
+import com.nith.nimbus2k22.Models.Like;
 import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.Models.UserSerializerForMemes;
 
@@ -236,6 +237,39 @@ public class MemesManiaVolleyHelper {
         });
         requestQueue.add(jsonObjectRequest);
     }
+    public void postLike(String postId,String Firebase){
+        JSONObject jsonbody = new JSONObject();
+        try {
+            jsonbody.put("postId",postId);
+            jsonbody.put("userId",Firebase);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, BaseUrl + "imagefeed/like/", jsonbody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                String s = sharedPreferences.getString("idToken", "");
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", "Bearer "+ s );
+                return headers;
+            }
+        }
+                ;
+
+
+    }
+
 
 
 }

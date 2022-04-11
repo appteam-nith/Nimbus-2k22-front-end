@@ -66,7 +66,6 @@ public class CommentAdapter extends RecyclerView.Adapter <CommentAdapter.MyViewH
 //        ImageView userimage_comment;
         public MyViewHolder( View itemView) {
             super(itemView);
-            userimage= this.itemView.findViewById(R.id.userimagecomment);
             username= this.itemView.findViewById(R.id.username1);
             comment= this.itemView.findViewById(R.id.comment);
 //            userimage_comment= this.itemView.findViewById(R.id.userimagecomment);
