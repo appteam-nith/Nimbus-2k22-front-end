@@ -39,7 +39,9 @@
         <ImageView
             android:layout_width="300dp"
             android:layout_height="350dp"
+
             android:src="@drawable/ic_baseline_arrow_back_24"
+
             android:id="@+id/img_omegle"
             android:layout_centerInParent="true" />
         <ProgressBar

@@ -50,23 +50,14 @@
             android:scaleType="centerCrop"
             android:src="@drawable/btn_endcall" />
 
-        <ImageView
-            android:id="@+id/btn_turn_camera"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="24dp"
-            android:layout_toEndOf="@id/btn_call"
 
-            android:src="@drawable/sync_1"
-            android:scaleType="centerCrop"/>
         <ImageView
             android:id="@+id/btn_switch_camera"
             android:layout_width="54dp"
             android:layout_height="54dp"
             android:layout_centerVertical="true"
 
-            android:layout_toEndOf="@id/btn_turn_camera"
+            android:layout_toEndOf="@id/btn_call"
 
             android:onClick="onCameraClicked"
             android:scaleType="centerCrop"

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="../../../../layout/custom_preview.xml" value="0.38125" />
         <entry key="app/src/main/res/drawable/ic_card_home.xml" value="0.204" />
         <entry key="app/src/main/res/drawable/ic_store_card.xml" value="0.1045" />
@@ -34,6 +35,7 @@
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.35260416666666666" />
         <entry key="flappydrone/src/main/res/layout/activity_game.xml" value="0.35260416666666666" />
         <entry key="flappydrone/src/main/res/layout/activity_starting.xml" value="0.35260416666666666" />
+
       </map>
     </option>
   </component>

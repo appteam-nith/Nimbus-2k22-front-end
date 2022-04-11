@@ -2,6 +2,7 @@ package com.nith.nimbus2k22.screens.account;
 
 import static com.nith.nimbus2k22.apis.UserVolleyHelper.user_check;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +28,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
+
 import com.nith.nimbus2k22.MainActivity;
 import com.nith.nimbus2k22.Models.Check_User;
 import com.nith.nimbus2k22.R;
@@ -39,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
 
-                        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         inputEmail = findViewById(R.id.etEmail);
@@ -53,7 +57,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                        forgotPassword.setOnClickListener(new View.OnClickListener() {
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
@@ -74,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 String txt_email = inputEmail.getText().toString();
                 String txt_password = inputPassword.getText().toString();
 //                Log.d("world",auth.getCurrentUser().getEmail());
-//                Log.d("world",auth.getCurrentUser().getEmail());
+
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
                     if (TextUtils.isEmpty(txt_email)) {
                         inputEmail.setError("Empty Email");
@@ -86,17 +91,20 @@ public class LoginActivity extends AppCompatActivity {
                     progrssDialog.setTitle("Login ");
                     progrssDialog.setCanceledOnTouchOutside(false);
                     progrssDialog.show();
+<
 
                     auth.signInWithEmailAndPassword(txt_email,txt_password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
                         public void onSuccess(AuthResult authResult) {
                             saveToken();
 
+
                             FirebaseUser user = auth.getCurrentUser();
                             Log.d("login user", "onSuccess: "+user);
                             UserVolleyHelper User=new UserVolleyHelper(LoginActivity.this);
                             UserVolleyHelper UserPresent=new UserVolleyHelper(LoginActivity.this);
                             UserPresent.check_User(txt_email);
+
 
                                 final androidx.lifecycle.Observer<Check_User>ch1 = new androidx.lifecycle.Observer<Check_User>() {
                                     @Override
@@ -130,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                     };
                                 user_check.observe(LoginActivity.this,ch1);
+
                         }
                     });
                     }
@@ -167,4 +176,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }

@@ -14,12 +14,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.WorkshopFragment;
 import com.nith.nimbus2k22.screens.home.HomeFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
 import com.nith.nimbus2k22.screens.store.StoreFragment;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private int flag = 1;
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 // Your code.
                 flag = 3;
                 on_Click();
+
             }
         });
         four.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
 
@@ -221,9 +227,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void replaceFragment(Fragment fragment) {
 
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
+
 }
