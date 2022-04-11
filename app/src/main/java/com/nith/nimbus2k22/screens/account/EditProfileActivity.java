@@ -1,4 +1,6 @@
-package com.nith.nimbus2k22;
+package com.nith.nimbus2k22.screens.account;
+
+import static com.nith.nimbus2k22.apis.UserVolleyHelper.user_check;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +29,10 @@ import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
+import com.nith.nimbus2k22.MainActivity;
+import com.nith.nimbus2k22.Models.Check_User;
 import com.nith.nimbus2k22.Models.User_List;
+import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.apis.UserVolleyHelper;
 
 import java.io.ByteArrayOutputStream;
@@ -46,7 +51,6 @@ public class EditProfileActivity extends AppCompatActivity {
     String encodedimg;
     String picUrl;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +65,8 @@ public class EditProfileActivity extends AppCompatActivity {
         auth=FirebaseAuth.getInstance();
         image=findViewById(R.id.image);
         btnsave=findViewById(R.id.btnsave);
+
+
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,11 +102,24 @@ public class EditProfileActivity extends AppCompatActivity {
                 String emailAdd=etEmailId.getText().toString();
 
 //                User_List user=new User_List("6",)
-                User_List user=new User_List("5",name,phoneNumber,emailAdd,name,"",0,true,"",false,"NITH");
+                User_List user=new User_List(auth.getUid(),name,phoneNumber,emailAdd,"hello","world",0,false,picUrl);
                 UserVolleyHelper User=new UserVolleyHelper(EditProfileActivity.this);
-                User.createUser(user);
+                UserVolleyHelper UserPresent=new UserVolleyHelper(EditProfileActivity.this);
+              UserPresent.check_User(emailAdd);
+             final androidx.lifecycle.Observer<Check_User>ch1 = new androidx.lifecycle.Observer<Check_User>() {
+                 @Override
+                 public void onChanged(Check_User check_user) {
+                     if(check_user.getUser_present()=="true") {
+                         User.updateUser(user, auth.getUid());
+                     }
+                     else
+                         User.createUser(user);
+                 }
+             };
+             user_check.observe(EditProfileActivity.this,ch1);
 
-                startActivity(new Intent(EditProfileActivity.this,MainActivity.class));
+
+                startActivity(new Intent(EditProfileActivity.this, MainActivity.class));
             }
         });
     }
