@@ -32,8 +32,9 @@
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:text="@string/Prodygiki_by_ISTE"
-            android:textStyle="bold"
             android:textSize="14sp"
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
             android:textColor="@color/white"/>
 
         <TextView
@@ -41,6 +42,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="by AppTeam"
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
             android:textColor="@color/white"
             android:textSize="14sp"/>
     </LinearLayout>

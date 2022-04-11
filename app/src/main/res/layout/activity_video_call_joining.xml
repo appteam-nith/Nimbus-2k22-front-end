@@ -17,19 +17,23 @@
         android:gravity="center"
         android:text="Omegle"
         android:textColor="@color/white"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/poppins_black"
+        android:textFontWeight="100"
+        android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/img_omegle"
         android:layout_width="314dp"
         android:layout_height="180dp"
-        android:background="@drawable/rectangle_1"
-        android:id="@+id/img_omegle"
-        android:text="Guidlines :"
-        android:layout_marginTop="120dp"
-        android:textColor="@color/white"
         android:layout_below="@+id/name_omegle"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/rectangle_1"
+        android:text="Guidlines :"
+        android:fontFamily="@font/poppins_black"
+        android:textFontWeight="100"
+        android:textSize="12sp"
+        android:textColor="@color/white" />
     <ProgressBar
         android:id="@+id/pb"
         android:layout_width="wrap_content"
@@ -44,15 +48,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/remaining_time"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/rectangle_6"
         android:gravity="center"
-        android:layout_centerHorizontal="true"
         android:text="video"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/poppins_black"
+        android:textFontWeight="100"
+        android:textSize="12sp"
+       />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

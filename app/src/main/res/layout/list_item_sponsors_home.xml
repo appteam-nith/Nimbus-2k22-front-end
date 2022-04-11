@@ -35,8 +35,9 @@
             android:padding="0dp"
             android:text="@string/Prodygiki_by_ISTE"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="14sp">
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            android:textSize="12sp">
 
         </TextView>
 
