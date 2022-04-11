@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.cloudinary.android.MediaManager;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,27 +21,37 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     private void initConfig() {
         Map config = new HashMap();
+        Log.e("SATYAM_DEBUG", "INIT REACHED");
+
         config.put("cloud_name", "dfinmhios");
         config.put("api_key","981293366339261");
         config.put("api_secret","tknXky4p8K5bRT6Aws_xnAnlAFg");
         //  config.put("secure", true);
-        MediaManager.init(this, config);
+        try {
+            MediaManager.init(SplashScreenActivity.this, config);
+        } catch (Exception e) {
+            Log.e("SATYAM_DEBUG", "ERROR IN INIT CONFIG");
+        }
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(i);
+//        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//        startActivity(i);
 
         initConfig();
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 auth = FirebaseAuth.getInstance();
                 if (auth.getCurrentUser() == null) {
+
                     startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
+//                    startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                     finish();
                 }
                 else {
@@ -55,7 +66,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     //the current activity will get finished.
                 }
             }
-        }, 40);
+        }, 4000);
 
     }
 }

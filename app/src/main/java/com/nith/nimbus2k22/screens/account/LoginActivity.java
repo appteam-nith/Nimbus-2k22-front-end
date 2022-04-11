@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 String txt_email = inputEmail.getText().toString();
                 String txt_password = inputPassword.getText().toString();
 //                Log.d("world",auth.getCurrentUser().getEmail());
+//                Log.d("world",auth.getCurrentUser().getEmail());
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
                     if (TextUtils.isEmpty(txt_email)) {
                         inputEmail.setError("Empty Email");
