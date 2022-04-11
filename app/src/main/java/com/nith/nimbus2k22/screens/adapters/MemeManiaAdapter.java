@@ -19,6 +19,7 @@ import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.R;
 import com.nith.nimbus2k22.memeComment;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

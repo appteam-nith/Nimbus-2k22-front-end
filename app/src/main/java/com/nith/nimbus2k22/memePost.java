@@ -48,7 +48,6 @@ public class memePost extends AppCompatActivity {
     byte[] bytesofimage;
     Bitmap bitmap;
     String picUrl;
-    FirebaseAuth auth;
 
 
     @Override
