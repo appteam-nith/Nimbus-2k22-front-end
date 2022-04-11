@@ -126,14 +126,16 @@ public class MemesManiaVolleyHelper {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void commentCreate(String firebase, String post_id, String text, String Uid) {
+    public void commentCreate( String post_id,String firebase, String text) {
         JSONObject jsonObject = new JSONObject();
         try {
+            jsonObject.put("post",post_id);
+            jsonObject.put("author",firebase);
             jsonObject.put("text", text);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, BaseUrl + "imagefeed/comment/" + post_id + "/" + firebase + "/", jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, BaseUrl + "imagefeed/comment/" , jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("CreateComment", String.valueOf(response));
@@ -148,7 +150,7 @@ public class MemesManiaVolleyHelper {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 SharedPreferences sharedPreferences = context.getSharedPreferences("User", MODE_PRIVATE);
                 HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", "Bearer " + Uid );
+                headers.put("Authorization", "Bearer "  );
                 return headers;
             }
         };

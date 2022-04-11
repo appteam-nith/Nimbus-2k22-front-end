@@ -42,7 +42,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemeManiaFragment extends Fragment implements MemeManiaAdapter.OnItemClickListener {
+public class MemeManiaFragment extends Fragment  {
     private static final String TAG = "Meme Mania Fragment";
     private static final String EXTRA_USERNAME = "MemeComment";
     private static final String EXTRA_IMAGE_ ="MemeMania" ;
@@ -60,6 +60,7 @@ public class MemeManiaFragment extends Fragment implements MemeManiaAdapter.OnIt
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_meme_mania, container, false);
         RecyclerView recyclerView1 = view.findViewById(R.id.recyclerView1);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,9 +75,9 @@ public class MemeManiaFragment extends Fragment implements MemeManiaAdapter.OnIt
             public void onChanged(List<Memes> memes) {
 
                 MemeManiaAdapter memeManiaAdapter = new MemeManiaAdapter(memes, getContext());
-                memeManiaAdapter.setItemOnClickListener(MemeManiaFragment.this);
+
                 recyclerView1.setAdapter(memeManiaAdapter);
-                recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
+
             }
 
         };
@@ -84,13 +85,5 @@ public class MemeManiaFragment extends Fragment implements MemeManiaAdapter.OnIt
         return view;
     }
 
-    @Override
-    public void onItemClick(int position) {
-        memeList.get(position);
-        Intent intent = new Intent(getActivity(), memeComment.class);
-        // put username in the intent as extra
-        intent.putExtra(EXTRA_IMAGE_,memeList.get(position).getPhoto());
-//        intent.putExtra(EXTRA_USERNAME,  memeList.get(position).getAutohr());
-        startActivity(intent);
-    }
+
 }
