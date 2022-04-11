@@ -307,7 +307,7 @@ public class VideoCall extends AppCompatActivity {
 
     private void initializeEngine() {
         try {
-            String appId = "";
+            String appId = "abe9aa77ff8946f8b653b7e7ad96348c";
             mRtcEngine = RtcEngine.create(getBaseContext(), appId, mRtcEventHandler);
             // Registers the local user account after initializing the Agora engine and before joining the channel.
             mRtcEngine.registerLocalUserAccount(appId,getIntent().getStringExtra("uid"));

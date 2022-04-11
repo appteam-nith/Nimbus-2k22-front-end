@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     progrssDialog.setTitle("Login ");
                     progrssDialog.setCanceledOnTouchOutside(false);
                     progrssDialog.show();
-
+                    Log.d("hoddie", "onClick: authenticatioin");
                     auth.signInWithEmailAndPassword(txt_email,txt_password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
                         public void onSuccess(AuthResult authResult) {
@@ -87,38 +87,41 @@ public class LoginActivity extends AppCompatActivity {
                             UserVolleyHelper UserPresent=new UserVolleyHelper(LoginActivity.this);
                             UserPresent.check_User(txt_email);
 
-                                final androidx.lifecycle.Observer<Check_User>ch1 = new androidx.lifecycle.Observer<Check_User>() {
-                                    @Override
-                                    public void onChanged(Check_User check_user) {
+//                                final androidx.lifecycle.Observer<Check_User>ch1 = new androidx.lifecycle.Observer<Check_User>() {
+//                                    @Override
+//                                    public void onChanged(Check_User check_user) {
+//
+//                                        if (user.isEmailVerified()) {
+//
+//                                            if (check_user.getUser_present() == "true") {
+//                                                progrssDialog.dismiss();
+//                                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//                                                finish();
+//                                            } else {
+//                                                progrssDialog.dismiss();
+//                                                startActivity(new Intent(LoginActivity.this, EditProfileActivity.class));
+//                                                finish();
+//                                            }
+////                                            startActivity(new Intent(LoginActivity.this,EditProfileActivity.class));
+////                                            finish();
+//                                        } else {
+//                                            progrssDialog.dismiss();
+//                                            inputEmail.setError("Email not Verified");
+//                                            user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                                @Override
+//                                                public void onSuccess(Void unused) {
+//                                                    Toast.makeText(LoginActivity.this, "Email not verified Confirm your email", Toast.LENGTH_LONG).show();
+//                                                }
+//                                            });
+//                                            auth.signOut();
+//                                        }
+//
+//                                    }
+//                                    };
+//                                user_check.observe(LoginActivity.this,ch1);
+                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                            finish();
 
-                                        if (user.isEmailVerified()) {
-
-                                            if (check_user.getUser_present() == "true") {
-                                                progrssDialog.dismiss();
-                                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                                finish();
-                                            } else {
-                                                progrssDialog.dismiss();
-                                                startActivity(new Intent(LoginActivity.this, EditProfileActivity.class));
-                                                finish();
-                                            }
-//                                            startActivity(new Intent(LoginActivity.this,EditProfileActivity.class));
-//                                            finish();
-                                        } else {
-                                            progrssDialog.dismiss();
-                                            inputEmail.setError("Email not Verified");
-                                            user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void unused) {
-                                                    Toast.makeText(LoginActivity.this, "Email not verified Confirm your email", Toast.LENGTH_LONG).show();
-                                                }
-                                            });
-                                            auth.signOut();
-                                        }
-
-                                    }
-                                    };
-                                user_check.observe(LoginActivity.this,ch1);
                         }
                     });
                     }
