@@ -1,10 +1,14 @@
 package com.nith.nimbus2k22.apis;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -12,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.nith.nimbus2k22.Models.CommentList;
 import com.nith.nimbus2k22.Models.Memes;
 import com.nith.nimbus2k22.Models.UserSerializerForMemes;
 
@@ -20,7 +25,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MemesManiaVolleyHelper {
     Context context;
@@ -30,7 +37,7 @@ public class MemesManiaVolleyHelper {
         this.context = context;
         requestQueue = Volley.newRequestQueue(context);
     }
-    String BaseUrl = "https://anmol26.pythonanywhere.com/";
+    String BaseUrl = "https://appteam.monuk7735.cf/";
     public static MutableLiveData<List<Memes>> Memeslist;
     public void getMemes(){
         Memeslist = new MutableLiveData<>();
@@ -70,7 +77,7 @@ public class MemesManiaVolleyHelper {
         });
         requestQueue.add(jsonArrayRequest);
     }
-    public void createMeme(String firebase,String photo,String text,String location){
+    public void createMeme(String firebase,String photo,String text,String location,String Uid){
         JSONObject jsonbody = new JSONObject();
 
         try {
@@ -90,7 +97,108 @@ public class MemesManiaVolleyHelper {
             public void onErrorResponse(VolleyError error) {
                 Log.e("memecreaeerro",error.getMessage());
             }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", Uid);
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+      public void commentCreate(String firebase , String post_id,String text,String Uid){
+        JSONObject jsonObject = new JSONObject();
+          try {
+              jsonObject.put("text",text);
+          } catch (JSONException e) {
+              e.printStackTrace();
+          }
+          JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, BaseUrl + "imagefeed/comment/" + post_id + "/" + firebase+"/" , jsonObject, new Response.Listener<JSONObject>() {
+              @Override
+              public void onResponse(JSONObject response) {
+              Log.e("CreateComment",String.valueOf(response));
+              }
+          }, new Response.ErrorListener() {
+              @Override
+              public void onErrorResponse(VolleyError error) {
+                  Log.e("ErrorCommentCreate",error.getMessage());
+              }
+          }){
+              @Override
+              public Map<String, String> getHeaders() throws AuthFailureError {
+                  SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
+                  HashMap<String, String> headers = new HashMap<String, String>();
+                  headers.put("Authorization", Uid);
+                  return headers;
+              }
+          };
+          requestQueue.add(jsonObjectRequest);
+
+    }
+    public void commentUpdate(String comment_id,String text,String Uid){
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("text",text);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, BaseUrl + "imagefeed/comment/"+ comment_id + "/", jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("updateComment",String.valueOf(response));
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("ErrorCommentupdate",error.getMessage());
+            }
+        })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE);
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Authorization", Uid);
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+
+    }
+    public static MutableLiveData<List<CommentList>> commentlist;
+    public void getCommentList(String post_id){
+        commentlist = new MutableLiveData<>();
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, BaseUrl + "imagefeed/getcomment/" + post_id + "/", null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Commentlist",String.valueOf(response));
+                try {
+                    JSONArray jsonArray = response.getJSONArray(post_id +"\'scommenters");
+                    List<CommentList> clist = new ArrayList<>();
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        int id = jsonObject.getInt("id");
+                        String author = jsonObject.getString("author");
+                        String text = jsonObject.getString("text");
+                        String posted_on = jsonObject.getString("posted_on");
+                        clist.add(new CommentList(id,author,text,posted_on));
+                    }
+                      commentlist.postValue(clist);
+                } catch (JSONException e) {
+                    Log.e("exceptioncommentList",e.getMessage());
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+          Log.e("errorcommentlist",String.valueOf(error));
+            }
         });
         requestQueue.add(jsonObjectRequest);
     }
+
 }
