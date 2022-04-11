@@ -17,10 +17,12 @@
         android:layout_height="wrap_content"
         android:text="@string/sponsors"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:padding="4dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_black"
+        android:textFontWeight="100"
         android:gravity="center"
         android:layout_marginEnd="40dp"
         android:background="@drawable/ic_tab_event_sponsors"
@@ -41,11 +43,4 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <ProgressBar
-        android:id="@+id/event_pg"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="visible" />
 </FrameLayout>

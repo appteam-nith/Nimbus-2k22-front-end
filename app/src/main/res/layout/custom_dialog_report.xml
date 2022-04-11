@@ -42,7 +42,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10sp"
-                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_black"
+                    android:textFontWeight="100"
+                    android:textSize="12sp"
                     android:layout_centerHorizontal="true"
                     android:textColor="@color/white"
                     android:text="Wanna report the previous user?"/>
@@ -63,7 +65,9 @@
                         android:id="@+id/edit_report_reason"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_black"
+                        android:textFontWeight="100"
+                        android:textSize="12sp"
                         android:background="@color/white"
                         android:inputType="textMultiLine"
                         android:padding="10sp"
@@ -91,7 +95,9 @@
                             android:layout_height="wrap_content"
                             android:text="no"
                             android:textAllCaps="true"
-                            android:textSize="17sp"
+                            android:fontFamily="@font/poppins_black"
+                            android:textFontWeight="100"
+                            android:textSize="12sp"
                             android:background="@color/white"
                             android:textColor="@color/purple_700"/>
 
@@ -113,7 +119,9 @@
                             android:layout_height="wrap_content"
                             android:text="yes"
                             android:textAllCaps="true"
-                            android:textSize="17sp"
+                            android:fontFamily="@font/poppins_black"
+                            android:textFontWeight="100"
+                            android:textSize="12sp"
                             android:background="@color/white"
                             android:textColor="@color/purple_500"/>
 

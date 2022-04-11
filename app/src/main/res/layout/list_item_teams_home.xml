@@ -39,7 +39,9 @@
             tools:background="@color/black"
             android:textColor="@color/white"
             android:textSize="14sp"
-            android:textStyle="bold">
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            >
 
         </TextView>
 

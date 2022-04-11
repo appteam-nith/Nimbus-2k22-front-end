@@ -56,8 +56,10 @@
             android:layout_marginTop="50dp"
             android:gravity="center"
             android:textColor="@color/white"
-            android:text="Name"
-            android:textStyle="bold" />
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            android:textSize="12sp"
+            android:text="Name" />
 
         <TextView
             android:id="@+id/emailAddress"
@@ -67,8 +69,10 @@
             android:textColor="@color/white"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Email Address"
-            android:textStyle="bold" />
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            android:textSize="12sp"
+            android:text="Email Address" />
 
         <TextView
             android:id="@+id/rollnumber"
@@ -79,7 +83,9 @@
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:text="Roll Number"
-            android:textStyle="bold" />
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/phonenumber"
@@ -101,7 +107,9 @@
             android:gravity="center"
             android:layout_marginTop="5dp"
             android:text="Instagram Id"
-            android:textStyle="bold" />
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            android:textSize="12sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -117,8 +125,9 @@
             android:text="Edit"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -134,8 +143,9 @@
             android:text="Logout"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"

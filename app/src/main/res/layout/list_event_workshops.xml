@@ -1,87 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/wrkshp_item"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:layout_gravity="center"
-    android:layout_marginTop="20dp"
-    android:background="@drawable/ic_card_home"
-    android:paddingHorizontal="22dp"
-    android:paddingVertical="13dp">
+    android:layout_height="wrap_content">
 
 
-    <ImageView
-        android:id="@+id/event_item_img"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_gravity="center"
+        android:id="@+id/wrkshp_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:minWidth="350dp"
+        android:fontFamily="@font/poppins_black"
+        android:minHeight="150dp"
+       android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_card_home"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/event_item_img"
+            android:layout_width="110dp"
+            android:layout_height="138dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="28dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.347" />
 
         <TextView
             android:id="@+id/Event_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
             android:ellipsize="end"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:maxWidth="200dp"
             android:maxLines="1"
+            android:text="Prodygiki_by_ISTE"
+            android:textAlignment="textEnd"
             android:textColor="@color/white"
-            android:textSize="14sp"
-            tools:text="Prodygiki_by_ISTE" />
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.547"
+            app:layout_constraintStart_toEndOf="@+id/event_item_img"
+            app:layout_constraintTop_toTopOf="@+id/event_item_img" />
 
         <TextView
             android:id="@+id/event_detail"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
             android:layout_marginBottom="13dp"
             android:ellipsize="end"
-            android:gravity="center_horizontal"
+            android:maxWidth="200dp"
             android:maxLines="1"
             android:text="@string/dummy_text"
+            android:textAlignment="textEnd"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:flow_wrapMode="aligned"
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            app:layout_constraintBottom_toTopOf="@+id/eventRegUrl"
+            app:layout_constraintEnd_toEndOf="@+id/Event_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/Event_name"
+            app:layout_constraintTop_toBottomOf="@+id/Event_name"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/eventRegUrl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/btn_register"
-            android:gravity="center"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="5dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
             android:text="Register"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_black"
+            android:textFontWeight="100"
+            app:layout_constraintBottom_toBottomOf="@+id/event_item_img"
+            app:layout_constraintEnd_toEndOf="@+id/Event_name"
+            app:layout_constraintHorizontal_bias="0.469"
+            app:layout_constraintStart_toStartOf="@+id/Event_name" />
 
 
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
