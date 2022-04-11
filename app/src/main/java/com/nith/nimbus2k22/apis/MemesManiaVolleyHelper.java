@@ -120,7 +120,7 @@ public class MemesManiaVolleyHelper {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("memecreaeerro", error.getMessage());
+                //Log.e("memecreaeerro", error.getMessage());
                 Log.e("ErrorMeme", "Bye bye");
             }
         }) {

@@ -6,7 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -87,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                     auth.signInWithEmailAndPassword(txt_email,txt_password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
                         public void onSuccess(AuthResult authResult) {
+                            saveToken();
 
                             FirebaseUser user = auth.getCurrentUser();
                             Log.d("login user", "onSuccess: "+user);
@@ -130,6 +133,37 @@ public class LoginActivity extends AppCompatActivity {
                     });
                     }
                 }
+        });
+    }
+
+    private void saveToken() {
+
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        mUser.getIdToken(true).addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+            @Override
+            public void onComplete(@NonNull Task<GetTokenResult> task) {
+                Log.d("something", "valled");
+                if (task.isSuccessful()) {
+                    final SharedPreferences sharedPreferences;
+                    SharedPreferences.Editor editor;
+                    Context context = LoginActivity.this;
+
+                    String idToken = task.getResult().getToken();
+                    Log.e("NoToken", idToken);
+                    Log.e("Uidfirebase", auth.getUid());
+                    sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                    editor = sharedPreferences.edit();
+                    editor.putString("idToken", idToken);
+
+
+                    editor.commit();
+
+                } else {
+                    task.getException();
+                    Log.e("String Exception", String.valueOf(task.getException()));
+                }
+            }
         });
     }
 }
