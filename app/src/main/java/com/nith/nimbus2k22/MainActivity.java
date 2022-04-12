@@ -1,23 +1,32 @@
 package com.nith.nimbus2k22;
 
+
+
+import android.content.Context;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.nith.nimbus2k22.screens.account.ViewProfileFragment;
-import com.nith.nimbus2k22.screens.eventsAndWorkshops.AllEventsAndWorkshopsFragment;
+import com.nith.nimbus2k22.screens.eventsAndWorkshops.WorkshopFragment;
 import com.nith.nimbus2k22.screens.home.HomeFragment;
-import com.nith.nimbus2k22.screens.home.MemeManiaFragment;
-import com.nith.nimbus2k22.screens.quiz.AllQuizzesFragment;
 import com.nith.nimbus2k22.screens.sigma.SigmaFragment;
+import com.nith.nimbus2k22.screens.store.StoreFragment;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private  int flag = 1;
+    private int flag = 1;
     private ImageView one;
     private ImageView two;
     private ImageView three;
@@ -33,12 +42,24 @@ public class MainActivity extends AppCompatActivity {
     private ImageView thirteen;
     private ImageView fourteen;
     private ImageView fifteen;
+    FirebaseAuth auth;
+    Context context = MainActivity.this;
+    String idToken = "";
+    String s;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        auth = FirebaseAuth.getInstance();
+        String id = auth.getUid();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+//        FileInputStream serviceAccount = new FileInputStream("");
+//        FirebaseOptions options = new FirebaseOptions.Builder().set
+
         one = findViewById(R.id.home_icon);
         two = findViewById(R.id.Quizzes_icon);
         three = findViewById(R.id.eventsAndWorkshop_icon);
@@ -74,34 +95,37 @@ public class MainActivity extends AppCompatActivity {
         three.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Your code.
-                flag =3;
+                flag = 3;
                 on_Click();
+
             }
         });
         four.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Your code.
-                flag =4;
+                flag = 4;
                 on_Click();
             }
         });
         five.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Your code.
-                flag =5;
+                flag = 5;
                 on_Click();
 
             }
         });
-    }
 
+    }
 
 
     private void on_Click() {
 
         switch (flag) {
             case 1:
-                replaceFragment(new MemeManiaFragment());
+                replaceFragment(new HomeFragment());
+
+
                 one.setVisibility(View.INVISIBLE);
                 two.setVisibility(View.VISIBLE);
                 three.setVisibility(View.VISIBLE);
@@ -121,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case 2:
-                replaceFragment(new AllQuizzesFragment());
+                replaceFragment(new StoreFragment());
 
                 two.setVisibility(View.INVISIBLE);
                 one.setVisibility(View.VISIBLE);
@@ -141,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case 3:
-                replaceFragment(new AllEventsAndWorkshopsFragment());
+                replaceFragment(new WorkshopFragment());
                 three.setVisibility(View.INVISIBLE);
                 two.setVisibility(View.VISIBLE);
                 one.setVisibility(View.VISIBLE);
@@ -200,11 +224,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    private void replaceFragment(Fragment fragment){
+
+    private void replaceFragment(Fragment fragment) {
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_frame_layout,fragment);
+        fragmentTransaction.replace(R.id.fragment_frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
+
 }

@@ -66,4 +66,3 @@ public class StoreList {
         this.department = department;
     }
 }
-

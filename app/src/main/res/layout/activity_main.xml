@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/android_small___68"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,10 +23,11 @@
         android:id="@+id/bottom_navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:background="@drawable/bottom_navigation_color"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
 
         android:orientation="horizontal">
         <ImageView
@@ -196,6 +197,7 @@
             android:background="@drawable/profile"
             android:id="@+id/profile_icon2"/>
     </RelativeLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

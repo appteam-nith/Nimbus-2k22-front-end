@@ -54,6 +54,13 @@ public class SigmaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_sigma, container, false);
+        TextView startChat=v.findViewById(R.id.video_join);
+        startChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),VideoCallJoining.class));
+            }
+        });
 
         return v;
     }

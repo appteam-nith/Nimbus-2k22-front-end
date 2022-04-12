@@ -52,7 +52,8 @@ public class VideoCall extends AppCompatActivity {
     private Handler handler;
     private Runnable runnable;
     private TextView rName,rTime;
-    String Url;
+    private int kip =0;
+    String Url = "http://appteam.monuk7735.cf";
 
 
     // Permission WRITE_EXTERNAL_STORAGE is not mandatory
@@ -285,10 +286,6 @@ public class VideoCall extends AppCompatActivity {
 
 
 
-
-
-
-
     private void showLongToast(final String msg) {
         this.runOnUiThread(new Runnable() {
             @Override
@@ -310,7 +307,7 @@ public class VideoCall extends AppCompatActivity {
 
     private void initializeEngine() {
         try {
-            String appId = "";
+            String appId = "abe9aa77ff8946f8b653b7e7ad96348c";
             mRtcEngine = RtcEngine.create(getBaseContext(), appId, mRtcEventHandler);
             // Registers the local user account after initializing the Agora engine and before joining the channel.
             mRtcEngine.registerLocalUserAccount(appId,getIntent().getStringExtra("uid"));

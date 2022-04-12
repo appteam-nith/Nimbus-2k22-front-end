@@ -1,5 +1,6 @@
 package com.nith.nimbus2k22.screens.home;
 
+import static com.nith.nimbus2k22.apis.CoreTeamVolleyHelper.teamlist;
 import static com.nith.nimbus2k22.apis.EventsVolleyHelper.eventslist;
 import static com.nith.nimbus2k22.apis.SponsorsVolleyHelper.sponsorslist;
 
@@ -19,43 +20,50 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nith.nimbus2k22.Models.EventList;
-import com.nith.nimbus2k22.Models.EventList;
 import com.nith.nimbus2k22.Models.Sponsors;
+import com.nith.nimbus2k22.Models.TeamList;
 import com.nith.nimbus2k22.R;
-import com.nith.nimbus2k22.adapters.EventsAdapter;
-import com.nith.nimbus2k22.adapters.HomeImgSliderAdapter;
 //import com.nith.nimbus2k22.adapters.SponsorsAdapter;
+import com.nith.nimbus2k22.adapters.HomeImgSliderAdapter;
 import com.nith.nimbus2k22.adapters.SponsorsHomeAdapter;
+import com.nith.nimbus2k22.adapters.TeamsHomeAdapter;
+import com.nith.nimbus2k22.adapters.WorkshopHomeAdapter;
+import com.nith.nimbus2k22.apis.CoreTeamVolleyHelper;
 import com.nith.nimbus2k22.apis.EventsVolleyHelper;
 import com.nith.nimbus2k22.apis.SponsorsVolleyHelper;
-import com.nith.nimbus2k22.modals.HomeSilderItem;
-import com.nith.nimbus2k22.screens.eventsAndWorkshops.EventFragment;
+import com.nith.nimbus2k22.Models.HomeSilderItem;
+import com.nith.nimbus2k22.leaderboard_quiz;
 import com.nith.nimbus2k22.screens.eventsAndWorkshops.WorkshopFragment;
 import com.nith.nimbus2k22.screens.sponsors.SponsorsFragment;
+import com.nith.nimbus2k22.screens.teams.Teams;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class HomeFragment extends Fragment {
 
     private ViewPager2 homeImgSliderVP2;
     private RecyclerView homeworkshopRV;
-    private RecyclerView homesponsorRV;
+    private RecyclerView homesponsorRV, homeTeamsRV;
+    ProgressBar pG;
 
-    private TextView homeWorkshopBtn, homesponsorsBtn;
+    private TextView homeWorkshopBtn, homesponsorsBtn, homeTemasBtn;
 
-    private EventsAdapter eventsAdapter;
+    private WorkshopHomeAdapter eventsAdapter;
     private SponsorsHomeAdapter sponsorsAdapter;
+    private TeamsHomeAdapter teamnAdapter;
 
     private LinearLayout sliderDotsPanel;
     private int dotsCount;
     private ImageView[] dots;
     private int currentItem;
+
+
+    Handler handler;
+    Runnable r;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,50 +77,36 @@ public class HomeFragment extends Fragment {
         sliderDotsPanel = view.findViewById(R.id.slider_dots_panel);
 
         ArrayList<HomeSilderItem> sliderItemList = new ArrayList<>();
-        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
-        sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
+        sliderItemList.add(new HomeSilderItem(R.drawable.hover_drone_home));
+        sliderItemList.add(new HomeSilderItem(R.drawable.meme_mania_home));
         sliderItemList.add(new HomeSilderItem(R.drawable.cyberverse_home));
 
-        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2);
+        HomeImgSliderAdapter viewPagerAdapter = new HomeImgSliderAdapter(sliderItemList, homeImgSliderVP2, requireActivity());
         homeImgSliderVP2.setAdapter(viewPagerAdapter);
 
-        currentItem = 0;
 
-        Log.d("IN_RUN", " before run:23444444 ");
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        // auto img slider
+
+
+        handler = new Handler();
+        r = new Runnable() {
             @Override
             public void run() {
-                Log.d("IN_RUN", "run:23444444 ");
-                if (currentItem == 3) {
-                    currentItem = 0;
+                currentItem = homeImgSliderVP2.getCurrentItem();
+                Log.d("AUTO_SLIDER", String.valueOf(currentItem));
+                if (currentItem == 2) {
+                    currentItem = -1;
                 }
-                homeImgSliderVP2.setCurrentItem(currentItem++, true);
-//                currentItem++;
-                handler.postDelayed(this, 5000);
+                currentItem++;
+                homeImgSliderVP2.setCurrentItem(currentItem, true);
+                handler.postDelayed(this, 3500);
             }
-        }, 5000);
 
-//        final Handler handler = new Handler();
-//        final Runnable Update = new Runnable() {
-//            public void run() {
-//                Log.d("IN RUN", "run:000 ");
-//                if (currentItem == 2) {
-//                    currentItem = 0;
-//                }
-//                homeImgSliderVP2.setCurrentItem(currentItem++, true);
-//            }
-//        };
-//
-//        Timer timer = new Timer();
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                handler.post(Update);
-//
-//            }
-//        }, 5000, 3000000);
+        };
+        handler.postDelayed(r, 3500);
 
+
+        // indicator dots
         dotsCount = viewPagerAdapter.getItemCount();
         dots = new ImageView[dotsCount];
 
@@ -140,32 +134,72 @@ public class HomeFragment extends Fragment {
         });
 
 
-
-
-        // Events and Workshops
+        // Events_RV
         homeworkshopRV = view.findViewById(R.id.home_workshop_RV);
         getWorkshopData();
 
-        //sponsors
+        //sponsors_RV
         homesponsorRV = view.findViewById(R.id.home_sponsors_RV);
         getSponsorsData();
 
-        homeWorkshopBtn=view.findViewById(R.id.home_workshop_btn);
-        homesponsorsBtn=view.findViewById(R.id.home_sponsors_btn);
+        //teams_RV
+        homeTeamsRV = view.findViewById(R.id.home_teams_RV);
+        getTeamsData();
+
+        //btns
+        homeWorkshopBtn = view.findViewById(R.id.home_workshop_btn);
+        homesponsorsBtn = view.findViewById(R.id.home_sponsors_btn);
+        homeTemasBtn = view.findViewById(R.id.home_team_btn);
+
 
         homeWorkshopBtn.setOnClickListener(view1 -> {
-            replaceFragment(new WorkshopFragment(),view);
-        });
-        homesponsorsBtn.setOnClickListener(view1 -> {
-            replaceFragment(new SponsorsFragment(),view);
+//            replaceFragment(new WorkshopFragment(), view);
+
+
+
+//
+            replaceFragment(new leaderboard_quiz(),view);
+
         });
 
+
+
+
+        homesponsorsBtn.setOnClickListener(view1 -> {
+            replaceFragment(new SponsorsFragment(), view);
+        });
+        homeTemasBtn.setOnClickListener(view1 -> {
+            replaceFragment(new Teams(), view);
+        });
 
 
         return view;
     }
 
-    private void replaceFragment(Fragment fragment, View view){
+    private void getTeamsData() {
+
+        CoreTeamVolleyHelper coreTeamVolleyHelper = new CoreTeamVolleyHelper(getContext());
+        coreTeamVolleyHelper.getTeamList();
+        final androidx.lifecycle.Observer<ArrayList<TeamList>> observer = new androidx.lifecycle.Observer<ArrayList<TeamList>>() {
+            @Override
+            public void onChanged(ArrayList<TeamList> teamLists) {
+
+
+                teamnAdapter = new TeamsHomeAdapter(teamLists, getActivity());
+                Log.d("TEAM_IMG", teamLists.get(0).getImage());
+
+                LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                homeTeamsRV.setHasFixedSize(true);
+
+                homeTeamsRV.setLayoutManager(manager);
+
+                homeTeamsRV.setAdapter(teamnAdapter);
+            }
+        };
+        teamlist.observe(requireActivity(), observer);
+    }
+
+    private void replaceFragment(Fragment fragment, View view) {
 
         AppCompatActivity activity = (AppCompatActivity) view.getContext();
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame_layout, fragment).addToBackStack(null).commit();
@@ -182,10 +216,9 @@ public class HomeFragment extends Fragment {
             public void onChanged(ArrayList<Sponsors> sponsors_list) {
 
 
-                Log.d("sponsors", sponsors_list.get(0).getName());
-
-
                 sponsorsAdapter = new SponsorsHomeAdapter(sponsors_list, getActivity());
+
+                Log.d("SPONSORS", sponsors_list.get(1).getName());
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 homesponsorRV.setHasFixedSize(true);
@@ -206,7 +239,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<EventList> events_lists) {
 
-                eventsAdapter = new EventsAdapter(events_lists, getActivity(), false, true);
+                eventsAdapter = new WorkshopHomeAdapter(events_lists, getActivity());
+
+                Log.d("EVENTS", events_lists.get(1).getName());
 
                 LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
                 homeworkshopRV.setHasFixedSize(true);
@@ -217,5 +252,11 @@ public class HomeFragment extends Fragment {
             }
         };
         eventslist.observe(getActivity(), observer);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(r);
     }
 }

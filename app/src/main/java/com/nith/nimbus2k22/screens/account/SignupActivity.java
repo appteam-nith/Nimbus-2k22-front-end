@@ -4,9 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,10 +24,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
 import com.nith.nimbus2k22.R;
 
+
 public class SignupActivity extends AppCompatActivity {
-    private EditText inputEmail,inputPassword,inputConfirmPassword;
+    private EditText inputEmail, inputPassword, inputConfirmPassword;
+
     private Button btnSignUp;
     private FirebaseAuth auth;
     private ProgressDialog progrssDialog;
@@ -37,11 +45,14 @@ public class SignupActivity extends AppCompatActivity {
         inputConfirmPassword = findViewById(R.id.etReEnterPassword);
         btnSignUp = findViewById(R.id.signup);
         auth = FirebaseAuth.getInstance();
+
         progrssDialog=new ProgressDialog(this);
+
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String txt_email=inputEmail.getText().toString();
                 String txt_password=inputPassword.getText().toString().trim();
                 String txt_ConfirmPassword=inputConfirmPassword.getText().toString().trim();
@@ -60,12 +71,14 @@ public class SignupActivity extends AppCompatActivity {
                     if(len>=11) {
                         boolean isFound=txt_email.contains("@nith.ac.in");
                         if(isFound) {
+
 //                            registerUser(txt_email,txt_password);
 
                             progrssDialog.setMessage("Please wait while Registering...");
                             progrssDialog.setTitle("Registration");
                             progrssDialog.setCanceledOnTouchOutside(false);
                             progrssDialog.show();
+
 
 
                             auth.createUserWithEmailAndPassword(txt_email,txt_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -75,32 +88,40 @@ public class SignupActivity extends AppCompatActivity {
                                     if(task.isSuccessful()){
 
                                         FirebaseUser user=auth.getCurrentUser();
+
                                         user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {
 
-                                                Toast.makeText(SignupActivity.this,"Verification Email Has Been Sent,Confirm your Email",Toast.LENGTH_LONG).show();
+
+                                                Toast.makeText(SignupActivity.this, "Verification Email Has Been Sent,Confirm your Email", Toast.LENGTH_LONG).show();
                                             }
                                         });
                                         progrssDialog.dismiss();
+                                        saveToken();
+
 //                                        Toast.makeText(SignupActivity.this,"Registering User Successful" ,Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                                         startActivity(intent);
                                         finish();
-                                    }else{
+
+                                    } else {
                                         progrssDialog.dismiss();
 
                                         if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                            Toast.makeText(SignupActivity.this,"Provided Email Is Already Registered!", Toast.LENGTH_SHORT).show();
-                                        }else{
-                                            Toast.makeText(SignupActivity.this,"Registeration Failed" ,Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(SignupActivity.this, "Provided Email Is Already Registered!", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(SignupActivity.this, "Registeration Failed", Toast.LENGTH_SHORT).show();
+
                                         }
                                     }
                                 }
                             });
 
-                        }
-                        else {
+
+                        } else {
+
+                          
                             inputEmail.setError("Use NITH Email ID");
                             Toast.makeText(SignupActivity.this, "Use NITH email ID", Toast.LENGTH_SHORT).show();
                         }
@@ -109,4 +130,37 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void saveToken() {
+
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        mUser.getIdToken(true).addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
+            @Override
+            public void onComplete(@NonNull Task<GetTokenResult> task) {
+                Log.d("something", "valled");
+                if (task.isSuccessful()) {
+                    final SharedPreferences sharedPreferences;
+                    SharedPreferences.Editor editor;
+                    Context context = SignupActivity.this;
+
+                    String idToken = task.getResult().getToken();
+                    Log.e("NoToken", idToken);
+                    Log.e("Uidfirebase", auth.getUid());
+                    sharedPreferences = context.getSharedPreferences("Token", MODE_PRIVATE);
+                    editor = sharedPreferences.edit();
+                    editor.putString("idToken", idToken);
+
+
+                    editor.commit();
+
+                } else {
+                    task.getException();
+                    Log.e("String Exception", String.valueOf(task.getException()));
+                }
+            }
+        });
+    }
+
 }

@@ -1,8 +1,10 @@
 package com.nith.nimbus2k22.Models;
 
-public class Memes {
+import java.io.Serializable;
+
+public class Memes implements Serializable {
     String id;
-    UserSerializerForMemes autohr;
+    String autohr;
     String photo;
     String text;
     String location;
@@ -10,7 +12,7 @@ public class Memes {
     String number_of_likes;
     String number_of_comments;
 
-    public Memes(String id, UserSerializerForMemes autohr, String photo, String text, String location, String posted_on, String number_of_likes, String number_of_comments) {
+    public Memes(String id, String autohr, String photo, String text, String location, String posted_on, String number_of_likes, String number_of_comments) {
         this.id = id;
         this.autohr = autohr;
         this.photo = photo;
@@ -29,11 +31,11 @@ public class Memes {
         this.id = id;
     }
 
-    public UserSerializerForMemes getAutohr() {
+    public String getAutohr() {
         return autohr;
     }
 
-    public void setAutohr(UserSerializerForMemes autohr) {
+    public void setAutohr(String autohr) {
         this.autohr = autohr;
     }
 
