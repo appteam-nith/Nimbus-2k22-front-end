@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +14,7 @@
         android:layout_marginTop="70dp"
         android:background="@drawable/rectangle_82_1_"
         android:gravity="center"
-        android:text="Omegle"
+        android:text="@string/omegle"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins_black"
         android:textFontWeight="100"
@@ -43,22 +42,21 @@
         android:layout_above="@+id/video_join"
         android:layout_centerHorizontal="true" />
 
-    <TextView
+    <Button
         android:id="@+id/video_join"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/remaining_time"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rectangle_6"
+        android:fontFamily="@font/poppins_black"
         android:gravity="center"
         android:text="video"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:fontFamily="@font/poppins_black"
         android:textFontWeight="100"
-        android:textSize="12sp"
-       />
+        android:textSize="12sp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
